@@ -1,9 +1,15 @@
+import NavBar from "./components/NavBar";
+import { useState } from "react";
 
 function App() {
-  return (
-    <div className="App">
-    </div>
-  );
-}
+	const [wallet, setWallet] = useState(null)
 
+	return (
+		<div className="App">
+			<NavBar/>
+		</div>
+	);
+}
+  
 export default App;
+  
