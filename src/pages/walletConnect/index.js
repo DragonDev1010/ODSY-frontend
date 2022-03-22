@@ -2,7 +2,7 @@ import { useContext } from "react"
 import {WalletContext} from "../../context/walletContext"
 import Metamask from "./Metamask"
 function WalletConnect() {
-    const {wallet, setWallet} = useContext(WalletContext)
+    const {wallet} = useContext(WalletContext)
     return(
         <>
             <Metamask/>
