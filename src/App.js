@@ -1,13 +1,11 @@
 import NavBar from "./components/NavBar";
-import { useState } from "react";
-
+import { WalletContext, WalletContextProps } from "./context/walletContext";
 function App() {
-	const [wallet, setWallet] = useState(null)
 
 	return (
-		<div className="App">
+		<WalletContext.Provider value={WalletContextProps()}>
 			<NavBar/>
-		</div>
+		</WalletContext.Provider>
 	);
 }
   
