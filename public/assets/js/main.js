@@ -136,7 +136,7 @@ $(document).ready(function () {
 		}
 	});
 
-	$('.main__carousel--explore').owlCarousel({
+	$('.main__carousel--topCollections').owlCarousel({
 		mouseDrag: true,
 		touchDrag: true,
 		dots: true,
