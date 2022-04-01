@@ -1,20 +1,36 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import WalletConnect from "../../pages/walletConnect";
 import User from "../../pages/user";
+import * as FaIcons from 'react-icons/fa'
+
 function Router() {
     return(
-        <>
+        <div className="router">
             <BrowserRouter>
-                <ul>
-                    <li><Link to="/home">Home</Link></li>
-                    <li><Link to="/explorer">Explorer</Link></li>
-                    <li><Link to="/activity">Activity</Link></li>
-                    <li><Link to="/community">Community</Link></li>
-                    <li><Link to="/pages">Pages</Link></li>
-                    <li><Link to="/contact">Contact</Link></li>
-                    <li><Link to="/sign-up">Sign Up</Link></li>
+                <ul className="routerList">
+                    <li className="routerListItem">
+                        <Link to="/home" className="routerListItemLink">Home</Link>
+                    </li>
+                    <li className="routerListItem">
+                        <Link to="/vip" className="routerListItemLink">V.I.P.</Link>
+                    </li>
+                    <li className="routerListItem">
+                        <Link to="/community" className="routerListItemLink">
+                            Community
+                            <FaIcons.FaCaretDown/> 
+                        </Link>
+                    </li>
+                    <li className="routerListItem">
+                        <Link to="/activity" className="routerListItemLink">
+                            Activity
+                            <FaIcons.FaCaretDown/>   
+                        </Link>
+                    </li>
+                    <li className="routerListItem">
+                        <Link to="/explorer" className="routerListItemLink">Explorer</Link>
+                    </li>
                 </ul>
-                <button><Link to="/wallet-connect">Wallet Connect</Link></button>
+                
                 <Routes>
                     <Route path="/wallet-connect" element={<WalletConnect/>} exact>
                     </Route>
@@ -22,7 +38,7 @@ function Router() {
                     </Route>
                 </Routes>
             </BrowserRouter>
-        </>
+        </div>
     )
 }
 
