@@ -49,3 +49,37 @@ ul { list-style: none; }
     border-radius: 15px;
     background: none;
 }
+
+.main__carousel-wrap {
+    position: relative;
+}
+.main__carousel .owl-dots {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 25px;
+    position: relative;
+}
+.main__carousel .owl-dot {
+    margin-right: 10px;
+}
+.main__carousel .owl-dot:last-child {
+    margin-right: 0;
+}
+.main__carousel .owl-dot span {
+    display: block;
+    height: 4px;
+    width: 10px;
+    border-radius: 2px;
+    background-color: #9FA4DD;
+    transition: 0.5s ease;
+}
+.main__carousel .owl-dot.active span {
+    width: 20px;
+    background-color: #6164ff;
+}
+.card {
+    
+}

@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import WalletConnect from "../../pages/walletConnect";
 import User from "../../pages/user";
 import * as FaIcons from 'react-icons/fa'
-
+import Home from "../../pages/home";
 function Router() {
     return(
         <div className="router">
@@ -32,6 +32,7 @@ function Router() {
                 </ul>
                 
                 <Routes>
+                    <Route path="/home" element={<Home/>}></Route>
                     <Route path="/wallet-connect" element={<WalletConnect/>} exact>
                     </Route>
                     <Route path="/sign-up" element={<User/>} exact>

@@ -1,5 +1,4 @@
-import logo from "../../assets/image/navbar/ov-logo-13@2x.png"
-import logoTxt from "../../assets/image/navbar/logo-text@2x.png"
+import logoTxt from "../../assets/image/navbar/logo-txt.png"
 function Logo() {
     return(
         <div className="logo">
