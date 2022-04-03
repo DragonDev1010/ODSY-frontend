@@ -51,6 +51,15 @@ button.normal {
     gap: 30px;
 }
 
+/* Landing Page Banner Section Start */
+section.banner {
+    display: flex;
+}
+section.banner .left {
+    display: flex;
+}
+/* Landing Page Banner Section End */
+
 /* Landing Page Top Collectors Carousel Styling Start */
 .main__carousel-wrap {
     position: relative;
@@ -90,6 +99,7 @@ button.normal {
     color: #FFBD0C
 }
 /* Landing Page Top Collectors Carousel Styling End */
+/* Landing Page Top Collectors Section Start */
 section.topCollections .title {
     display: flex;
     align-items: center;
@@ -147,3 +157,4 @@ section.topCollections .collection .info .name {
 section.topCollections .collection .info .balance {
     color: white;
 }
+/* Landing Page Top Collectors Section End */
