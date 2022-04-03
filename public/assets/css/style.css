@@ -10,6 +10,7 @@ button.normal {
     color: white;
 }
 .title { color: #FFBD0C; margin-bottom: 30px;}
+.home section {color: white;}
 
 .navBar {
     display: flex;
@@ -100,19 +101,19 @@ section.banner .left {
 }
 /* Landing Page Top Collectors Carousel Styling End */
 /* Landing Page Top Collectors Section Start */
-section.topCollections .title {
+.home section .title {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 20px;
 }
-section.topCollections .main__carousel-wrap {
+.home section .main__carousel-wrap {
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
 
-section.topCollections .main__carousel-wrap .main__carousel--topCollections {
+.home section .main__carousel-wrap .main__carousel {
     width: 80%;
 }
 

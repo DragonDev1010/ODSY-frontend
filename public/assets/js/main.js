@@ -68,18 +68,88 @@ $(document).ready(function () {
 	/*==============================
 	Carousel
 	==============================*/
-	$('.main__carousel--collections').owlCarousel({
+	// $('.main__carousel--collections').owlCarousel({
+	// 	mouseDrag: true,
+	// 	touchDrag: true,
+	// 	dots: true,
+	// 	loop: true,
+	// 	autoplay: false,
+	// 	smartSpeed: 600,
+	// 	margin: 20,
+	// 	autoHeight: true,
+	// 	responsive: {
+	// 		0 : {
+	// 			items: 2,
+	// 		},
+	// 		576 : {
+	// 			items: 2,
+	// 		},
+	// 		768 : {
+	// 			items: 3,
+	// 			margin: 30,
+	// 		},
+	// 		992 : {
+	// 			items: 4,
+	// 			margin: 30,
+	// 		},
+	// 		1200 : {
+	// 			items: 5,
+	// 			margin: 30,
+	// 			mouseDrag: false,
+	// 			dots: false,
+	// 		},
+	// 	}
+	// });
+
+	// $('.main__carousel--live').owlCarousel({
+	// 	mouseDrag: true,
+	// 	touchDrag: true,
+	// 	dots: true,
+	// 	loop: true,
+	// 	autoplay: true,
+	// 	autoplayHoverPause: true,
+	// 	autoplayTimeout: 5000,
+	// 	smartSpeed: 600,
+	// 	margin: 20,
+	// 	autoHeight: true,
+	// 	responsive: {
+	// 		0 : {
+	// 			items: 1,
+	// 		},
+	// 		576 : {
+	// 			items: 2,
+	// 		},
+	// 		768 : {
+	// 			items: 3,
+	// 			margin: 30,
+	// 		},
+	// 		992 : {
+	// 			items: 4,
+	// 			margin: 30,
+	// 		},
+	// 		1200 : {
+	// 			items: 4,
+	// 			margin: 30,
+	// 			mouseDrag: false,
+	// 			dots: false,
+	// 		},
+	// 	}
+	// });
+
+	$('.main__carousel--topCollections').owlCarousel({
 		mouseDrag: true,
 		touchDrag: true,
 		dots: true,
 		loop: true,
 		autoplay: false,
+		autoplayHoverPause: true,
+		autoplayTimeout: 5000,
 		smartSpeed: 600,
 		margin: 20,
 		autoHeight: true,
 		responsive: {
 			0 : {
-				items: 2,
+				items: 1,
 			},
 			576 : {
 				items: 2,
@@ -90,6 +160,41 @@ $(document).ready(function () {
 			},
 			992 : {
 				items: 4,
+				margin: 30,
+			},
+			1200 : {
+				items: 4,
+				margin: 30,
+				mouseDrag: false,
+				dots: false,
+			},
+		}
+	});
+
+	$('.main__carousel--goldMember').owlCarousel({
+		mouseDrag: true,
+		touchDrag: true,
+		dots: true,
+		loop: true,
+		autoplay: true,
+		autoplayHoverPause: true,
+		autoplayTimeout: 5000,
+		smartSpeed: 600,
+		margin: 20,
+		autoHeight: true,
+		responsive: {
+			0 : {
+				items: 1,
+			},
+			576 : {
+				items: 2,
+			},
+			768 : {
+				items: 3,
+				margin: 30,
+			},
+			992 : {
+				items: 5,
 				margin: 30,
 			},
 			1200 : {
@@ -101,124 +206,54 @@ $(document).ready(function () {
 		}
 	});
 
-	$('.main__carousel--live').owlCarousel({
-		mouseDrag: true,
-		touchDrag: true,
-		dots: true,
-		loop: true,
-		autoplay: true,
-		autoplayHoverPause: true,
-		autoplayTimeout: 5000,
-		smartSpeed: 600,
-		margin: 20,
-		autoHeight: true,
-		responsive: {
-			0 : {
-				items: 1,
-			},
-			576 : {
-				items: 2,
-			},
-			768 : {
-				items: 3,
-				margin: 30,
-			},
-			992 : {
-				items: 4,
-				margin: 30,
-			},
-			1200 : {
-				items: 4,
-				margin: 30,
-				mouseDrag: false,
-				dots: false,
-			},
-		}
-	});
+	// $('.main__carousel--authors').owlCarousel({
+	// 	mouseDrag: true,
+	// 	touchDrag: true,
+	// 	dots: true,
+	// 	loop: true,
+	// 	autoplay: true,
+	// 	autoplayHoverPause: true,
+	// 	autoplayTimeout: 5000,
+	// 	smartSpeed: 600,
+	// 	margin: 20,
+	// 	autoHeight: true,
+	// 	responsive: {
+	// 		0 : {
+	// 			items: 1,
+	// 		},
+	// 		576 : {
+	// 			items: 2,
+	// 		},
+	// 		768 : {
+	// 			items: 3,
+	// 			margin: 30,
+	// 		},
+	// 		992 : {
+	// 			items: 4,
+	// 			margin: 30,
+	// 		},
+	// 		1200 : {
+	// 			items: 4,
+	// 			margin: 30,
+	// 			mouseDrag: false,
+	// 			dots: false,
+	// 		},
+	// 	}
+	// });
 
-	$('.main__carousel--topCollections').owlCarousel({
-		mouseDrag: true,
-		touchDrag: true,
-		dots: true,
-		loop: true,
-		autoplay: true,
-		autoplayHoverPause: true,
-		autoplayTimeout: 5000,
-		smartSpeed: 600,
-		margin: 20,
-		autoHeight: true,
-		responsive: {
-			0 : {
-				items: 1,
-			},
-			576 : {
-				items: 2,
-			},
-			768 : {
-				items: 3,
-				margin: 30,
-			},
-			992 : {
-				items: 4,
-				margin: 30,
-			},
-			1200 : {
-				items: 4,
-				margin: 30,
-				mouseDrag: false,
-				dots: false,
-			},
-		}
-	});
-
-	$('.main__carousel--authors').owlCarousel({
-		mouseDrag: true,
-		touchDrag: true,
-		dots: true,
-		loop: true,
-		autoplay: true,
-		autoplayHoverPause: true,
-		autoplayTimeout: 5000,
-		smartSpeed: 600,
-		margin: 20,
-		autoHeight: true,
-		responsive: {
-			0 : {
-				items: 1,
-			},
-			576 : {
-				items: 2,
-			},
-			768 : {
-				items: 3,
-				margin: 30,
-			},
-			992 : {
-				items: 4,
-				margin: 30,
-			},
-			1200 : {
-				items: 4,
-				margin: 30,
-				mouseDrag: false,
-				dots: false,
-			},
-		}
-	});
-
-	$('.card__cover--carousel').owlCarousel({
-		mouseDrag: true,
-		touchDrag: true,
-		dots: true,
-		loop: true,
-		autoplay: true,
-		autoplayHoverPause: true,
-		autoplayTimeout: 5000,
-		autoplaySpeed: 800,
-		smartSpeed: 800,
-		margin: 20,
-		items: 1,
-	});
+	// $('.card__cover--carousel').owlCarousel({
+	// 	mouseDrag: true,
+	// 	touchDrag: true,
+	// 	dots: true,
+	// 	loop: true,
+	// 	autoplay: true,
+	// 	autoplayHoverPause: true,
+	// 	autoplayTimeout: 5000,
+	// 	autoplaySpeed: 800,
+	// 	smartSpeed: 800,
+	// 	margin: 20,
+	// 	items: 1,
+	// });
 
 	/*==============================
 	Navigation

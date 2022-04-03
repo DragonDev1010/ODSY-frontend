@@ -8,11 +8,16 @@ function Upcoming() {
     }
 
     return (
-        <section className="upcoming" style={styles.sectionCover}>
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
+        <section>
+            <div className = "title">
+				<h2>New & Upcoming</h2>
+			</div>
+            <div style={styles.sectionCover}>
+                <Item/>
+                <Item/>
+                <Item/>
+                <Item/>
+            </div>
         </section>
     )
 }

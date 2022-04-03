@@ -4,37 +4,34 @@ import bscLogo from "../../../assets/image/landingPage/bscLogo.png"
 
 function Item() {
     const styles = {
-        itemCover: {
-            width: "20%",
-            color: "white",
-            padding: "0 20px"
-        },
         itemImg: {
             width: "100%",
-            padding: "10px"
-        },
-        img: {
-            width: "100%",
-            background: "grey",
-            borderRadius: "18px"
+            marginBottom: "10px"
         },
         title: {
             display: "flex",
             justifyContent: "space-between",
-            alignItems: "center"
+            alignItems: "center",
+            marginBottom: "10px"
+        },
+        logo: {
+            width: "16%"
         },
         info: {
             display: "flex",
-            justifyContent: "space-between"
+            justifyContent: "space-between",
+            marginBottom: "10px"
         },
         avatar: {
             background: "grey",
             borderRadius: "18px",
+            width: "16%"
         },
         buyNow: {
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-between"
+            justifyContent: "space-between",
+            marginBottom: "10px"
         }
     }
 
