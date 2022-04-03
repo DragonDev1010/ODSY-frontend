@@ -28,7 +28,8 @@ function Item() {
             background: "#14141F",
             padding: "10px 20px",
             borderRadius: "18px",
-            float: "right"
+            float: "right",
+            color:"white"
         }
     }
     return(

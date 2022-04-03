@@ -1,6 +1,7 @@
-import Banner from "./banner"
+import Banner from "./banner/Banner"
 import TopCollections from "./topCollections/TopCollections"
-import Upcoming from "./upcoming"
+import Upcoming from "./upcoming/Upcoming"
+import GoldMember from "./goldMember/GoldMember"
 
 function Home() {
     return (
@@ -8,6 +9,7 @@ function Home() {
             <Banner/>
             <TopCollections/>
             <Upcoming/>
+            <GoldMember/>
         </div>
     )
 }
