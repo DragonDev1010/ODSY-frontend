@@ -1,6 +1,7 @@
 import * as FaIcons from "react-icons/fa"
 import img from "../../../assets/image/navbar/logo.png"
 import bscLogo from "../../../assets/image/landingPage/bscLogo.png"
+import bidFlame from "../../../assets/image/landingPage/bidFlame.png"
 
 function Item() {
     const styles = {
@@ -9,6 +10,19 @@ function Item() {
             marginBottom: "10px",
             background: "grey",
             borderRadius: "18px"
+        },
+        bidTimeCover: {
+            width: "70%",
+            display: "flex",
+            height:"30px",
+            background: "#14141F",
+            padding: "5px",
+            borderRadius: "10px",
+            position: "relative",
+            top: "-10px"
+        },
+        flameLogo: {
+            width: "20px"
         },
         title: {
             display: "flex",
@@ -37,10 +51,14 @@ function Item() {
         }
     }
 
-    return (
+    return(
         <div style={styles.itemCover}>
             <div style={styles.itemImg}>
                 <img src={img} style={styles.img}/>
+                <div style={styles.bidTimeCover}>
+                    <span>01 : 16 : 25 : 45 LEFT</span>
+                    <img src={bidFlame} style={styles.flameLogo} alt=""/>
+                </div>
             </div>
             <div style={styles.title}>
                 <span>"The RenaiXance Rising...</span>
@@ -58,7 +76,7 @@ function Item() {
                 </div>
             </div>
             <div style={styles.buyNow}>
-                <button className="normal">Buy Now</button>
+                <button className="normal">Place Bid</button>
                 <div style={styles.favCnt}>
                     <FaIcons.FaRegHeart/> 100
                 </div>

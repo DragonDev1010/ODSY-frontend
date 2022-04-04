@@ -14,16 +14,16 @@ function TopCollections() {
 
 			{/* carousel */}
 			<div className = "main__carousel-wrap">
-				<button className = "main__nav main__nav--prev" data-nav="#explore" type="button">
+				<button className = "main__nav main__nav--prev" data-nav="#topCollections" type="button">
 					<FaIcons.FaAngleLeft/>
 				</button>
 
-				<div className = "main__carousel main__carousel--topCollections owl-carousel" id="explore">
+				<div className = "main__carousel main__carousel--topCollections owl-carousel" id="topCollections">
 					<Collection name="David" balance="100"/>
 					<Collection name="Denis" balance="500"/>
 				</div>
 
-				<button className = "main__nav main__nav--next" data-nav="#explore" type="button">
+				<button className = "main__nav main__nav--next" data-nav="#topCollections" type="button">
 					<FaIcons.FaAngleRight />
 				</button>
 			</div>
