@@ -4,6 +4,7 @@ import Upcoming from "./upcoming/Upcoming"
 import GoldMember from "./goldMember/GoldMember"
 import LiveAuction from "./liveAuction/LiveAuction"
 import Explorer from "./explorer/Explorer"
+import Feature from "./feature/Feature"
 
 function Home() {
     return (
@@ -14,6 +15,7 @@ function Home() {
             <GoldMember/>
             <LiveAuction/>
             <Explorer/>
+            <Feature/>
         </div>
     )
 }
