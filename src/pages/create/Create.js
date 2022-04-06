@@ -1,4 +1,5 @@
-import previewImage from "../../assets/image/navbar/logo.png"
+import { useState, useEffect, useRef } from "react"
+import alterImg from "../../assets/image/navbar/logo.png"
 
 function Create() {
     const styles = {
@@ -55,20 +56,31 @@ function Create() {
             fontSize: "22px",
         }
     }
+    const [imgFile, setImgFile] = useState(null)
+    const inputFile = useRef(null) 
+    const openFile = (e) => {
+        e.preventDefault()
+        inputFile.current.click();
+    };
     return(
         <div style={styles.createCover}>
             <div style={styles.preview}>
                 <p>Preview Item</p>
-                <img src={previewImage} alt="preview image" style={styles.previewImg}></img>
+                {
+                    imgFile == null ?
+                    <img src={alterImg} alt="preview image" style={styles.previewImg}></img>
+                    :
+                    <img src={URL.createObjectURL(imgFile)} alt="preview image" style={styles.previewImg}></img>
+                }
             </div>
             <div style={styles.formCover}>
                 <form>
                     <div>
                         <p>Upload File</p>
-                        <input type="file" accept="video/mp4,video/x-m4v,video/*,.png,.jpg,.jpeg" style={{display:"none"}}/>
-                        <div >
-                            <p>PNG, JPG, GIF, WEBP or MP4. Max 2000 MB</p>
-                            <button className="normal">Upload File</button>
+                        <input type="file" ref={inputFile} accept="video/mp4,video/x-m4v,video/*,.png,.jpg,.jpeg" style={{display:"none"}} onChange={e=>setImgFile(e.target.files[0])}/>
+                        <div style={{display: "flex", alignItems:"center", justifyContent:"space-between"}}>
+                            <p style={{marginTop: "1rem"}}>PNG, JPG, GIF, WEBP or MP4. Max 2000 MB</p>
+                            <button className="normal" onClick={openFile}>Upload File</button>
                         </div>
                     </div>
                     <div>
