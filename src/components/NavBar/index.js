@@ -5,6 +5,7 @@ import Router from "./Router"
 import WalletConnect from "../../pages/walletConnect";
 import User from "../../pages/user";
 import Home from "../../pages/home";
+import Create from "../../pages/create/Create"
 
 function NavBar () {
     return (
@@ -16,6 +17,7 @@ function NavBar () {
             </header>
             <Routes>
                 <Route path="/home" element={<Home/>}></Route>
+                <Route path="/create" element={<Create/>}></Route>
                 <Route path="/wallet-connect" element={<WalletConnect/>} exact></Route>
                 <Route path="/sign-up" element={<User/>} exact></Route>
             </Routes>
