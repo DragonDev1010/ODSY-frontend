@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from "react"
+import * as FaIcons from "react-icons/fa"
+import { IconContext } from "react-icons";
 import alterImg from "../../assets/image/navbar/logo.png"
 
 function Create() {
@@ -33,6 +35,14 @@ function Create() {
         methodsBtn: {
             width: "30%",
             padding: "10px",
+            color: "white",
+            background: "black",
+            borderRadius: "20px",
+            border: "none",
+        },
+        clickedBtn: {
+            width: "30%",
+            padding: "10px",
             color: "blue",
             borderRadius: "20px",
             border: "none",
@@ -56,12 +66,20 @@ function Create() {
             fontSize: "22px",
         }
     }
-    const [imgFile, setImgFile] = useState(null)
     const inputFile = useRef(null) 
+    const [imgFile, setImgFile] = useState(null)
+    const [saleMethod, setSaleMethod] = useState(0)
     const openFile = (e) => {
         e.preventDefault()
         inputFile.current.click();
     };
+    const changeSaleMethod = (e) => {
+        e.preventDefault()
+        setSaleMethod(parseInt(e.target.value))
+    }
+    const handleSubmit = () => {
+
+    }
     return(
         <div style={styles.createCover}>
             <div style={styles.preview}>
@@ -74,7 +92,7 @@ function Create() {
                 }
             </div>
             <div style={styles.formCover}>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div>
                         <p>Upload File</p>
                         <input type="file" ref={inputFile} accept="video/mp4,video/x-m4v,video/*,.png,.jpg,.jpeg" style={{display:"none"}} onChange={e=>setImgFile(e.target.files[0])}/>
@@ -86,9 +104,15 @@ function Create() {
                     <div>
                         <p>Select Method</p>
                         <div style={styles.methodsGroup}>
-                            <button style={styles.methodsBtn}>Fixed Price</button>
-                            <button style={styles.methodsBtn}>Time Auctions</button>
-                            <button style={styles.methodsBtn}>Open For Bids</button>
+                            <button style={saleMethod == 0 ?styles.clickedBtn : styles.methodsBtn} onClick={changeSaleMethod} value={0}>
+                                <FaIcons.FaTag style={saleMethod == 0 ? {fill: "blue"} : {}}/> Fixed Price
+                            </button>
+                            <button style={saleMethod == 1 ?styles.clickedBtn : styles.methodsBtn} onClick={changeSaleMethod} value={1}>
+                                <FaIcons.FaRegClock style={saleMethod == 1 ? {fill: "blue"} : {}}/>Time Auctions
+                            </button>
+                            <button style={saleMethod == 2 ?styles.clickedBtn : styles.methodsBtn} onClick={changeSaleMethod} value={2}>
+                                <FaIcons.FaUserFriends style={saleMethod == 2 ? {fill: "blue"} : {}}/>Open For Bids
+                            </button>
                         </div>
                     </div>
                     <div>
