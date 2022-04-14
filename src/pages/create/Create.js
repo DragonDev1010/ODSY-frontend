@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import * as FaIcons from "react-icons/fa"
-import { IconContext } from "react-icons";
 import alterImg from "../../assets/image/navbar/logo.png"
-
 function Create() {
     const styles = {
         createCover: {
@@ -69,6 +67,12 @@ function Create() {
     const inputFile = useRef(null) 
     const [imgFile, setImgFile] = useState(null)
     const [saleMethod, setSaleMethod] = useState(0)
+    const [price, setPrice] = useState(0)
+    const [title, setTitle] = useState("")
+    const [desc, setDesc] = useState("")
+    const [royalty, setRoyalty] = useState(0)
+    const [size, setSize] = useState(0)
+    const [collection, setCollection] = useState(0)
     const openFile = (e) => {
         e.preventDefault()
         inputFile.current.click();
@@ -77,8 +81,23 @@ function Create() {
         e.preventDefault()
         setSaleMethod(parseInt(e.target.value))
     }
-    const handleSubmit = () => {
-
+    const handleSubmit = (e) => {
+        const formData = new FormData();
+        console.log("imgFile: ", imgFile)
+        formData.append('file', imgFile)
+        e.preventDefault()
+        fetch(
+            `https://api.pinata.cloud/pinning/pinFileToIPFS`,
+            {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    pinata_api_key: process.env.REACT_APP_PINATA_API_KEY,
+                    pinata_secret_api_key: process.env.REACT_APP_PINATA_SECRET_API_KEY
+                } 
+            }
+        )
+        
     }
     return(
         <div style={styles.createCover}>
@@ -104,46 +123,46 @@ function Create() {
                     <div>
                         <p>Select Method</p>
                         <div style={styles.methodsGroup}>
-                            <button style={saleMethod == 0 ?styles.clickedBtn : styles.methodsBtn} onClick={changeSaleMethod} value={0}>
+                            <button style={saleMethod === 0 ?styles.clickedBtn : styles.methodsBtn} onClick={changeSaleMethod} value={0}>
                                 <FaIcons.FaTag style={saleMethod == 0 ? {fill: "blue"} : {}}/> Fixed Price
                             </button>
-                            <button style={saleMethod == 1 ?styles.clickedBtn : styles.methodsBtn} onClick={changeSaleMethod} value={1}>
-                                <FaIcons.FaRegClock style={saleMethod == 1 ? {fill: "blue"} : {}}/>Time Auctions
+                            <button style={saleMethod === 1 ?styles.clickedBtn : styles.methodsBtn} onClick={changeSaleMethod} value={1}>
+                                <FaIcons.FaRegClock style={saleMethod === 1 ? {fill: "blue"} : {}}/>Time Auctions
                             </button>
-                            <button style={saleMethod == 2 ?styles.clickedBtn : styles.methodsBtn} onClick={changeSaleMethod} value={2}>
-                                <FaIcons.FaUserFriends style={saleMethod == 2 ? {fill: "blue"} : {}}/>Open For Bids
+                            <button style={saleMethod === 2 ?styles.clickedBtn : styles.methodsBtn} onClick={changeSaleMethod} value={2}>
+                                <FaIcons.FaUserFriends style={saleMethod === 2 ? {fill: "blue"} : {}}/>Open For Bids
                             </button>
                         </div>
                     </div>
                     <div>
                         <p>Price</p>
-                        <input type="text" placeholder="Enter price for one item (ETH)" style={styles.inputField}></input>
+                        <input type="text" placeholder="Enter price for one item (ETH)" style={styles.inputField} onChange={e => setPrice(+(e.target.value))} value={price}></input>
                     </div>
                     <div>
                         <p>Title</p>
-                        <input type="text" placeholder="Item Name" style={styles.inputField}></input>
+                        <input type="text" placeholder="Item Name" style={styles.inputField} onChange={e=>setTitle(e.target.value)} value={title}></input>
                     </div>
                     <div>
                         <p>Description</p>
-                        <input type="textarea" placeholder="e.g. “This is very limited item”" style={styles.inputField}></input>
+                        <input type="textarea" placeholder="e.g. “This is very limited item”" style={styles.inputField} onChange={e=>setDesc(e.target.value)} value={desc}></input>
                     </div>
                     <div style={styles.otherCover}>
                         <div style={styles.otherItemCover}>
                             <p>Royalty</p>
-                            <input type="text" style={styles.inputField}></input>
+                            <input type="text" style={styles.inputField} onChange={e=>setRoyalty(+e.target.value)} value={royalty}></input>
                         </div>
                         <div style={styles.otherItemCover}>
                             <p>Size</p>
-                            <input type="text" style={styles.inputField}></input>
+                            <input type="text" style={styles.inputField} onChange={e=>setSize(+e.target.value)} value={size}></input>
                         </div>
                         <div style={styles.otherItemCover}>
                             <p>Collection</p>
-                            <select style={styles.inputField}>
-                                <option style={styles.option}>Art</option>
-                                <option style={styles.option}>Artifacts & Relics</option>
-                                <option style={styles.option}>Gaming</option>
-                                <option style={styles.option}>Metaverse</option>
-                                <option style={styles.option}>Photography</option>
+                            <select style={styles.inputField} onChange={e=>setCollection(+e.target.value)}>
+                                <option style={styles.option} value="0">Art</option>
+                                <option style={styles.option} value="1">Artifacts & Relics</option>
+                                <option style={styles.option} value="2">Gaming</option>
+                                <option style={styles.option} value="3">Metaverse</option>
+                                <option style={styles.option} value="4">Photography</option>
                             </select>
                         </div>
                     </div>
