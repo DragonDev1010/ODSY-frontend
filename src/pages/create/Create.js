@@ -65,14 +65,16 @@ function Create() {
         }
     }
     const inputFile = useRef(null) 
-    const [imgFile, setImgFile] = useState(null)
+    const [title, setTitle] = useState("")
+    const [description, setDesc] = useState("")
     const [saleMethod, setSaleMethod] = useState(0)
     const [price, setPrice] = useState(0)
-    const [title, setTitle] = useState("")
-    const [desc, setDesc] = useState("")
     const [royalty, setRoyalty] = useState(0)
     const [size, setSize] = useState(0)
     const [collection, setCollection] = useState(0)
+    const [imgFile, setImgFile] = useState(null)
+
+    const [msg, setMsg] = useState(null)
     const openFile = (e) => {
         e.preventDefault()
         inputFile.current.click();
@@ -81,23 +83,47 @@ function Create() {
         e.preventDefault()
         setSaleMethod(parseInt(e.target.value))
     }
-    const handleSubmit = (e) => {
-        const formData = new FormData();
-        console.log("imgFile: ", imgFile)
-        formData.append('file', imgFile)
+    const initializeForm = () => {
+        setTitle("")
+        setDesc("")
+        setSaleMethod(0)
+        setPrice(0)
+        setRoyalty(0)
+        setSize(0)
+        setCollection(0)
+        setImgFile(null)
+    }
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        fetch(
-            `https://api.pinata.cloud/pinning/pinFileToIPFS`,
-            {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    pinata_api_key: process.env.REACT_APP_PINATA_API_KEY,
-                    pinata_secret_api_key: process.env.REACT_APP_PINATA_SECRET_API_KEY
-                } 
-            }
-        )
-        
+        var data = new FormData()
+        console.log("img file: ", imgFile)
+        data.append('title', title)
+        data.append('description', description)
+        data.append('saleMethod', saleMethod)
+        data.append('price', price)
+        data.append('royalty', royalty)
+        data.append('size', size)
+        data.append('collection', collection)
+        data.append('file', imgFile)
+        try {
+            fetch(
+                // process.env.REACT_APP_API_BASE_URL,
+                "http://localhost:8000/nfts",
+                {
+                    method: 'POST',
+                    body: data
+                }
+            ).then(res => {
+                // if(res.status === 200) {
+                //     initializeForm()
+                //     setMsg("Created successfully!")
+                // } 
+            }).catch( err => {
+                // setMsg(err)
+            })
+        } catch (error) {
+            // setMsg(error)
+        }
     }
     return(
         <div style={styles.createCover}>
@@ -111,6 +137,7 @@ function Create() {
                 }
             </div>
             <div style={styles.formCover}>
+                <p>{msg}</p>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <p>Upload File</p>
@@ -144,7 +171,7 @@ function Create() {
                     </div>
                     <div>
                         <p>Description</p>
-                        <input type="textarea" placeholder="e.g. “This is very limited item”" style={styles.inputField} onChange={e=>setDesc(e.target.value)} value={desc}></input>
+                        <input type="textarea" placeholder="e.g. “This is very limited item”" style={styles.inputField} onChange={e=>setDesc(e.target.value)} value={description}></input>
                     </div>
                     <div style={styles.otherCover}>
                         <div style={styles.otherItemCover}>
