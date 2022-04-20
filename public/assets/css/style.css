@@ -9,6 +9,19 @@ button.normal {
     background: none;
     color: white;
 }
+button.smNormal {
+    padding: 5px 10px;
+    border: 1px solid #FFBD0C;
+    border-radius: 10px;
+    background: none;
+    color: white;
+}
+button.favBtn {
+    background-color: #14141F;
+    border-radius: 10px;
+    border: none;
+    padding: 5px 15px;
+}
 input:focus, select:focus {outline: none;}
 .title { color: #FFBD0C; margin-bottom: 30px;}
 
@@ -160,3 +173,49 @@ section.topCollections .collection .info .balance {
     color: white;
 }
 /* Landing Page Top Collectors Section End */
+
+/* Filter Start */
+.filterCover { width: 10%; }
+.filterCover button.normal {width: 100%;padding: 10px 0;}
+.filterCover .dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.filterCover {
+    position: relative;
+    display: inline-block;
+}
+
+.filterCover .dropContent {
+    display: none;
+    position: absolute;
+    border: 1px solid #C4B000;
+    border-radius: 10px;
+    z-index: 1;
+    width: 100%;
+}
+
+.filterCover .dropContent button {
+    color: white;
+    background: none;
+    border: none;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+}
+
+.filterCover .dropContent button:hover {
+    background-color: #312E13;
+    border-radius: 10px;
+}
+
+.filterCover:hover .dropContent {
+    display: block;
+}
+/* Filter End */
