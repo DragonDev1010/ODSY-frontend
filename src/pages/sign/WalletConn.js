@@ -1,9 +1,15 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 
 import metamaskIcon from "../../assets/image/signPage/metamask.png"
 import bitskiIcon from "../../assets/image/signPage/bitski.png"
+import { WalletContext } from "../../context/walletContext"
+
 const {ethereum} = window
+
 function WalletConn() {
+    // get the entire `WalletContext` object
+    const walContext = useContext(WalletContext)
+
     const styles = {
         groupCover: {
             display: "flex",
@@ -30,7 +36,8 @@ function WalletConn() {
         }
         try {
             const accounts = await ethereum.request({method: 'eth_requestAccounts'})
-            setAccount(accounts[0])
+            walContext.setWallet(accounts[0]) // set `WalletContext` state `wallet`
+            setAccount(accounts[0]) // set component state `account`
             console.log(account)
         } catch (error) {
             console.log(error)
@@ -38,7 +45,7 @@ function WalletConn() {
     }
 
     return(
-        <div>
+        <div style={{paddingTop: "100px"}}>
             <h1 style={{textAlign: "center"}}>Connect Your Wallet</h1>
             <h4 style={{textAlign: "center"}}>Connect your wallet to sign in and start using Odyssey Venture</h4>
             <div style={styles.groupCover}>
