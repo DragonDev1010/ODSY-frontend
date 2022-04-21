@@ -1,5 +1,8 @@
+import { useState, useEffect } from "react"
+
 import metamaskIcon from "../../assets/image/signPage/metamask.png"
 import bitskiIcon from "../../assets/image/signPage/bitski.png"
+const {ethereum} = window
 function WalletConn() {
     const styles = {
         groupCover: {
@@ -17,12 +20,29 @@ function WalletConn() {
             border: "none"
         }
     }
+
+    const [account, setAccount] = useState(null)
+
+	async function metamaskConn() {
+        if(!ethereum) {
+            console.log("Make sure you have Metamask installed")
+            return
+        }
+        try {
+            const accounts = await ethereum.request({method: 'eth_requestAccounts'})
+            setAccount(accounts[0])
+            console.log(account)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return(
         <div>
             <h1 style={{textAlign: "center"}}>Connect Your Wallet</h1>
             <h4 style={{textAlign: "center"}}>Connect your wallet to sign in and start using Odyssey Venture</h4>
             <div style={styles.groupCover}>
-                <button style={styles.walletCover}>
+                <button style={styles.walletCover} onClick={metamaskConn}>
                     <img src={metamaskIcon} />
                     <p style={styles.walName}>Metamask</p>
                     <p style={styles.walDetail}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
