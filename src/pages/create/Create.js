@@ -1,7 +1,23 @@
 import { useState, useEffect, useRef } from "react"
 import * as FaIcons from "react-icons/fa"
 import alterImg from "../../assets/image/navbar/logo.png"
+import Web3 from "web3"
+import nftABI from '../../abi/nftABI.json'
+
+const nftAddr = "0x55ef98CC0BeB3313B342a6ad54B127ccdf51602a"
 function Create() {
+
+    async function contractCon() {
+        if (typeof web3 !== 'undefined') {
+            var web3 = new Web3(web3.currentProvider); 
+        } else {
+            var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
+        }
+        const nftContract = new web3.eth.Contract(nftABI, nftAddr);
+        const t = await nftContract.methods.maxOwned().call()
+        console.log('test: ', t)
+    }
+
     const styles = {
         createCover: {
             display: "flex",
@@ -125,6 +141,9 @@ function Create() {
             // setMsg(error)
         }
     }
+    useEffect(() => {
+        contractCon()
+    }, [])
     return(
         <div style={styles.createCover}>
             <div style={styles.preview}>
