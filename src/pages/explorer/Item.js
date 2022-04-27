@@ -44,6 +44,8 @@ function Item(props) {
     const [favNftIds, setFavNftIds] = useState([])
     const [followers, setFollowers] = useState(props.nft.followerCnt)
     const [chainLogo, setChainLogo] = useState(bscLogo)
+    const [chainName, setChainName] = useState('BNB')
+    const [price, setPrice] = useState(0)
 
     const arrayBufferToBase64 = (buffer) => {
         var binary = '';
@@ -93,19 +95,23 @@ function Item(props) {
                 setFavNftIds(data[0].favIds)
             })
     }
-    const getChainLogo = () => {
+    const getChainDetail = () => {
         switch (props.nft.chainId) {
             case 0:
                 setChainLogo(bscLogo)
+                setChainName('BNB')
                 break;
             case 1:
-                    setChainLogo(ethLogo)
-                    break;
+                setChainLogo(ethLogo)
+                setChainName('ETH')
+                break;
             case 2:
                 setChainLogo(polyLogo)
+                setChainName('POLY')
                 break;
             case 3:
                 setChainLogo(solLogo)
+                setChainName('SOL')
                 break;
             
             default:
@@ -141,7 +147,8 @@ function Item(props) {
     useEffect(() => {
         setImgData(props.nft.img.data.data)
         getFavNftIds()
-        getChainLogo()
+        getChainDetail()
+        setPrice(props.nft.price)
     }, [])
     useEffect(() => {
         isFav()
@@ -161,7 +168,7 @@ function Item(props) {
                 </div>
                 <div style={styles.bidPrice}>
                     <p>Current Bid:</p>
-                    <p>4.89 BNB</p>
+                    <p>{price} {chainName}</p>
                 </div>
             </div>
             <div style={styles.buyCover}>
