@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import * as FaIcons from 'react-icons/fa'
-import img from "../../assets/image/navbar/logo.png"
+import bscLogo from "../../assets/image/explorerPage/bscLogo.svg"
+import ethLogo from "../../assets/image/explorerPage/ethLogo.png"
+import polyLogo from "../../assets/image/explorerPage/polyLogo.png"
+import solLogo from "../../assets/image/explorerPage/solLogo.png"
 
 function Item(props) {
     const styles = {
@@ -17,7 +20,7 @@ function Item(props) {
             display: "flex",
             justifyContent: "space-between"
         },
-        colLogo: {
+        chainLogo: {
             width: "10%"
         },
         ownerCover: {
@@ -40,6 +43,7 @@ function Item(props) {
     const [fav, setFav] = useState(false)
     const [favNftIds, setFavNftIds] = useState([])
     const [followers, setFollowers] = useState(props.nft.followerCnt)
+    const [chainLogo, setChainLogo] = useState(bscLogo)
 
     const arrayBufferToBase64 = (buffer) => {
         var binary = '';
@@ -89,6 +93,25 @@ function Item(props) {
                 setFavNftIds(data[0].favIds)
             })
     }
+    const getChainLogo = () => {
+        switch (props.nft.chainId) {
+            case 0:
+                setChainLogo(bscLogo)
+                break;
+            case 1:
+                    setChainLogo(ethLogo)
+                    break;
+            case 2:
+                setChainLogo(polyLogo)
+                break;
+            case 3:
+                setChainLogo(solLogo)
+                break;
+            
+            default:
+                break;
+        }
+    }
     const toggleFav = () => {
         if(fav) {
             let idx = favNftIds.indexOf(props.nft.nft_id)
@@ -118,6 +141,7 @@ function Item(props) {
     useEffect(() => {
         setImgData(props.nft.img.data.data)
         getFavNftIds()
+        getChainLogo()
     }, [])
     useEffect(() => {
         isFav()
@@ -127,7 +151,7 @@ function Item(props) {
             <img src={img} style={styles.img}/>
             <div style={styles.colCover}>
                 <span>{props.nft.title}</span>
-                <img src={img} style={styles.colLogo}></img>
+                <img src={chainLogo} style={styles.chainLogo}></img>
             </div>
             <div style={styles.ownerCover}>
                 <img src={img} style={styles.ownerAvatar}></img>
