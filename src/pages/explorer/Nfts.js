@@ -1,6 +1,6 @@
 import Item from "./Item"
 
-function Nfts() {
+function Nfts(props) {
     const styles = {
         nftsCover: {
             display: "flex",
@@ -9,16 +9,10 @@ function Nfts() {
     }
     return(
         <div style={styles.nftsCover}>
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
+            {
+                props.nfts && 
+                props.nfts.map(nft => <Item nft={nft}/>)
+            }
         </div>
     )
 }
