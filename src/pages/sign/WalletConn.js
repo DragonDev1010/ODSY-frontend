@@ -29,19 +29,6 @@ function WalletConn() {
 
     const [account, setAccount] = useState(null)
 
-    const storeUserInfo = (wallet) => {
-        fetch(
-            process.env.REACT_APP_API_BASE_URL + 'user/' + wallet
-        )
-            .then(
-                async (res) => {
-                    res = await res.json()
-                    localStorage.setItem('userName', res[0].name)
-                    localStorage.setItem('userFavNftIds', res[0].favIds)
-                }
-            )
-    }
-
     const metamaskConn = async () => {
         if(!ethereum) {
             console.log("Make sure you have Metamask installed")
@@ -52,7 +39,6 @@ function WalletConn() {
             walContext.setWallet(accounts[0]) // set `WalletContext` state `wallet`
             setAccount(accounts[0]) // set component state `account`
             localStorage.setItem('connectedWalletAddress', accounts[0])
-            storeUserInfo(accounts[0])
         } catch (error) {
             console.log(error)
         }

@@ -38,6 +38,8 @@ function Item(props) {
 
     const [img, setImg] = useState(null)
     const [fav, setFav] = useState(false)
+    const [favNftIds, setFavNftIds] = useState([])
+    const [followers, setFollowers] = useState(props.nft.followerCnt)
 
     const arrayBufferToBase64 = (buffer) => {
         var binary = '';
@@ -81,32 +83,30 @@ function Item(props) {
 
     }
     const getFavNftIds = () => {
-        let favNftIds = localStorage.getItem('userFavNftIds')
-        favNftIds = favNftIds.split(',').map(function(item) {
-            return parseInt(item, 10);
-        });
-        return favNftIds
+        fetch(process.env.REACT_APP_API_BASE_URL + 'user/' + localStorage.getItem('connectedWalletAddress'))
+            .then( res => res.json())
+            .then( data => {
+                setFavNftIds(data[0].favIds)
+            })
     }
     const toggleFav = () => {
-        let favNftIds = getFavNftIds()
-        let followerCnt = props.nft.followerCnt
         if(fav) {
             let idx = favNftIds.indexOf(props.nft.nft_id)
             if (idx > -1)
                 favNftIds.splice(idx, 1)
             updateFavNft(favNftIds)
-            updateFollowerCnt(followerCnt-1)
-
+            updateFollowerCnt(followers-1)
+            setFollowers(followers-1)
         } else {
             favNftIds.push(props.nft.nft_id)
             updateFavNft(favNftIds)
-            updateFollowerCnt(followerCnt+1)
+            updateFollowerCnt(followers+1)
+            setFollowers(followers+1)
         }
+        setFav(!fav)
     }
     // check if user wallet address is included in nft's favorite user wallet array
     const isFav = () => {
-        let favNftIds = getFavNftIds()
-
         for(let i = 0 ; i < favNftIds.length ; i++) {
             if(props.nft.nft_id == favNftIds[i]) {
                 setFav(true)
@@ -117,8 +117,11 @@ function Item(props) {
     }
     useEffect(() => {
         setImgData(props.nft.img.data.data)
-        isFav()
+        getFavNftIds()
     }, [])
+    useEffect(() => {
+        isFav()
+    }, [favNftIds])
     return(
         <div style={styles.cover}>
             <img src={img} style={styles.img}/>
@@ -146,7 +149,8 @@ function Item(props) {
                         :
                             <FaIcons.FaRegHeart/> 
                     }
-                    {props.nft.followerCnt}
+                    {/* {props.nft.followerCnt} */}
+                    {followers}
                 </button>
             </div>
         </div>
