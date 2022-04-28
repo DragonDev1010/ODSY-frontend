@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import * as FaIcons from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 import bscLogo from "../../assets/image/explorerPage/bscLogo.svg"
 import ethLogo from "../../assets/image/explorerPage/ethLogo.png"
 import polyLogo from "../../assets/image/explorerPage/polyLogo.png"
@@ -97,25 +98,11 @@ function Item(props) {
     }
     const getChainDetail = () => {
         switch (props.nft.chainId) {
-            case 0:
-                setChainLogo(bscLogo)
-                setChainName('BNB')
-                break;
-            case 1:
-                setChainLogo(ethLogo)
-                setChainName('ETH')
-                break;
-            case 2:
-                setChainLogo(polyLogo)
-                setChainName('POLY')
-                break;
-            case 3:
-                setChainLogo(solLogo)
-                setChainName('SOL')
-                break;
-            
-            default:
-                break;
+            case 0: setChainLogo(bscLogo); setChainName('BNB'); break;
+            case 1: setChainLogo(ethLogo); setChainName('ETH'); break;
+            case 2: setChainLogo(polyLogo); setChainName('POLY'); break;
+            case 3: setChainLogo(solLogo); setChainName('SOL'); break;
+            default: break;
         }
     }
     const toggleFav = () => {
@@ -172,7 +159,7 @@ function Item(props) {
                 </div>
             </div>
             <div style={styles.buyCover}>
-                <button className="smNormal">Buy Now</button>
+                <button className="smNormal"><Link to={'/assets/' + props.nft.nft_id}>Buy Now</Link></button>
                 <button className="favBtn" onClick={toggleFav}>
                     {
                         fav ?
@@ -180,7 +167,6 @@ function Item(props) {
                         :
                             <FaIcons.FaRegHeart/> 
                     }
-                    {/* {props.nft.followerCnt} */}
                     {followers}
                 </button>
             </div>
