@@ -3,12 +3,20 @@ import { useParams } from "react-router-dom"
 import * as FaIcons from 'react-icons/fa'
 import noImgAlt from '../../assets/image/nftDetailPage/noImgAlt.png'
 
+import Web3 from "web3"
+const tradeAddr = '0x9E99cA6770c5d32CAb68f02a279256691e91e8bc'
+const tradeABI = require('../../contractABI/tradeABI.json')
+const nftAddr = '0xEC56da08e7ca6E2af0d49f29A7cAb7C35a20C017'
+const nftABI = require('../../contractABI/nftABI.json')
+const odsyAddr = '0x7F50F95f3B22Bbc87F5591Cbe9501c49D1f4A28d' 
+const odsyABI = require('../../contractABI/odsyABI.json')
+
 function NftDetail(props) {
     const pathParams = useParams()
     const tokenId = pathParams.tokenId
-    // const styles = {}
     const [nftImg, setNftImg] = useState(noImgAlt)
     const [title, setTitle] = useState(null)
+    const [curType, setCurType] = useState(0)
     const [viewCnt, setViewCnt] = useState(0)
     const [followerCnt, setFollowerCnt] = useState(0)
 
@@ -27,12 +35,15 @@ function NftDetail(props) {
     const [fav, setFav] = useState(false)
     const [favNftIds, setFavNftIds] = useState([])
 
+    const [buyer, setBuyer] = useState(null)
+
     const getNftDetail = () => {
         fetch(process.env.REACT_APP_API_BASE_URL + 'nft/' + tokenId)
             .then(res => res.json())
             .then(
                 data => {
                     setTitle(data[0].title)
+                    setCurType(data[0].curType)
                     setOwnerAddr(data[0].ownerAddr)
                     setCreatorAddr(data[0].creatorAddr)
                     setDesc(data[0].description)
@@ -128,10 +139,50 @@ function NftDetail(props) {
         setFav(!fav)
     }
 
-    const buyNft = () => {
-        fetch( process.env.REACT_APP_API_BASE_URL + 'buyNft' )
+    const buyNft = async() => {
+        let provider = window.ethereum
+        if (typeof provider !== 'undefined') {
+            const web3 = new Web3(provider)
+            const tradeContract = new web3.eth.Contract(tradeABI, tradeAddr)
+            if (curType == 0) {
+                try {
+                    await tradeContract.methods.buy(tokenId).send({from:buyer, gas: 3000000, value: web3.utils.toWei(price.toString(), 'ether')})
+                } catch (e) { console.log(e.message) }
+            } else if (curType == 1) {
+                const odsyContract = new web3.eth.Contract(odsyABI, odsyAddr)
+                try {
+                    await odsyContract.methods.approve(tradeAddr, web3.utils.toWei(price.toString(), 'ether')).send({from: buyer, gas: 3000000})
+                } catch (e) { console.log(e.message) }
+
+                try {
+                    await tradeContract.methods.buy(tokenId).send({from: buyer, gas: 3000000})
+                } catch (e) { console.log(e.message) }
+            }
+        } else {
+            console.log('Please install metamask!')
+        }
     }
-    useEffect( () => { getNftDetail(); getFavNftIds(); }, [])
+    const mint = async () => {
+        var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
+        let localAccounts = await web3.eth.getAccounts()
+        const nftContract = new web3.eth.Contract(nftABI, nftAddr)
+        try {
+            let tx = await nftContract.methods.mint(
+                "QmPAd7oqiiCqi7Z6LRWzaz8vhZeJT4jxmckWWeXydJsQwu", //ipfsHash
+                0, // sale
+                0, // curType
+                web3.utils.toWei('1', 'ether'), // price
+                1 // royalty
+            ).send({from: localAccounts[0], gas:3000000})
+            console.log(tx)
+        } catch (e) { console.log(e.message) }
+        await nftContract.methods.approve(tradeAddr, 0).send({from: localAccounts[0]})
+    }
+    useEffect( () => { 
+        getNftDetail(); 
+        getFavNftIds(); 
+        setBuyer(localStorage.getItem('connectedWalletAddress'))
+    }, [])
 
     useEffect( () => { isFav() }, [favNftIds])
 
@@ -165,6 +216,7 @@ function NftDetail(props) {
     }
     return(
         <div style={styles.nftDetailCover}>
+            <button className="smNormal" onClick={mint}>Test Mint</button>
             <div style={styles.mainCover}>
                 <div style={styles.nftImg}>
                     <img src={nftImg} style={{width:'80%'}}/>
