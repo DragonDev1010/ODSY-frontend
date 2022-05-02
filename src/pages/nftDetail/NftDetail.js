@@ -5,6 +5,8 @@ import noImgAlt from '../../assets/image/nftDetailPage/noImgAlt.png'
 
 import Web3 from "web3"
 
+import MakeOfferForm from "./MakeOfferForm"
+
 import { tradeAddr } from "../../contractABI/address"
 import { nftAddr } from "../../contractABI/address"
 import { odsyAddr } from "../../contractABI/address"
@@ -15,29 +17,27 @@ const odsyABI = require('../../contractABI/odsyABI.json')
 function NftDetail(props) {
     const pathParams = useParams()
     const tokenId = pathParams.tokenId
+
     const [nftImg, setNftImg] = useState(noImgAlt)
     const [title, setTitle] = useState(null)
     const [saleOption, setSaleOption] = useState(0)
     const [curType, setCurType] = useState(0)
     const [viewCnt, setViewCnt] = useState(0)
     const [followerCnt, setFollowerCnt] = useState(0)
-
     const [ownerAddr, setOwnerAddr] = useState(null)
     const [ownerAvatar, setOwnerAvatar] = useState(noImgAlt)
     const [ownerName, setOwnerName] = useState(null)
     const [creatorAddr, setCreatorAddr] = useState(null)
     const [creatorAvatar, setCreatorAvatar] = useState(noImgAlt)
     const [creatorName, setCreatorName] = useState(null)
-    
     const [desc, setDesc] = useState(null)
     const [price, setPrice] = useState(0)
     const [chainId, setChainId] = useState(0)
     const [currency, setCurrency] = useState('BNB')
-
     const [fav, setFav] = useState(false)
     const [favNftIds, setFavNftIds] = useState([])
-
     const [buyer, setBuyer] = useState(null)
+    const [makeOffer, setMakeOffer] = useState(false)
 
     const getNftDetail = () => {
         fetch(process.env.REACT_APP_API_BASE_URL + 'nft/' + tokenId)
@@ -218,6 +218,7 @@ function NftDetail(props) {
         },
         recentlyViewCover: {}
     }
+
     return(
         <div style={styles.nftDetailCover}>
             <button className="smNormal" onClick={mint}>Test Mint</button>
@@ -279,10 +280,13 @@ function NftDetail(props) {
                             saleOption == 0 ? //{ 0: sale, 1: auction}
                                 <>
                                     <button className="smNormal" onClick={buyNft}>Buy Now</button>
-                                    <button className="smNormal" onClick={buyNft}>Make Offer</button>
+                                    <button className="smNormal" onClick={() => setMakeOffer(true)}>Make Offer</button>
                                 </>
                             :
                                 <button className="smNormal">Place Bid</button>
+                        }
+                        {
+                            makeOffer && <MakeOfferForm close={setMakeOffer} tokenId = {tokenId}/>
                         }
                     </div>
                 </div>
