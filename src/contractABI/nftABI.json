@@ -117,6 +117,20 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "auctionAddr",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
     "inputs": [
       {
         "internalType": "address",
@@ -631,5 +645,18 @@
     "stateMutability": "view",
     "type": "function",
     "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "addr_",
+        "type": "address"
+      }
+    ],
+    "name": "setAuctionAddr",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   }
 ]

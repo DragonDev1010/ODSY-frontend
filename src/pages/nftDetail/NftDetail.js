@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import * as FaIcons from 'react-icons/fa'
 import noImgAlt from '../../assets/image/nftDetailPage/noImgAlt.png'
 
 import Web3 from "web3"
-const tradeAddr = '0x9E99cA6770c5d32CAb68f02a279256691e91e8bc'
+
+import { tradeAddr } from "../../contractABI/address"
+import { nftAddr } from "../../contractABI/address"
+import { odsyAddr } from "../../contractABI/address"
 const tradeABI = require('../../contractABI/tradeABI.json')
-const nftAddr = '0xEC56da08e7ca6E2af0d49f29A7cAb7C35a20C017'
 const nftABI = require('../../contractABI/nftABI.json')
-const odsyAddr = '0x7F50F95f3B22Bbc87F5591Cbe9501c49D1f4A28d' 
 const odsyABI = require('../../contractABI/odsyABI.json')
 
 function NftDetail(props) {
@@ -16,6 +17,7 @@ function NftDetail(props) {
     const tokenId = pathParams.tokenId
     const [nftImg, setNftImg] = useState(noImgAlt)
     const [title, setTitle] = useState(null)
+    const [saleOption, setSaleOption] = useState(0)
     const [curType, setCurType] = useState(0)
     const [viewCnt, setViewCnt] = useState(0)
     const [followerCnt, setFollowerCnt] = useState(0)
@@ -43,6 +45,7 @@ function NftDetail(props) {
             .then(
                 data => {
                     setTitle(data[0].title)
+                    setSaleOption(data[0].saleMethod)
                     setCurType(data[0].curType)
                     setOwnerAddr(data[0].ownerAddr)
                     setCreatorAddr(data[0].creatorAddr)
@@ -142,6 +145,7 @@ function NftDetail(props) {
     const buyNft = async() => {
         let provider = window.ethereum
         if (typeof provider !== 'undefined') {
+            await provider.request({method: 'eth_requestAccounts'})
             const web3 = new Web3(provider)
             const tradeContract = new web3.eth.Contract(tradeABI, tradeAddr)
             if (curType == 0) {
@@ -217,13 +221,16 @@ function NftDetail(props) {
     return(
         <div style={styles.nftDetailCover}>
             <button className="smNormal" onClick={mint}>Test Mint</button>
+            <button className="smNormal" onClick={mint}>
+                <Link to={'/update/' + tokenId}>Update</Link>
+            </button>
             <div style={styles.mainCover}>
                 <div style={styles.nftImg}>
                     <img src={nftImg} style={{width:'80%'}}/>
                 </div>
                 <div style={styles.nftInfo}>
                     <h1>{title}</h1>
-                    <div style={{display:'flex', justifyContent:'space-between'}}>
+                    <div style={{display:'flex', justifyContent:'space-between', margin:'40px 0 0 0'}}>
                         <div style={{display:'flex', gap: '10px'}}>
                             <button className="favBtn"><FaIcons.FaRegEye/>225</button>
                             <button className="favBtn" onClick={toggleFav}>{ fav ? <FaIcons.FaHeart/> : <FaIcons.FaRegHeart/> }{followerCnt}</button>
@@ -233,7 +240,7 @@ function NftDetail(props) {
                             <button className="favBtn"><FaIcons.FaEllipsisH/></button>
                         </div>
                     </div>
-                    <div style={{display:'flex'}}>
+                    <div style={{display:'flex', margin:'40px 0 0 0'}}>
                         <div style={{display:'flex', width:'50%'}}>
                             <img src={ownerAvatar}/>
                             <div>
@@ -249,22 +256,34 @@ function NftDetail(props) {
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div style={{margin: '40px 0 0 0'}}>
                         {desc}
                     </div>
-                    <div style={{display:'flex', justifyContent:'space-around'}}>
+                    <div style={{display:'flex', justifyContent:'space-between', margin:'40px 0 0 0'}}>
                         <div style={styles.priceCover}>
                             <span style={{color:'#FFBD0C', fontWeight:'normal', marginRight:'20px'}}>Sell Price</span>
                             <span style={{fontWeight:'bold'}}>{price}{currency}</span>
                         </div>
                         <div style={styles.priceCover}>
                             <span style={{color:'#FFBD0C', fontWeight:'normal', marginRight:'20px'}}>Sale Ends In</span>
-                            <span style={{fontWeight:'bold'}}>04 : 23 : 10 : 39</span>
+                            {
+                                saleOption == 0?
+                                ""
+                                :
+                                <span style={{fontWeight:'bold'}}>04 : 23 : 10 : 39</span>
+                            }
                         </div>
                     </div>
-                    <div style={{display:'flex', justifyContent:'space-around'}}>
-                        <button className="smNormal" onClick={buyNft}>Buy Now</button>
-                        <button className="smNormal">Place Bid</button>
+                    <div style={{display:'flex', justifyContent:'space-around', margin:'40px 0 0 0'}}>
+                        {
+                            saleOption == 0 ? //{ 0: sale, 1: auction}
+                                <>
+                                    <button className="smNormal" onClick={buyNft}>Buy Now</button>
+                                    <button className="smNormal" onClick={buyNft}>Make Offer</button>
+                                </>
+                            :
+                                <button className="smNormal">Place Bid</button>
+                        }
                     </div>
                 </div>
             </div>

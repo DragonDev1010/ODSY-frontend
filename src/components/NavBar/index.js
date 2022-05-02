@@ -9,6 +9,7 @@ import Create from "../../pages/create/Create"
 import Explorer from '../../pages/explorer/Explorer';
 import WalletConn from '../../pages/sign/WalletConn';
 import NftDetail from '../../pages/nftDetail/NftDetail';
+import NftUpdate from '../../pages/nftUpdate/NftUpdate';
 
 function NavBar () {
     return (
@@ -26,6 +27,7 @@ function NavBar () {
                 <Route path='/explorer' element={<Explorer/>} exact></Route>
                 <Route path='/signin' element={<WalletConn/>} exact></Route>
                 <Route exact path="/assets/:tokenId" element={<NftDetail/>} />
+                <Route exact path="/update/:tokenId" element={<NftUpdate/>} />
             </Routes>
         </BrowserRouter>
     )

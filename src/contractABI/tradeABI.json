@@ -125,6 +125,18 @@
     "type": "function"
   },
   {
+    "stateMutability": "payable",
+    "type": "receive",
+    "payable": true
+  },
+  {
+    "inputs": [],
+    "name": "withdrawAll",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "uint256",
