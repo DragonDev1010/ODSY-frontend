@@ -1,7 +1,7 @@
 const styles = {
     createCover: {
         display: "flex",
-        padding: "20px 30px"
+        padding: "100px 20% 50px 10%"
     },
     preview: {
         width: "30%"
@@ -69,6 +69,22 @@ const styles = {
     loadingGif: {
         width: '10%',
         margin: '10% 45% 0 45%'
+    },
+    title: {
+        fontFamily: 'Urbanist',
+        fontStyle: 'normal',
+        fontWeight: '700',
+        fontSize: '25px'
+    },
+    greyTxt: {
+        color: '#8A8AA0',
+        fontFamily: 'Urbanist',
+        fontStyle: 'normal',
+        fontWeight: '400',
+        fontSize: '14px',
+    },
+    formInput: {
+        margin: "20px 0 20px 0"
     }
 }
 

@@ -223,3 +223,6 @@ section.topCollections .collection .info .balance {
     display: block;
 }
 /* Filter End */
+input[type="text"]::placeholder {  
+    padding-left: 20px; 
+} 

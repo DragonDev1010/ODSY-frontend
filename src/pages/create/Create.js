@@ -76,10 +76,10 @@ function Create() {
         }
     }
     return(
-        <div style={{height:'100%', position:'relative'}}>
+        <div style={{height:'100%', position:'relative'}} className="createNftCover">
             <div style={styles.createCover}>
                 <div style={styles.preview}>
-                    <p>Preview Item</p>
+                    <p style={styles.title}>Preview Item</p>
                     {
                         imgFile == null ?
                         <img src={alterImg} alt="preview image" style={styles.previewImg}></img>
@@ -90,16 +90,16 @@ function Create() {
                 <div style={styles.formCover}>
                     <p>{msg}</p>
                     <form onSubmit={handleSubmit}>
-                        <div>
-                            <p>Upload File</p>
+                        <div style={styles.formInput}>
+                            <p style={styles.title}>Upload File</p>
                             <input type="file" ref={inputFile} accept="video/mp4,video/x-m4v,video/*,.png,.jpg,.jpeg" style={{display:"none"}} onChange={e => setImgFile(e.target.files[0])}/>
                             <div style={{display: "flex", alignItems:"center", justifyContent:"space-between"}}>
-                                <p style={{marginTop: "1rem"}}>PNG, JPG, GIF, WEBP or MP4. Max 2000 MB</p>
+                                <p style={styles.greyTxt}>PNG, JPG, GIF, WEBP or MP4. Max 2000 MB</p>
                                 <button className="normal" onClick={openFile}>Upload File</button>
                             </div>
                         </div>
-                        <div>
-                            <p>Select Method</p>
+                        <div style={styles.formInput}>
+                            <p style={styles.title}>Select Method</p>
                             <div style={styles.methodsGroup}>
                                 <button style={saleMethod === 0 ?styles.clickedBtn : styles.methodsBtn} onClick={changeSaleMethod} value={0}>
                                     <FaIcons.FaTag style={saleMethod == 0 ? {fill: "blue"} : {}}/> Fixed Price
@@ -112,29 +112,29 @@ function Create() {
                                 </button>
                             </div>
                         </div>
-                        <div>
-                            <p>Price</p>
-                            <input type="text" placeholder="Enter price for one item (ETH)" style={styles.inputField} onChange={e => setPrice(+(e.target.value))} value={price}></input>
+                        <div style={styles.formInput}>
+                            <p style={styles.title}>Price</p>
+                            <input type="text" placeholder="Enter price for one item (ETH)" style={styles.inputField} onChange={e => setPrice(+(e.target.value))} ></input>
                         </div>
-                        <div>
-                            <p>Title</p>
+                        <div style={styles.formInput}>
+                            <p style={styles.title}>Title</p>
                             <input type="text" placeholder="Item Name" style={styles.inputField} onChange={e=>setTitle(e.target.value)} value={title}></input>
                         </div>
-                        <div>
-                            <p>Description</p>
+                        <div style={styles.formInput}>
+                            <p style={styles.title}>Description</p>
                             <input type="textarea" placeholder="e.g. “This is very limited item”" style={styles.inputField} onChange={e=>setDesc(e.target.value)} value={description}></input>
                         </div>
                         <div style={styles.otherCover}>
                             <div style={styles.otherItemCover}>
-                                <p>Royalty</p>
-                                <input type="text" style={styles.inputField} onChange={e=>setRoyalty(+e.target.value)} value={royalty}></input>
+                                <p style={styles.title}>Royalty</p>
+                                <input type="text" style={styles.inputField} onChange={e=>setRoyalty(+e.target.value)} placeholder="5%"></input>
                             </div>
                             <div style={styles.otherItemCover}>
-                                <p>Size</p>
-                                <input type="text" style={styles.inputField} onChange={e=>setSize(+e.target.value)} value={size}></input>
+                                <p style={styles.title}>Size</p>
+                                <input type="text" style={styles.inputField} onChange={e=>setSize(+e.target.value)} placeholder="e.g. “size”"></input>
                             </div>
                             <div style={styles.otherItemCover}>
-                                <p>Collection</p>
+                                <p style={styles.title}>Collection</p>
                                 <select style={styles.inputField} onChange={e=>setCollection(+e.target.value)}>
                                     <option style={styles.option} value="0">Art</option>
                                     <option style={styles.option} value="1">Artifacts & Relics</option>
@@ -144,7 +144,7 @@ function Create() {
                                 </select>
                             </div>
                         </div>
-                        <button className="normal" type="submit">Create item</button>
+                        <button className="normal" type="submit" style={styles.formInput}>Create item</button>
                     </form>
                 </div>
             </div>
