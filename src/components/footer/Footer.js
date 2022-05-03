@@ -1,29 +1,14 @@
 import * as FaIcons from "react-icons/fa"
 import logo from "../../assets/image/navbar/logo.png"
+import styles from './footerStyles'
 
 function Footer() {
-    const styles = {
-        footerCover: {
-            display: "flex",
-            color: "white"
-        },
-        columnCover: {
-            width: "20%"
-        },
-        socialIcons: {
-            display: "flex",
-            gap: "10px"
-        },
-        title: {
-            fontSize: "30px"
-        }
-    }
     return(
         <footer style={styles.footerCover}>
             <div style={styles.columnCover}>
                 <img src={logo} alt="sd" style={{height: "60px"}}/>
                 <br/>
-                <p>
+                <p style={{paddingRight: '30px'}}>
                 Join us on a venture exploring the secrets of the universe, while preserving the sanctity of historical items from ancient antiquity to the furthest edge of the universe.  
                 </p>
                 <div style={styles.socialIcons}>
@@ -36,26 +21,26 @@ function Footer() {
             <div style={styles.columnCover}>
                 <div style={styles.title}>My Account</div>
                 <div style={styles.links}>
-                    <a href="">Authors</a><br/>
-                    <a href="">Collections</a><br/>
-                    <a href="">Author Profile</a><br/>
-                    <a href="">Author Profile</a><br/>
+                    <a href="">Authors</a>
+                    <a href="">Collections</a>
+                    <a href="">Author Profile</a>
+                    <a href="">Author Profile</a>
                 </div>
             </div>
             <div style={styles.columnCover}>
                 <div style={styles.title}>Resources</div>
                 <div style={styles.links}>
-                    <a href="">Help & Support</a><br/>
-                    <a href="">Live Auctions</a><br/>
-                    <a href="">Item Details</a><br/>
-                    <a href="">Activity</a><br/>
+                    <a href="">Help & Support</a>
+                    <a href="">Live Auctions</a>
+                    <a href="">Item Details</a>
+                    <a href="">Activity</a>
                 </div>
             </div>
             <div style={styles.columnCover}>
                 <div style={styles.title}>Company</div>
                 <div style={styles.links}>
-                    <a href="">About Us</a><br/>
-                    <a href="">About Us</a><br/>
+                    <a href="">About Us</a>
+                    <a href="">Contact Us</a>
                 </div>
             </div>
             <div style={styles.columnCover}>
