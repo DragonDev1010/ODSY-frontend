@@ -103,7 +103,7 @@ function Filter() {
 		}
 	}
     return(
-		<div style={{display: "flex", justifyContent: "space-evenly"}}>
+		<div style={{display: "flex", justifyContent: "space-evenly", marginBottom: '100px'}}>
 			<div className = "filterCover">
 				<button className = "normal">
 					{chain === null ? 'Blockchain' : parseChain(chain)}

@@ -28,7 +28,7 @@ function Explorer() {
     }, [])
     return(
         <div>
-            <h1>Explorer</h1>
+            <h1 style={{textAlign: 'center', marginBottom: '100px', marginTop:"100px"}}>Explorer</h1>
             <Filter/>
             <Nfts nfts={nfts}/>
         </div>

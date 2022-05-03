@@ -10,7 +10,10 @@ function Item(props) {
     const styles = {
         cover: {
             flexBasis: "20%",
-            padding: "20px"
+            padding: "20px",
+            display: "flex",
+            flexDirection: "column",
+            gap:"10px"
         },
         img: {
             width: "100%",
@@ -37,6 +40,17 @@ function Item(props) {
         buyCover: {
             display: "flex",
             justifyContent: "space-between"
+        },
+        heading: {
+            fontFamily: 'Urbanist',
+            fontStyle: 'normal',
+            fontWeight: '400',
+            color: '#e4dfdf'
+        },
+        normal: {
+            fontFamily: 'Urbanist',
+            fontStyle: 'normal',
+            fontWeight: '700',
         }
     }
 
@@ -150,12 +164,12 @@ function Item(props) {
             <div style={styles.ownerCover}>
                 <img src={img} style={styles.ownerAvatar}></img>
                 <div style={styles.owner}>
-                    <p>Owned By</p>
-                    <p>David</p>
+                    <p style={styles.heading}>Owned By</p>
+                    <p style={styles.normal}>David</p>
                 </div>
                 <div style={styles.bidPrice}>
-                    <p>Current Bid:</p>
-                    <p>{price} {chainName}</p>
+                    <p style={styles.heading}>Current Bid:</p>
+                    <p style={styles.normal}>{price} {chainName}</p>
                 </div>
             </div>
             <div style={styles.buyCover}>
