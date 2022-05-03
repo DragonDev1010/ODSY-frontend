@@ -125,6 +125,20 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "wrapEthAddr",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
     "stateMutability": "payable",
     "type": "receive",
     "payable": true
@@ -145,6 +159,30 @@
       }
     ],
     "name": "buy",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function",
+    "payable": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "offerPrice",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "buyer",
+        "type": "address"
+      }
+    ],
+    "name": "acceptOffer",
     "outputs": [],
     "stateMutability": "payable",
     "type": "function",
@@ -185,6 +223,19 @@
       }
     ],
     "name": "updateNftAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "addr_",
+        "type": "address"
+      }
+    ],
+    "name": "setWrapEthAddr",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
