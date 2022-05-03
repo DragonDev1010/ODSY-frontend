@@ -10,8 +10,17 @@ import Explorer from '../../pages/explorer/Explorer';
 import WalletConn from '../../pages/sign/WalletConn';
 import NftDetail from '../../pages/nftDetail/NftDetail';
 import NftUpdate from '../../pages/nftUpdate/NftUpdate';
+import {MessageContext} from '../../context/messageContext'
+import { useContext, useEffect, useState } from 'react';
 
 function NavBar () {
+    const [message, setMessage] = useState(null)
+    const messageContext = useContext(MessageContext)
+
+    useEffect(() => {
+        setMessage(messageContext.message)
+    }, [messageContext])
+    
     return (
         <BrowserRouter>
             <header className="navBar">
@@ -19,6 +28,7 @@ function NavBar () {
                 <Router/>
                 <SignIn/>
             </header>
+            <p>{message}</p>
             <Routes>
                 <Route path="/home" element={<Home/>}></Route>
                 <Route path="/create" element={<Create/>}></Route>
