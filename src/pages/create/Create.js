@@ -1,10 +1,12 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useContext } from "react"
 import * as FaIcons from "react-icons/fa"
 import alterImg from "../../assets/image/navbar/logo.png"
 import { WalletContext } from "../../context/walletContext"
+import { MessageContext } from "../../context/messageContext"
 import loadingGif from '../../assets/image/createPage/loading.gif'
 import styles from './styles'
 function Create() {
+    const messageContext = useContext(MessageContext)
     const inputFile = useRef(null) 
     const [title, setTitle] = useState("")
     const [description, setDesc] = useState("")
@@ -14,7 +16,6 @@ function Create() {
     const [size, setSize] = useState(0)
     const [collection, setCollection] = useState(0)
     const [imgFile, setImgFile] = useState(null)
-    const [msg, setMsg] = useState(null)
     const [loading, setLoading] = useState(false)
 
     const openFile = (e) => {
@@ -37,9 +38,15 @@ function Create() {
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        if(imgFile == null) {
+            messageContext.setMessage('You have to upload image file.')
+            return
+        }
         setLoading(true)
+
         var data = new FormData()
-        console.log("img file: ", imgFile)
+
         data.append('title', title)
         data.append('description', description)
         data.append('saleMethod', saleMethod)
@@ -64,15 +71,14 @@ function Create() {
                 .then(res => {
                         initializeForm()
                         setLoading(false)
-                        setMsg("Created successfully!")
+                        messageContext.setMessage("Created successfully!")
                 })
                 .catch( err => {
                     setLoading(false)
-                    // setMsg(err)
+                    messageContext.setMessage(err)
                 })
         } catch (error) {
             setLoading(false)
-            // setMsg(error)
         }
     }
     return(
@@ -88,7 +94,6 @@ function Create() {
                     }
                 </div>
                 <div style={styles.formCover}>
-                    <p>{msg}</p>
                     <form onSubmit={handleSubmit}>
                         <div style={styles.formInput}>
                             <p style={styles.title}>Upload File</p>
@@ -114,7 +119,7 @@ function Create() {
                         </div>
                         <div style={styles.formInput}>
                             <p style={styles.title}>Price</p>
-                            <input type="text" placeholder="Enter price for one item (ETH)" style={styles.inputField} onChange={e => setPrice(+(e.target.value))} ></input>
+                            <input type="number" placeholder="Enter price for one item (ETH)" style={styles.inputField} onChange={e => setPrice(+(e.target.value))} ></input>
                         </div>
                         <div style={styles.formInput}>
                             <p style={styles.title}>Title</p>
@@ -122,7 +127,7 @@ function Create() {
                         </div>
                         <div style={styles.formInput}>
                             <p style={styles.title}>Description</p>
-                            <input type="textarea" placeholder="e.g. “This is very limited item”" style={styles.inputField} onChange={e=>setDesc(e.target.value)} value={description}></input>
+                            <textarea rows={"10"} type="textarea" placeholder="e.g. “This is very limited item”" style={styles.inputField} onChange={e=>setDesc(e.target.value)} value={description}></textarea>
                         </div>
                         <div style={styles.otherCover}>
                             <div style={styles.otherItemCover}>

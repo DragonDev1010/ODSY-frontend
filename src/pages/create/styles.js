@@ -45,7 +45,7 @@ const styles = {
         width: "100%",
         background: "none",
         borderRadius: "18px",
-        height: "50px",
+        padding: "12px 10px 12px 20px",
         fontSize: "22px",
     },
     otherCover: {
