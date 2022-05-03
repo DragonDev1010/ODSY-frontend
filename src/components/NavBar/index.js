@@ -1,3 +1,4 @@
+import { useContext, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Logo from "./Logo"
 import SignIn from "./SignIn"
@@ -11,16 +12,30 @@ import WalletConn from '../../pages/sign/WalletConn';
 import NftDetail from '../../pages/nftDetail/NftDetail';
 import NftUpdate from '../../pages/nftUpdate/NftUpdate';
 import {MessageContext} from '../../context/messageContext'
-import { useContext, useEffect, useState } from 'react';
+import { WalletContext } from '../../context/walletContext';
 
 function NavBar () {
     const [message, setMessage] = useState(null)
     const messageContext = useContext(MessageContext)
+    const walContext = useContext(WalletContext)
 
     useEffect(() => {
         setMessage(messageContext.message)
     }, [messageContext])
     
+    useEffect(() => {
+		// Listen to network or accounts change on metamask
+		if(window.ethereum) {
+			window.ethereum.on('chainChanged', () => {
+				// window.location.reload();
+			})
+			window.ethereum.on('accountsChanged', async () => {
+				const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
+                walContext.setWallet(accounts[0])
+			})
+		}
+	})
+
     return (
         <BrowserRouter>
             <header className="navBar">
