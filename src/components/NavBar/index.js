@@ -30,12 +30,28 @@ function NavBar () {
 				// window.location.reload();
 			})
 			window.ethereum.on('accountsChanged', async () => {
-				const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
-                walContext.setWallet(accounts[0])
+                try {
+                    const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
+                    walContext.setWallet(accounts[0])
+                } catch (e) {
+                    setMessage('Metamask is disconnected.')
+                    walContext.setWallet(null)
+                }
 			})
 		}
 	})
 
+    useEffect(async () => {
+		if(performance.navigation.type == 1) {
+            try {
+                const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
+                walContext.setWallet(accounts[0])
+            } catch (e) {
+                setMessage('Metamask is disconnected.')
+                walContext.setWallet(null)
+            }
+		}
+	})
     return (
         <BrowserRouter>
             <header className="navBar">

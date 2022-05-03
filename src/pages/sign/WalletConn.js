@@ -1,14 +1,15 @@
-import { useState, useEffect, useContext } from "react"
+import { useContext } from "react"
 
 import metamaskIcon from "../../assets/image/signPage/metamask.png"
 import bitskiIcon from "../../assets/image/signPage/bitski.png"
 import { WalletContext } from "../../context/walletContext"
-
+import { MessageContext } from "../../context/messageContext"
 const {ethereum} = window
 
 function WalletConn() {
     // get the entire `WalletContext` object
     const walContext = useContext(WalletContext)
+    const msgContext = useContext(MessageContext)
 
     const styles = {
         groupCover: {
@@ -27,20 +28,19 @@ function WalletConn() {
         }
     }
 
-    const [account, setAccount] = useState(null)
-
     const metamaskConn = async () => {
         if(!ethereum) {
-            console.log("Make sure you have Metamask installed")
+            msgContext.setMessage("Make sure you have Metamask installed")
             return
         }
         try {
             const accounts = await ethereum.request({method: 'eth_requestAccounts'})
-            walContext.setWallet(accounts[0]) // set `WalletContext` state `wallet`
-            setAccount(accounts[0]) // set component state `account`
-            localStorage.setItem('connectedWalletAddress', accounts[0])
-        } catch (error) {
-            console.log(error)
+            if(accounts.length > 0) {
+                walContext.setWallet(accounts[0]) // set `WalletContext` state `wallet`
+                localStorage.setItem('connectedWallet', accounts[0])
+            }
+        } catch (e) {
+            msgContext.setMessage(e.message)
         }
     }
 
