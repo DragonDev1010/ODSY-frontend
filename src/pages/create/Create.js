@@ -7,6 +7,7 @@ import loadingGif from '../../assets/image/createPage/loading.gif'
 import styles from './styles'
 function Create() {
     const messageContext = useContext(MessageContext)
+    const walContext = useContext(WalletContext)
     const inputFile = useRef(null) 
     const [title, setTitle] = useState("")
     const [description, setDesc] = useState("")
@@ -38,6 +39,11 @@ function Create() {
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        if(walContext.wallet == null) {
+            messageContext.setMessage('You have to connect Metamask.')
+            return
+        }
 
         if(imgFile == null) {
             messageContext.setMessage('You have to upload image file.')

@@ -15,13 +15,8 @@ import {MessageContext} from '../../context/messageContext'
 import { WalletContext } from '../../context/walletContext';
 
 function NavBar () {
-    const [message, setMessage] = useState(null)
     const messageContext = useContext(MessageContext)
     const walContext = useContext(WalletContext)
-
-    useEffect(() => {
-        setMessage(messageContext.message)
-    }, [messageContext])
     
     useEffect(() => {
 		// Listen to network or accounts change on metamask
@@ -34,7 +29,7 @@ function NavBar () {
                     const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
                     walContext.setWallet(accounts[0])
                 } catch (e) {
-                    setMessage('Metamask is disconnected.')
+                    messageContext.setMessage('Metamask is disconnected.')
                     walContext.setWallet(null)
                 }
 			})
@@ -47,7 +42,7 @@ function NavBar () {
                 const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
                 walContext.setWallet(accounts[0])
             } catch (e) {
-                setMessage('Metamask is disconnected.')
+                messageContext.setMessage('Metamask is disconnected.')
                 walContext.setWallet(null)
             }
 		}
@@ -59,7 +54,7 @@ function NavBar () {
                 <Router/>
                 <SignIn/>
             </header>
-            <p>{message}</p>
+            <p>{messageContext.message}</p>
             <Routes>
                 <Route path="/home" element={<Home/>}></Route>
                 <Route path="/create" element={<Create/>}></Route>
