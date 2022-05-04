@@ -14,6 +14,7 @@ function OfferList(props) {
         <>
         this is offer list
             {
+                offers !== null ?
                 offers.map((offer) => {
                     return (
                         <>
@@ -22,6 +23,8 @@ function OfferList(props) {
                         </>
                     )
                 })
+                :
+                ""
             }
         </>
     )
