@@ -6,12 +6,11 @@ import noImgAlt from '../../assets/image/nftDetailPage/noImgAlt.png'
 import Web3 from "web3"
 
 import MakeOfferForm from "./MakeOfferForm"
+import OfferList from './OfferList'
 
 import { tradeAddr } from "../../contractABI/address"
-import { nftAddr } from "../../contractABI/address"
 import { odsyAddr } from "../../contractABI/address"
 const tradeABI = require('../../contractABI/tradeABI.json')
-const nftABI = require('../../contractABI/nftABI.json')
 const odsyABI = require('../../contractABI/odsyABI.json')
 
 function NftDetail(props) {
@@ -166,22 +165,7 @@ function NftDetail(props) {
             console.log('Please install metamask!')
         }
     }
-    const mint = async () => {
-        var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
-        let localAccounts = await web3.eth.getAccounts()
-        const nftContract = new web3.eth.Contract(nftABI, nftAddr)
-        try {
-            let tx = await nftContract.methods.mint(
-                "QmPAd7oqiiCqi7Z6LRWzaz8vhZeJT4jxmckWWeXydJsQwu", //ipfsHash
-                0, // sale
-                0, // curType
-                web3.utils.toWei('1', 'ether'), // price
-                1 // royalty
-            ).send({from: localAccounts[0], gas:3000000})
-            console.log(tx)
-        } catch (e) { console.log(e.message) }
-        await nftContract.methods.approve(tradeAddr, 0).send({from: localAccounts[0]})
-    }
+
     useEffect( () => { 
         getNftDetail(); 
         getFavNftIds(); 
@@ -221,8 +205,7 @@ function NftDetail(props) {
 
     return(
         <div style={styles.nftDetailCover}>
-            <button className="smNormal" onClick={mint}>Test Mint</button>
-            <button className="smNormal" onClick={mint}>
+            <button className="smNormal">
                 <Link to={'/update/' + tokenId}>Update</Link>
             </button>
             <div style={styles.mainCover}>
@@ -288,6 +271,9 @@ function NftDetail(props) {
                         {
                             makeOffer && <MakeOfferForm close={setMakeOffer} tokenId = {tokenId}/>
                         }
+                    </div>
+                    <div>
+                        <OfferList tokenId={tokenId}/>
                     </div>
                 </div>
             </div>
