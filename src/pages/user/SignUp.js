@@ -1,34 +1,48 @@
-import { FacebookLogin } from "react-facebook-login"
-import GoogleLogin from "react-google-login"
+import { useContext, useEffect, useState } from "react"
+import {WalletContext} from '../../context/walletContext'
+import {MessageContext} from '../../context/messageContext'
 
 function Signup() {
-    const responseFacebook = (response) => {
-        console.log(response);
+    const walContext = useContext(WalletContext)
+    const msgContext = useContext(MessageContext)
+
+    const [avatar, setAvatar] = useState(null)
+    const [name, setName] = useState(null)
+    const [wallet, setWallet] = useState(null)
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if(walContext.wallet === null) {
+            msgContext.setMessage('Please connect wallet to create a new collection.')
+            return
+        }
+        let data = new FormData()
+
+        data.append('name', name)
+        data.append('avatar', avatar)
+        data.append('wallet', walContext.wallet)
+
+        fetch(
+            process.env.REACT_APP_API_BASE_URL + 'users',
+            {
+                method: 'POST',
+                body: data
+            }
+        )
     }
 
-    const responseGoogle = (response) => {
-        console.log(response);
-    }
-
+    useEffect(() => {
+        if(walContext.wallet !== null)
+            setWallet(walContext.wallet)
+    }, [walContext])
     return(
         <>
-            <h1>LOGIN WITH FACEBOOK AND GOOGLE</h1>
-
-            <FacebookLogin
-                appId="" //APP ID NOT CREATED YET
-                fields="name,email,picture"
-                callback={responseFacebook}
-            />
-            <br />
-            <br />
-
-
-            <GoogleLogin
-                clientId="" //CLIENTID NOT CREATED YET
-                buttonText="LOGIN WITH GOOGLE"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-            />
+            <form>
+                <input type='file' onChange={e => setAvatar(e.target.files[0])}></input>
+                name: <input type="text" onChange={e => setName(e.target.value)}></input>
+                wallet: <input value={wallet} disabled></input>
+                <button onClick={handleSubmit}>Sing up</button>
+            </form>  
         </>
     )
 }
