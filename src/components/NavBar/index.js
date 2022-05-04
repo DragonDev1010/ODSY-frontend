@@ -11,6 +11,7 @@ import Explorer from '../../pages/explorer/Explorer';
 import WalletConn from '../../pages/sign/WalletConn';
 import NftDetail from '../../pages/nftDetail/NftDetail';
 import NftUpdate from '../../pages/nftUpdate/NftUpdate';
+import CreateCollection from '../../pages/create/CreateCollection';
 import {MessageContext} from '../../context/messageContext'
 import { WalletContext } from '../../context/walletContext';
 
@@ -64,6 +65,7 @@ function NavBar () {
                 <Route path='/signin' element={<WalletConn/>} exact></Route>
                 <Route exact path="/assets/:tokenId" element={<NftDetail/>} />
                 <Route exact path="/update/:tokenId" element={<NftUpdate/>} />
+                <Route exact path='/collection/create' element={<CreateCollection/>}></Route>
             </Routes>
         </BrowserRouter>
     )
