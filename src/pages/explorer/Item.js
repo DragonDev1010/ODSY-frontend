@@ -5,6 +5,7 @@ import bscLogo from "../../assets/image/explorerPage/bscLogo.svg"
 import ethLogo from "../../assets/image/explorerPage/ethLogo.png"
 import polyLogo from "../../assets/image/explorerPage/polyLogo.png"
 import solLogo from "../../assets/image/explorerPage/solLogo.png"
+import getImageData from '../../getImageData'
 
 function Item(props) {
     const styles = {
@@ -62,16 +63,6 @@ function Item(props) {
     const [chainName, setChainName] = useState('BNB')
     const [price, setPrice] = useState(0)
 
-    const arrayBufferToBase64 = (buffer) => {
-        var binary = '';
-        var bytes = [].slice.call(new Uint8Array(buffer));
-        bytes.forEach((b) => binary += String.fromCharCode(b));
-        return window.btoa(binary);
-    }
-    const setImgData = (buffer) => {
-        let temp = 'data:image/jpeg;base64,' + arrayBufferToBase64(buffer)
-        setImg(temp)
-    }
     const updateFavNft = (updatedFavIds) => {
         try {
             fetch(
@@ -146,7 +137,9 @@ function Item(props) {
         setFav(false)
     }
     useEffect(() => {
-        setImgData(props.nft.img.data.data)
+        let temp = getImageData(props.nft.img.data.data)
+        setImg(temp)
+
         getFavNftIds()
         getChainDetail()
         setPrice(props.nft.price)
