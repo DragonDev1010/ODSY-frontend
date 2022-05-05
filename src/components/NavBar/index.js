@@ -13,6 +13,7 @@ import NftDetail from '../../pages/nftDetail/NftDetail';
 import NftUpdate from '../../pages/nftUpdate/NftUpdate';
 import CreateCollection from '../../pages/create/CreateCollection';
 import Signup from '../../pages/user/SignUp';
+import Collections from '../../pages/collection/Collections';
 import {MessageContext} from '../../context/messageContext'
 import { WalletContext } from '../../context/walletContext';
 
@@ -58,16 +59,17 @@ function NavBar () {
             </header>
             <p>{messageContext.message}</p>
             <Routes>
-                <Route path="/home" element={<Home/>}></Route>
-                <Route path="/create" element={<Create/>}></Route>
-                <Route path="/wallet-connect" element={<WalletConnect/>} exact></Route>
-                <Route path="/sign-up" element={<User/>} exact></Route>
-                <Route path='/explorer' element={<Explorer/>} exact></Route>
-                <Route path='/signin' element={<WalletConn/>} exact></Route>
+                <Route exact path="/home" element={<Home/>}></Route>
+                <Route exact path="/create" element={<Create/>}></Route>
+                <Route exact path="/wallet-connect" element={<WalletConnect/>}></Route>
+                <Route exact path="/sign-up" element={<User/>}></Route>
+                <Route exact path='/explorer' element={<Explorer/>}></Route>
+                <Route exact path='/signin' element={<WalletConn/>}></Route>
                 <Route exact path="/assets/:tokenId" element={<NftDetail/>} />
                 <Route exact path="/update/:tokenId" element={<NftUpdate/>} />
                 <Route exact path='/collection/create' element={<CreateCollection/>}></Route>
                 <Route exact path='/signup' element={<Signup/>}></Route>
+                <Route exact path='/collections' element={<Collections/>}></Route>
             </Routes>
         </BrowserRouter>
     )
