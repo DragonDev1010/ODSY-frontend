@@ -5,6 +5,11 @@ import { WalletContext } from "../../context/walletContext"
 import { MessageContext } from "../../context/messageContext"
 import loadingGif from '../../assets/image/createPage/loading.gif'
 import styles from './styles'
+
+import Web3 from "web3"
+import { nftAddr } from "../../contractABI/address"
+const nftABI = require('../../contractABI/nftABI.json')
+
 function Create() {
     const messageContext = useContext(MessageContext)
     const walContext = useContext(WalletContext)
@@ -12,12 +17,14 @@ function Create() {
     const [title, setTitle] = useState("")
     const [description, setDesc] = useState("")
     const [saleMethod, setSaleMethod] = useState(0)
+    const [currency, setCurrency] = useState(0)
     const [price, setPrice] = useState(0)
     const [royalty, setRoyalty] = useState(0)
     const [size, setSize] = useState(0)
     const [collection, setCollection] = useState(0)
     const [imgFile, setImgFile] = useState(null)
     const [loading, setLoading] = useState(false)
+    const [hash, setHash] = useState(null)
 
     const openFile = (e) => {
         e.preventDefault()
@@ -26,6 +33,96 @@ function Create() {
     const changeSaleMethod = (e) => {
         e.preventDefault()
         setSaleMethod(parseInt(e.target.value))
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        if(walContext.wallet == null) {
+            messageContext.setMessage('You have to connect Metamask.')
+            return
+        }
+
+        if(imgFile == null) {
+            messageContext.setMessage('You have to upload image file.')
+            return
+        }
+        setLoading(true)
+        let pinataData = new FormData();
+        pinataData.append('file', imgFile)
+        fetch(
+            `https://api.pinata.cloud/pinning/pinFileToIPFS`,
+            {
+                method: 'POST',
+                body: pinataData,
+                headers: {
+                    pinata_api_key: process.env.REACT_APP_PINATA_API_KEY,
+			        pinata_secret_api_key: process.env.REACT_APP_PINATA_SECRET_API_KEY
+                }
+            }
+        )
+            .then(res => res.json())
+            .then(async (data) => {
+                setHash(data.IpfsHash)
+                let provider = window.ethereum
+                if (typeof provider !== 'undefined') {
+                    await provider.request({method: 'eth_requestAccounts'})
+                    const web3 = new Web3(provider)
+                    const nftContract = new web3.eth.Contract(nftABI, nftAddr)
+                    try {
+                        console.log(data.IpfsHash)
+                        console.log(saleMethod)
+    
+                        let mintTx = await nftContract.methods.mint(data.IpfsHash, saleMethod, currency, price, royalty).send({from:walContext.wallet, gas: 3000000})
+                        console.log('transaction: ', mintTx)
+                        return mintTx.events.Transfer.returnValues.tokenId
+                    } catch (e) {
+                        console.log(e)
+                    }
+                }
+            })
+            .then( tokenId => {
+                var data = new FormData()
+
+                data.append('nft_id', tokenId)
+                data.append('title', title)
+                data.append('description', description)
+                data.append('saleMethod', saleMethod)
+                data.append('price', price)
+                data.append('curType', currency)
+                data.append('royalty', royalty)
+                data.append('size', size)
+                data.append('collect', collection)
+                data.append('creatorAddr', walContext.wallet)
+                data.append('ownerAddr', walContext.wallet)
+                data.append('file', imgFile)
+                data.append('ipfsHash', hash)
+
+                try {
+                    fetch(
+                        // process.env.REACT_APP_API_BASE_URL,
+                        "http://localhost:8000/nfts",
+                        {
+                            method: 'POST',
+                            body: data
+                        }
+                    )
+                        .then( res => {
+                            if (res.status == 200)
+                                return res.json()
+                        })
+                        .then(res => {
+                                initializeForm()
+                                setLoading(false)
+                                messageContext.setMessage("Created successfully!")
+                        })
+                        .catch( err => {
+                            setLoading(false)
+                            messageContext.setMessage(err)
+                        })
+                } catch (error) {
+                    setLoading(false)
+                }
+            })
     }
     const initializeForm = () => {
         setTitle("")
@@ -37,56 +134,7 @@ function Create() {
         setCollection(0)
         setImgFile(null)
     }
-    const handleSubmit = async (e) => {
-        e.preventDefault()
 
-        if(walContext.wallet == null) {
-            messageContext.setMessage('You have to connect Metamask.')
-            return
-        }
-
-        if(imgFile == null) {
-            messageContext.setMessage('You have to upload image file.')
-            return
-        }
-        setLoading(true)
-
-        var data = new FormData()
-
-        data.append('title', title)
-        data.append('description', description)
-        data.append('saleMethod', saleMethod)
-        data.append('price', price)
-        data.append('royalty', royalty)
-        data.append('size', size)
-        data.append('collection', collection)
-        data.append('file', imgFile)
-        try {
-            fetch(
-                // process.env.REACT_APP_API_BASE_URL,
-                "http://localhost:8000/nfts",
-                {
-                    method: 'POST',
-                    body: data
-                }
-            )
-                .then( res => {
-                    if (res.status == 200)
-                        return res.json()
-                })
-                .then(res => {
-                        initializeForm()
-                        setLoading(false)
-                        messageContext.setMessage("Created successfully!")
-                })
-                .catch( err => {
-                    setLoading(false)
-                    messageContext.setMessage(err)
-                })
-        } catch (error) {
-            setLoading(false)
-        }
-    }
     return(
         <div style={{height:'100%', position:'relative'}} className="createNftCover">
             <div style={styles.createCover}>
@@ -126,6 +174,10 @@ function Create() {
                         <div style={styles.formInput}>
                             <p style={styles.title}>Price</p>
                             <input type="number" placeholder="Enter price for one item (ETH)" style={styles.inputField} onChange={e => setPrice(+(e.target.value))} ></input>
+                        </div>
+                        <div style={styles.formInput}>
+                            <p style={styles.title}>Currency</p>
+                            <input type="number" placeholder="Currency" style={styles.inputField} onChange={e => setCurrency(+(e.target.value))} ></input>
                         </div>
                         <div style={styles.formInput}>
                             <p style={styles.title}>Title</p>
