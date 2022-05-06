@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import CollectionItem from "./CollectionItem"
+import pageTitle from '../../assets/image/topCollectionPage/topCollectionLogo.png'
 
 function Collections() {
     const [collectionList, setCollectionList] = useState(null)
@@ -10,7 +11,7 @@ function Collections() {
         },
         title: {
             textAlign: 'center',
-            margin: '20px 0 20px'
+            margin: '60px 0 110px'
         },
         collectionTableCover: {
             fontSize: '30px'
@@ -43,7 +44,9 @@ function Collections() {
     }, [])
     return(
         <div style={styles.cover}>
-            <h1 style={styles.title}>Top Collections</h1>
+            <div style={styles.title}>
+                <img src={pageTitle}></img>
+            </div>
             <div style={styles.collectionTableCover}>
                 <div style={styles.collectionTableHeader}>
                     <div style={styles.headerId}>#</div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import Filter from "./Filter"
 import Nfts from "./Nfts"
+import pageTitle from '../../assets/image/explorerPage/explorerLogo.png'
 
 function Explorer() {
     const [nfts, setNfts] = useState([])
@@ -28,7 +29,9 @@ function Explorer() {
     }, [])
     return(
         <div>
-            <h1 style={{textAlign: 'center', marginBottom: '100px', marginTop:"100px"}}>Explorer</h1>
+            <div style={{textAlign:'center', margin:'60px 0 110px'}}>
+                <img src={pageTitle} style={{}}></img>
+            </div>
             <Filter/>
             <Nfts nfts={nfts}/>
         </div>
