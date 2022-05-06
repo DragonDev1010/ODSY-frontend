@@ -1,13 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import * as FaIcons from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import defaultImg from '../../assets/image/nftDetailPage/noImgAlt.png'
 import bscLogo from "../../assets/image/explorerPage/bscLogo.svg"
 import ethLogo from "../../assets/image/explorerPage/ethLogo.png"
 import polyLogo from "../../assets/image/explorerPage/polyLogo.png"
 import solLogo from "../../assets/image/explorerPage/solLogo.png"
 import getImageData from '../../getImageData'
 
+import {WalletContext} from '../../context/walletContext'
+
 function Item(props) {
+    const walContext = useContext(WalletContext)
     const styles = {
         cover: {
             flexBasis: "20%",
@@ -52,10 +56,16 @@ function Item(props) {
             fontFamily: 'Urbanist',
             fontStyle: 'normal',
             fontWeight: '700',
+        },
+        unknownName: {
+            fontFamily: 'Urbanist',
+            fontStyle: 'normal',
+            fontWeight: '700',
+            color: '#403838'
         }
     }
 
-    const [img, setImg] = useState(null)
+    const [nftImg, setNftImg] = useState(defaultImg)
     const [fav, setFav] = useState(false)
     const [favNftIds, setFavNftIds] = useState([])
     const [followers, setFollowers] = useState(props.nft.followerCnt)
@@ -63,11 +73,14 @@ function Item(props) {
     const [chainName, setChainName] = useState('BNB')
     const [price, setPrice] = useState(0)
 
+    const [ownerName, setOwnerName] = useState(null)
+    const [ownerAvatar, setOwnerAvatar] = useState(defaultImg)
+
     const updateFavNft = (updatedFavIds) => {
         try {
             fetch(
                 // "http://localhost:8000/user/0x453B8D46D3D41d3B3DdC09B20AE53aa1B6aB186E",
-                process.env.REACT_APP_API_BASE_URL + 'user/' + localStorage.getItem('connectedWalletAddress'),
+                process.env.REACT_APP_API_BASE_URL + 'user/' + walContext.wallet,
                 {
                     method: 'PUT',
                     headers: {'Content-Type': 'application/json'},
@@ -95,7 +108,7 @@ function Item(props) {
 
     }
     const getFavNftIds = () => {
-        fetch(process.env.REACT_APP_API_BASE_URL + 'user/' + localStorage.getItem('connectedWalletAddress'))
+        fetch(process.env.REACT_APP_API_BASE_URL + 'user/' + walContext.wallet)
             .then( res => res.json())
             .then( data => {
                 setFavNftIds(data[0].favIds)
@@ -136,11 +149,25 @@ function Item(props) {
         }        
         setFav(false)
     }
-    useEffect(() => {
-        let temp = getImageData(props.nft.img.data.data)
-        setImg(temp)
+    const getOwnerData = () => {
+        fetch(process.env.REACT_APP_API_BASE_URL + 'user/' + props.nft.ownerAddr)
+            .then( res => res.json())
+            .then( data => {
+                setFavNftIds(data[0].favIds)
+                setOwnerName(data[0].name)
+                let avatarTemp = getImageData(data[0].avatar.data.data)
+                setOwnerAvatar(avatarTemp)
+            })
+    }
 
-        getFavNftIds()
+    useEffect(() => {
+        if( props.nft.img !== null) {
+            let temp = getImageData(props.nft.img.data.data)
+            setNftImg(temp)
+        }
+        
+        // getFavNftIds()
+        getOwnerData()
         getChainDetail()
         setPrice(props.nft.price)
     }, [])
@@ -149,16 +176,21 @@ function Item(props) {
     }, [favNftIds])
     return(
         <div style={styles.cover}>
-            <img src={img} style={styles.img}/>
+            <img src={nftImg} style={styles.img}/>
             <div style={styles.colCover}>
                 <span>{props.nft.title}</span>
                 <img src={chainLogo} style={styles.chainLogo}></img>
             </div>
             <div style={styles.ownerCover}>
-                <img src={img} style={styles.ownerAvatar}></img>
+                <img src={ownerAvatar} style={styles.ownerAvatar}></img>
                 <div style={styles.owner}>
                     <p style={styles.heading}>Owned By</p>
-                    <p style={styles.normal}>David</p>
+                    {
+                        ownerName !== null ?
+                        <p style={styles.normal}>{ownerName}</p>
+                        :
+                        <p style={styles.unknownName}>Unknown</p>
+                    }
                 </div>
                 <div style={styles.bidPrice}>
                     <p style={styles.heading}>Current Bid:</p>
