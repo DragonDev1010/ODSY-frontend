@@ -12,10 +12,9 @@ function Signup() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if(walContext.wallet === null) {
-            msgContext.setMessage('Please connect wallet to create a new collection.')
-            return
-        }
+        if(walContext.wallet === null) { msgContext.setMessage('Please connect wallet to create a new collection.');  return; }
+        if(name === null || name === '') { msgContext.setMessage('Name is required.'); return; }
+        if(avatar === null || avatar === '') { msgContext.setMessage('Avatar image is required.'); return; }
         let data = new FormData()
 
         data.append('name', name)
@@ -29,6 +28,7 @@ function Signup() {
                 body: data
             }
         )
+            .then(() => {msgContext.setMessage('User signup is successful!');})
     }
 
     useEffect(() => {
