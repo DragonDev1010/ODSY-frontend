@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import * as FaIcons from 'react-icons/fa'
-import noImgAlt from '../../assets/image/nftDetailPage/noImgAlt.png'
+import noImgAlt from '../../assets/image/noImgAlt.png'
 
 import Web3 from "web3"
 
@@ -19,7 +19,7 @@ function NftDetail(props) {
 
     const [nftImg, setNftImg] = useState(noImgAlt)
     const [title, setTitle] = useState(null)
-    const [saleOption, setSaleOption] = useState(0)
+    const [saleOption, setSaleOption] = useState(0) // {0: sale, 1: auction}
     const [curType, setCurType] = useState(0)
     const [viewCnt, setViewCnt] = useState(0)
     const [followerCnt, setFollowerCnt] = useState(0)
@@ -259,18 +259,18 @@ function NftDetail(props) {
                     </div>
                     <div style={{display:'flex', justifyContent:'space-between', margin:'40px 0 0 0'}}>
                         <div style={styles.priceCover}>
-                            <span style={{color:'#FFBD0C', fontWeight:'normal', marginRight:'20px'}}>Sell Price</span>
+                            <span style={{color:'#FFBD0C', fontWeight:'normal', marginRight:'20px'}}>{saleOption == 0 ? "Sell Price" : "Highest Bid"}</span>
                             <span style={{fontWeight:'bold'}}>{price}{currency}</span>
                         </div>
-                        <div style={styles.priceCover}>
-                            <span style={{color:'#FFBD0C', fontWeight:'normal', marginRight:'20px'}}>Sale Ends In</span>
                             {
                                 saleOption == 0?
                                 ""
                                 :
-                                <span style={{fontWeight:'bold'}}>04 : 23 : 10 : 39</span>
+                                <div style={styles.priceCover}>
+                                    <span style={{color:'#FFBD0C', fontWeight:'normal', marginRight:'20px'}}>Auction Ends In</span>
+                                        <span style={{fontWeight:'bold'}}>04 : 23 : 10 : 39</span>
+                                </div>
                             }
-                        </div>
                     </div>
                     <div style={{display:'flex', justifyContent:'space-around', margin:'40px 0 0 0'}}>
                         {

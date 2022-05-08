@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from 'react'
 import * as FaIcons from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import defaultImg from '../../assets/image/nftDetailPage/noImgAlt.png'
+import defaultImg from '../../assets/image/noImgAlt.png'
 import bscLogo from "../../assets/image/explorerPage/bscLogo.svg"
 import ethLogo from "../../assets/image/explorerPage/ethLogo.png"
 import polyLogo from "../../assets/image/explorerPage/polyLogo.png"

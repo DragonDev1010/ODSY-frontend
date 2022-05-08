@@ -16,7 +16,7 @@ function Create() {
     const inputFile = useRef(null) 
     const [title, setTitle] = useState("")
     const [description, setDesc] = useState("")
-    const [saleMethod, setSaleMethod] = useState(0)
+    const [saleMethod, setSaleMethod] = useState(0) // {0: sale, 1: auction}
     const [currency, setCurrency] = useState(0)
     const [price, setPrice] = useState(0)
     const [royalty, setRoyalty] = useState(0)

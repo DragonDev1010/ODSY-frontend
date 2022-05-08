@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import OfferItem from './OfferItem'
 
 function OfferList(props) {
     const [offers, setOffers] = useState(null)
@@ -17,10 +18,7 @@ function OfferList(props) {
                 offers !== null ?
                 offers.map((offer) => {
                     return (
-                        <>
-                            <p>{offer.offerCreator}</p>
-                            <p>{offer.offerPrice}</p>
-                        </>
+                        <OfferItem offer={offer}/>
                     )
                 })
                 :
