@@ -7,7 +7,7 @@ import Web3 from "web3"
 
 import MakeOfferForm from "./MakeOfferForm"
 import OfferList from './OfferList'
-
+import getImageData from "../../getImageData"
 import { tradeAddr } from "../../contractABI/address"
 import { odsyAddr } from "../../contractABI/address"
 const tradeABI = require('../../contractABI/tradeABI.json')
@@ -52,6 +52,9 @@ function NftDetail(props) {
                     setPrice(data[0].price)
                     setChainId(data[0].chainId)
                     setFollowerCnt(data[0].followerCnt)
+
+                    let nftImgTemp = getImageData(data[0].img.data.data)
+                    setNftImg(nftImgTemp)
                 }
             )
     }
@@ -70,6 +73,9 @@ function NftDetail(props) {
             .then(
                 data => {
                     setOwnerName(data[0].name)
+
+                    let ownerImgTemp = getImageData(data[0].avatar.data.data)
+                    setOwnerAvatar(ownerImgTemp)
                 }
             )
     }
@@ -79,6 +85,9 @@ function NftDetail(props) {
             .then(
                 data => {
                     setCreatorName(data[0].name)
+
+                    let creatorImgTemp = getImageData(data[0].avatar.data.data)
+                    setCreatorAvatar(creatorImgTemp)
                 }
             )
     }
@@ -200,7 +209,12 @@ function NftDetail(props) {
             padding: '12px 20px',
             borderRadius: '8px'
         },
-        recentlyViewCover: {}
+        recentlyViewCover: {},
+        avatarImg: {
+            width: '120px',
+            height: '120px',
+            borderRadius: '50%'
+        }
     }
 
     return(
@@ -225,15 +239,15 @@ function NftDetail(props) {
                         </div>
                     </div>
                     <div style={{display:'flex', margin:'40px 0 0 0'}}>
-                        <div style={{display:'flex', width:'50%'}}>
-                            <img src={ownerAvatar}/>
+                        <div style={{display:'flex', width:'50%', justifyContent: 'space-evenly'}}>
+                            <img src={ownerAvatar} style={styles.avatarImg}/>
                             <div>
                                 <p>Owned By:</p>
                                 <p>{ownerName}</p>
                             </div>
                         </div>
-                        <div style={{display:'flex', width:'50%'}}>
-                            <img src={creatorAvatar}/>
+                        <div style={{display:'flex', width:'50%', justifyContent: 'space-evenly'}}>
+                            <img src={creatorAvatar} style={styles.avatarImg}/>
                             <div>
                                 <p>Created By:</p>
                                 <p>{creatorName}</p>
