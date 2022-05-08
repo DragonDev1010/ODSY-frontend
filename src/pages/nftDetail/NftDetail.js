@@ -286,7 +286,8 @@ function NftDetail(props) {
                             makeOffer && <MakeOfferForm close={setMakeOffer} tokenId = {tokenId} currency={curType}/>
                         }
                     </div>
-                    <div>
+                    <div style={{marginTop: '100px'}}>
+                        <h3 style={{marginBottom: '20px'}}>Offer List</h3>
                         <OfferList tokenId={tokenId}/>
                     </div>
                 </div>

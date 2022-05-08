@@ -12,8 +12,7 @@ function OfferList(props) {
             })
     }, [])
     return (
-        <>
-        this is offer list
+        <div style={{overflowY:'auto', height:'200px', padding:'10px'}}>
             {
                 offers !== null ?
                 offers.map((offer) => {
@@ -24,7 +23,7 @@ function OfferList(props) {
                 :
                 ""
             }
-        </>
+        </div>
     )
 }
 
