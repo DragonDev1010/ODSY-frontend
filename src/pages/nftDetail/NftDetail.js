@@ -269,7 +269,7 @@ function NftDetail(props) {
                                 <button className="smNormal">Place Bid</button>
                         }
                         {
-                            makeOffer && <MakeOfferForm close={setMakeOffer} tokenId = {tokenId}/>
+                            makeOffer && <MakeOfferForm close={setMakeOffer} tokenId = {tokenId} currency={curType}/>
                         }
                     </div>
                     <div>
