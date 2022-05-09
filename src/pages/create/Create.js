@@ -8,6 +8,8 @@ import styles from './styles'
 
 import Web3 from "web3"
 import { nftAddr } from "../../contractABI/address"
+
+import CollectionList from "./CollectionList"
 const nftABI = require('../../contractABI/nftABI.json')
 
 function Create() {
@@ -95,8 +97,8 @@ function Create() {
 
                 try {
                     fetch(
-                        // process.env.REACT_APP_API_BASE_URL,
-                        "http://localhost:8000/nfts",
+                        process.env.REACT_APP_API_BASE_URL + 'nfts',
+                        // "http://localhost:8000/nfts",
                         {
                             method: 'POST',
                             body: data
@@ -194,13 +196,7 @@ function Create() {
                             </div>
                             <div style={styles.otherItemCover}>
                                 <p style={styles.title}>Collection</p>
-                                <select style={styles.inputField} onChange={e=>setCollection(+e.target.value)}>
-                                    <option style={styles.option} value="0">Art</option>
-                                    <option style={styles.option} value="1">Artifacts & Relics</option>
-                                    <option style={styles.option} value="2">Gaming</option>
-                                    <option style={styles.option} value="3">Metaverse</option>
-                                    <option style={styles.option} value="4">Photography</option>
-                                </select>
+                                <CollectionList setCollection={setCollection}/>
                             </div>
                         </div>
                         <button className="normal" type="submit" style={styles.formInput}>Create item</button>
