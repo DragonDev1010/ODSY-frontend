@@ -69,14 +69,10 @@ function Create() {
                     const web3 = new Web3(provider)
                     const nftContract = new web3.eth.Contract(nftABI, nftAddr)
                     try {
-                        console.log(data.IpfsHash)
-                        console.log(saleMethod)
-    
                         let mintTx = await nftContract.methods.mint(data.IpfsHash, saleMethod, currency, price, royalty).send({from:walContext.wallet, gas: 3000000})
-                        console.log('transaction: ', mintTx)
                         return mintTx.events.Transfer.returnValues.tokenId
                     } catch (e) {
-                        console.log(e)
+                        messageContext.setMessage(e)
                     }
                 }
             })
