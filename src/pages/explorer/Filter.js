@@ -5,7 +5,7 @@ import solLogo from '../../assets/image/explorerPage/solLogo.png'
 import ethLogo from '../../assets/image/explorerPage/ethLogo.png'
 import polyLogo from '../../assets/image/explorerPage/polyLogo.png'
 
-function Filter() {
+function Filter(props) {
 	const [chain, setChain] = useState(null)
 	const [cat, setCat] = useState(null)
 	const [rarity, setRarity] = useState(null)
@@ -109,10 +109,14 @@ function Filter() {
 					{chain === null ? 'Blockchain' : parseChain(chain)}
 				</button>
 				<div className = "dropContent">
-					<button onClick={() => setChain(0)}> <img src= {bscLogo} width="20" height="15"/> BSC</button>
+					<button onClick={() => {props.chain(0); setChain(0)}}> <img src= {bscLogo} width="20" height="15"/> BSC</button>
+					<button onClick={() => {props.chain(1); setChain(1)}}> <img src= {solLogo} width="20" height="15"/> Solana</button>
+					<button onClick={() => {props.chain(2); setChain(2)}}> <img src= {ethLogo} width="20" height="15"/> ETH</button>
+					<button onClick={() => {props.chain(3); setChain(3)}}> <img src= {polyLogo} width="20" height="15"/> Poly</button>
+					{/* <button onClick={() => setChain(0)}> <img src= {bscLogo} width="20" height="15"/> BSC</button>
 					<button onClick={() => setChain(1)}> <img src= {solLogo} width="20" height="15"/> Solana</button>
 					<button onClick={() => setChain(2)}> <img src= {ethLogo} width="20" height="15"/> ETH</button>
-					<button onClick={() => setChain(3)}> <img src= {polyLogo} width="20" height="15"/> Poly</button>
+					<button onClick={() => setChain(3)}> <img src= {polyLogo} width="20" height="15"/> Poly</button> */}
 				</div>
 			</div>
 			<div className = "filterCover">

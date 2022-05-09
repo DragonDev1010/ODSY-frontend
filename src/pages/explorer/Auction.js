@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import Filter from "./Filter"
 import Nfts from "./Nfts"
-import pageTitle from '../../assets/image/explorerPage/explorerLogo.png'
+import pageTitle from '../../assets/image/auctionPage/auctionsLogo.png'
 
-function Explorer() {
+function Auctions() {
     const [nfts, setNfts] = useState([])
     const [filter, setFilter] = useState({})
     const [chain, setChain] = useState(null)
@@ -14,7 +14,7 @@ function Explorer() {
         // {chain, category, rarity, currency, price, sort}
         try {
             let params = new URLSearchParams(filter)
-            let fetchURL = process.env.REACT_APP_API_BASE_URL+'nfts?' + params
+            let fetchURL = process.env.REACT_APP_API_BASE_URL+'nfts?saleMethod=1&' + params
 
             fetch(fetchURL)
                 .then(res => res.json())
@@ -28,7 +28,7 @@ function Explorer() {
         getNfts(filter)
     }, [])
 
-    useEffect(() => {
+    useEffect(() => { 
         if(chain !== null) {
             filter['chainId'] = chain;
             getNfts(filter) 
@@ -45,4 +45,4 @@ function Explorer() {
     )
 }
 
-export default Explorer
+export default Auctions

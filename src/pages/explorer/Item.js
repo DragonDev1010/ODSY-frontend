@@ -6,7 +6,9 @@ import bscLogo from "../../assets/image/explorerPage/bscLogo.svg"
 import ethLogo from "../../assets/image/explorerPage/ethLogo.png"
 import polyLogo from "../../assets/image/explorerPage/polyLogo.png"
 import solLogo from "../../assets/image/explorerPage/solLogo.png"
+import bidFlame from "../../assets/image/landingPage/bidFlame.png"
 import getImageData from '../../getImageData'
+
 
 import {WalletContext} from '../../context/walletContext'
 
@@ -62,7 +64,17 @@ function Item(props) {
             fontStyle: 'normal',
             fontWeight: '700',
             color: '#403838'
-        }
+        },
+        bidTimeCover: {
+            width: "70%",
+            display: "flex",
+            height:"30px",
+            background: "#14141F",
+            padding: "5px",
+            borderRadius: "10px",
+            position: "relative",
+            top: "-40px"
+        },
     }
 
     const [nftImg, setNftImg] = useState(defaultImg)
@@ -177,6 +189,15 @@ function Item(props) {
     return(
         <div style={styles.cover}>
             <img src={nftImg} style={styles.img}/>
+            {
+                props.nft.saleMethod == 0 ?
+                ""
+                :
+                <div style={styles.bidTimeCover}>
+                    <span>01 : 16 : 25 : 45 LEFT</span>
+                    <img src={bidFlame} style={styles.flameLogo} alt=""/>
+                </div>
+            }
             <div style={styles.colCover}>
                 <span>{props.nft.title}</span>
                 <img src={chainLogo} style={styles.chainLogo}></img>
@@ -193,12 +214,22 @@ function Item(props) {
                     }
                 </div>
                 <div style={styles.bidPrice}>
-                    <p style={styles.heading}>Current Bid:</p>
+                    {
+                        props.nft.saleMethod == 0 ?
+                        <p style={styles.heading}>Price:</p>
+                        :
+                        <p style={styles.heading}>Highest Bid:</p>
+                    }
                     <p style={styles.normal}>{price} {chainName}</p>
                 </div>
             </div>
             <div style={styles.buyCover}>
-                <button className="smNormal"><Link to={'/assets/' + props.nft.nft_id}>Buy Now</Link></button>
+                {
+                    props.nft.saleMethod == 0 ?
+                    <button className="smNormal"><Link to={'/assets/' + props.nft.nft_id}>Buy Now</Link></button>
+                    :
+                    <button className="smNormal"><Link to={'/assets/' + props.nft.nft_id}>Place Bid</Link></button>
+                }
                 <button className="favBtn" onClick={toggleFav}>
                     {
                         fav ?
