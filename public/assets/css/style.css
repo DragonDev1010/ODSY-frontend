@@ -211,7 +211,7 @@ section.topCollections .collection .info .balance {
     width: 100%;
 }
 
-.filterCover .dropContent button {
+.filterCover .dropContent button:not(.priceApplyBtn) {
     color: white;
     background: none;
     border: none;
@@ -221,9 +221,24 @@ section.topCollections .collection .info .balance {
     width: 100%;
 }
 
+.filterCover .dropContent button.priceApplyBtn {
+    color: black;
+    background: white;
+    border: none;
+    padding: 5px;
+    text-decoration: none;
+    display: block;
+    width: 50%;
+    text-align: center;
+    margin-left: 40%;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
 .filterCover .dropContent button:hover {
     background-color: #312E13;
     border-radius: 10px;
+    color: white
 }
 
 .filterCover:hover .dropContent {

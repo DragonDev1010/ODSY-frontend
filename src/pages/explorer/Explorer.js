@@ -6,7 +6,6 @@ import pageTitle from '../../assets/image/explorerPage/explorerLogo.png'
 function Explorer() {
     const [nfts, setNfts] = useState([])
     const [filter, setFilter] = useState({})
-    const [chain, setChain] = useState(null)
     // `filter` : `Object` type
     // filter : {"chain":0, "category":0, "rarity":0, "currency":0, "price":0, "sort":0}
     const getNfts = (filter) => {
@@ -26,20 +25,14 @@ function Explorer() {
 
     useEffect(() => {
         getNfts(filter)
-    }, [])
+    }, [filter])
 
-    useEffect(() => {
-        if(chain !== null) {
-            filter['chainId'] = chain;
-            getNfts(filter) 
-        }
-    }, [chain])
     return(
         <div>
             <div style={{textAlign:'center', margin:'60px 0 110px'}}>
                 <img src={pageTitle} style={{}}></img>
             </div>
-            <Filter chain={setChain}/>
+            <Filter setFilter={setFilter}/>
             <Nfts nfts={nfts}/>
         </div>
     )

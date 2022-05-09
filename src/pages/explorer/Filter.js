@@ -9,16 +9,13 @@ function Filter(props) {
 	const [chain, setChain] = useState(null)
 	const [cat, setCat] = useState(null)
 	const [rarity, setRarity] = useState(null)
-	const [price, setPrice] = useState(null)
-	const [currency, setCur] = useState(null)
+	const [minPrice, setMinPrice] = useState(null)
+	const [maxPrice, setMaxPrice] = useState(null)
+	const [currency, setCur] = useState(0)
 	const [sort, setSort] = useState(null)
-	
-	const priceRange = [
-		[0.1, 0.5, 1, 5], 
-		[1, 5, 10, 15], 
-		[0.033, 0.2, 0.35, 1], 
-		[50, 155, 410, 1000]
-	]
+	const [priceRange, setPriceRange] = useState(null)
+	const [resetPrice, setResetPrice] = useState(false)
+	const [resetFilter, setResetFilter] = useState(false)
 
 	function parseChain(c) {
 		switch (c) {
@@ -36,61 +33,38 @@ function Filter(props) {
 			case 2: return 'Gaming'; break;
 			case 3: return 'Metaverse'; break;
 			case 4: return 'Photography'; break;
-			default: break;
+			default: return 'Categories'; break;
 		}
 	}
 	function parseRarity(r) {
 		switch (r) {
-			case 0:return 'All'; break;
-			case 1:return 'Top 50'; break;
-			case 2:return 'Top 100'; break;
-			case 3:return 'Top 500'; break;
-			case 4:return 'Top 1000'; break;
+			case 0:return 'Top 50'; break;
+			case 1:return 'Top 100'; break;
+			case 2:return 'Top 500'; break;
+			case 3:return 'Top 1000'; break;
 			default: break;
 		}
 	}
-	function parsePrice(c, p) {
-		switch (c) {
-			case 0:
-				switch (p) {
-					case 0: return '< ' + priceRange[0][0].toString() + ' BSC'; break;
-					case 1: return '< ' + priceRange[0][1].toString() + ' BSC'; break;
-					case 2: return '< ' + priceRange[0][2].toString() + ' BSC'; break;
-					case 3: return '< ' + priceRange[0][3].toString() + ' BSC'; break;
-					default: break;
-				}
-				break;
-			case 1:
-				switch (p) {
-					case 0: return '< ' + priceRange[1][0].toString() + ' SOL'; break;
-					case 1: return '< ' + priceRange[1][1].toString() + ' SOL'; break;
-					case 2: return '< ' + priceRange[1][2].toString() + ' SOL'; break;
-					case 3: return '< ' + priceRange[1][3].toString() + ' SOL'; break;
-					default: break;
-				}
-				break;
-			case 2:
-				switch (p) {
-					case 1: return '< ' + priceRange[2][1].toString() + ' ETH'; break;
-					case 2: return '< ' + priceRange[2][2].toString() + ' ETH'; break;
-					case 3: return '< ' + priceRange[2][3].toString() + ' ETH'; break;
-					case 0: return '< ' + priceRange[2][0].toString() + ' ETH'; break;
-					default: break;
-				}
-				break;
-			case 3:
-				switch (p) {
-					case 0: return '< ' + priceRange[3][0].toString() + ' POLY'; break;
-					case 1: return '< ' + priceRange[3][1].toString() + ' POLY'; break;
-					case 2: return '< ' + priceRange[3][2].toString() + ' POLY'; break;
-					case 3: return '< ' + priceRange[3][3].toString() + ' POLY'; break;
-					default: break;
-				}
-				break;
-			default:
-				return 'Price Range'
-				break;
+	const applyPriceRange = () => {
+		let curSymbol;
+		switch (currency) {
+			case 0: curSymbol = 'ODSY'; break;
+			case 1: curSymbol = 'BNB'; break;
+			case 2: curSymbol = 'SOL'; break;
+			case 3: curSymbol = 'ETH'; break;
+			case 4: curSymbol = 'MATIC'; break;
+			default: break;
 		}
+		let temp = curSymbol + ' : ' + minPrice.toString() + ' ~ ' + maxPrice.toString()
+		setPriceRange(temp)
+		setResetPrice(true)
+	}
+	const resetPriceRange = () => {
+		setPriceRange(null)
+		setCur(0)
+		setMinPrice(0)
+		setMaxPrice(0)
+		setResetPrice(false)
 	}
 	function parseSort(s) {
 		switch (s) {
@@ -102,6 +76,37 @@ function Filter(props) {
 			default: break;
 		}
 	}
+	const search = () => {
+		let query = {}
+		if(chain !== null) query['chainId'] = chain;
+		if(cat !== null) query['category'] = cat;
+		if(rarity !== null) query['rarity'] = rarity
+		if(resetPrice === true) { 
+			query['minPrice'] = minPrice; 
+			query['maxPrice'] = maxPrice;
+			if(currency > 0)
+				query['curType'] = 0
+			else
+				query['curType'] = 1
+		}
+		if(sort !== null) query['sort'] = sort;
+		props.setFilter(query)
+		setResetFilter(true)
+	}
+	const resetSearch = () => {
+		setChain(null)
+		setCat(null)
+		setRarity(null)
+		setMinPrice(null)
+		setMaxPrice(null)
+		setCur(0)
+		setSort(null)
+		setPriceRange(null)
+		setResetPrice(false)
+		setResetFilter(false)
+		let query = {}
+		props.setFilter(query)
+	}
     return(
 		<div style={{display: "flex", justifyContent: "space-evenly", marginBottom: '100px'}}>
 			<div className = "filterCover">
@@ -109,14 +114,11 @@ function Filter(props) {
 					{chain === null ? 'Blockchain' : parseChain(chain)}
 				</button>
 				<div className = "dropContent">
-					<button onClick={() => {props.chain(0); setChain(0)}}> <img src= {bscLogo} width="20" height="15"/> BSC</button>
-					<button onClick={() => {props.chain(1); setChain(1)}}> <img src= {solLogo} width="20" height="15"/> Solana</button>
-					<button onClick={() => {props.chain(2); setChain(2)}}> <img src= {ethLogo} width="20" height="15"/> ETH</button>
-					<button onClick={() => {props.chain(3); setChain(3)}}> <img src= {polyLogo} width="20" height="15"/> Poly</button>
-					{/* <button onClick={() => setChain(0)}> <img src= {bscLogo} width="20" height="15"/> BSC</button>
-					<button onClick={() => setChain(1)}> <img src= {solLogo} width="20" height="15"/> Solana</button>
-					<button onClick={() => setChain(2)}> <img src= {ethLogo} width="20" height="15"/> ETH</button>
-					<button onClick={() => setChain(3)}> <img src= {polyLogo} width="20" height="15"/> Poly</button> */}
+					<button onClick={() => { setChain(null)}}>Reset</button>
+					<button onClick={() => { setChain(0)}}> <img src= {bscLogo} width="20" height="15"/> BSC</button>
+					<button onClick={() => { setChain(1)}}> <img src= {solLogo} width="20" height="15"/> Solana</button>
+					<button onClick={() => { setChain(2)}}> <img src= {ethLogo} width="20" height="15"/> ETH</button>
+					<button onClick={() => { setChain(3)}}> <img src= {polyLogo} width="20" height="15"/> Poly</button>
 				</div>
 			</div>
 			<div className = "filterCover">
@@ -124,6 +126,7 @@ function Filter(props) {
 					{cat === null ? 'Categories' : parseCat(cat)}
 				</button>
 				<div className = "dropContent">
+					<button onClick={() => setCat(null)}>Reset</button>
 					<button onClick={() => setCat(0)}> Art</button>
 					<button onClick={() => setCat(1)}> Artifacts & Relics</button>
 					<button onClick={() => setCat(2)}> Gaming</button>
@@ -136,40 +139,47 @@ function Filter(props) {
 					{rarity === null ? 'Rarity' : parseRarity(rarity)}
 				</button>
 				<div className = "dropContent">
-					<button onClick={() => setRarity(0)}> All</button>
-					<button onClick={() => setRarity(1)}> Top 50</button>
-					<button onClick={() => setRarity(2)}> Top 100</button>
-					<button onClick={() => setRarity(3)}> Top 500</button>
-					<button onClick={() => setRarity(4)}> Top 1000</button>
+					<button onClick={() => setRarity(null)}> Reset</button>
+					<button onClick={() => setRarity(0)}> Top 50</button>
+					<button onClick={() => setRarity(1)}> Top 100</button>
+					<button onClick={() => setRarity(2)}> Top 500</button>
+					<button onClick={() => setRarity(3)}> Top 1000</button>
 				</div>
 			</div>
 			<div className = "filterCover">
 				<button className = "normal">
-					{price === null ? 'Price Range' : parsePrice(currency, price)}
+					{priceRange === null ? "Price Range" : priceRange}
 				</button>
-				{
-					currency === null ?
-					<div className = "dropContent">
-						<button onClick={() => setCur(0)}> <img src= {bscLogo} width="20" height="15"/> BSC</button>
-						<button onClick={() => setCur(1)}> <img src= {solLogo} width="20" height="15"/> Solana</button>
-						<button onClick={() => setCur(2)}> <img src= {ethLogo} width="20" height="15"/> ETH</button>
-						<button onClick={() => setCur(3)}> <img src= {polyLogo} width="20" height="15"/> Poly</button>
-					</div>
-					:
-					<div className = "dropContent">
-						<button onClick={() => setCur(null)}>Switch Currency</button>
-						<button onClick={() => setPrice(0)}>{parsePrice(currency, 0)}</button>
-						<button onClick={() => setPrice(1)}>{parsePrice(currency, 1)}</button>
-						<button onClick={() => setPrice(2)}>{parsePrice(currency, 2)}</button>
-						<button onClick={() => setPrice(3)}>{parsePrice(currency, 3)}</button>
-					</div>
-				}
+				<div className = "dropContent" style={{padding:'10px'}}>
+					<span style={{display:"block", padding:'5px 0'}}>Currency:</span>
+					<select style={{width: '90%', color: 'black'}} value={currency} onChange={e=>setCur(+e.target.value)}>
+						<option value="0" style={{color: 'black'}}>ODSY</option>
+						<option value="1" style={{color: 'black'}}>BNB</option>
+						<option value="2" style={{color: 'black'}}>SOL</option>
+						<option value="3" style={{color: 'black'}}>ETH</option>
+						<option value="4" style={{color: 'black'}}>MATIC</option>
+					</select>
+					<span style={{display:"block", padding:'5px 0'}}>Min Price:</span>
+					<input type="number" value={minPrice === null? 0 : minPrice} style={{width:'90%', background:'white', color:'black'}} onChange={e => setMinPrice(+e.target.value)}></input>
+					<span style={{display:"block", padding:'5px 0'}}>Max Price:</span>
+					<input type="number" value={maxPrice===null? 0 : maxPrice} style={{width:'90%', background:'white', color:'black'}} onChange={e => setMaxPrice(+e.target.value)}></input>
+					{
+						minPrice > maxPrice ?
+							<p>Minimum must be less than maximum</p>
+						:
+						!resetPrice ?
+							<button className='priceApplyBtn' onClick={applyPriceRange}>Apply</button>
+							:
+							<button className='priceApplyBtn' onClick={resetPriceRange}>Reset</button>
+					}
+				</div>
 			</div>
 			<div className = "filterCover">
 				<button className = "normal">
 					{sort === null ? 'Filter & Sort' : parseSort(sort)}
 				</button>
 				<div className = "dropContent">
+					<button onClick={() => setSort(null)}>Reset</button>
 					<button onClick={() => setSort(0)}>Price:Low to High</button>
 					<button onClick={() => setSort(1)}>Price:High to low</button>
 					<button onClick={() => setSort(2)}>Common to rare</button>
@@ -178,7 +188,12 @@ function Filter(props) {
 				</div>
 			</div>
 			<div className = "filterCover">
-				<button className = "normal">Search All</button>
+				{
+					!resetFilter ?
+					<button className = "normal" onClick={search}>Search All</button>
+					:
+					<button className = "normal" onClick={resetSearch}>Reset</button>
+				}
 			</div>
 		</div>
     )
