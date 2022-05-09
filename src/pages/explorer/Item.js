@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState, useContext, useRef } from 'react'
 import * as FaIcons from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import defaultImg from '../../assets/image/noImgAlt.png'
@@ -75,7 +75,19 @@ function Item(props) {
             position: "relative",
             top: "-40px"
         },
+        bidTimeCoverHide: {
+            width: "70%",
+            visibility: 'hidden',
+            height:"30px",
+            background: "#14141F",
+            padding: "5px",
+            borderRadius: "10px",
+            position: "relative",
+            top: "-40px",
+        }
     }
+
+    const Ref = useRef(null);
 
     const [nftImg, setNftImg] = useState(defaultImg)
     const [fav, setFav] = useState(false)
@@ -87,6 +99,8 @@ function Item(props) {
 
     const [ownerName, setOwnerName] = useState(null)
     const [ownerAvatar, setOwnerAvatar] = useState(defaultImg)
+    const [timer, setTimer] = useState('00:00:00');
+    const [started,setStarted] = useState(0)
 
     const updateFavNft = (updatedFavIds) => {
         try {
@@ -119,13 +133,7 @@ function Item(props) {
         }
 
     }
-    const getFavNftIds = () => {
-        fetch(process.env.REACT_APP_API_BASE_URL + 'user/' + walContext.wallet)
-            .then( res => res.json())
-            .then( data => {
-                setFavNftIds(data[0].favIds)
-            })
-    }
+
     const getChainDetail = () => {
         switch (props.nft.chainId) {
             case 0: setChainLogo(bscLogo); setChainName('BNB'); break;
@@ -172,29 +180,89 @@ function Item(props) {
             })
     }
 
+    const getTimeRemaining = (e) => {
+        const total = Date.parse(e) - Date.parse(new Date());
+        const seconds = Math.floor((total / 1000) % 60);
+        const minutes = Math.floor((total / 1000 / 60) % 60);
+        const hours = Math.floor((total / 1000 * 60 * 60) % 24);
+        return {
+            total, hours, minutes, seconds
+        };
+    }
+
+    const startTimer = (e) => {
+        let { total, hours, minutes, seconds } = getTimeRemaining(e);
+        if (total >= 0) {
+            setTimer(
+                (hours > 9 ? hours : '0' + hours) + ':' +
+                (minutes > 9 ? minutes : '0' + minutes) + ':'
+                + (seconds > 9 ? seconds : '0' + seconds)
+            )
+        }
+    }
+
+    const clearTimer = (e) => {
+        if (Ref.current) 
+            clearInterval(Ref.current);
+        const id = setInterval(() => {
+            startTimer(e);
+        }, 1000)
+        Ref.current = id;
+    }
+
+    const getDeadTime = () => {
+        let startIn = new Date(props.nft.auctionStartIn)
+        let endIn = new Date(props.nft.auctionEndIn)
+        
+        let deadline;
+
+        if(startIn > new Date()) {
+            deadline = startIn;
+            setStarted(0) // auction is not yet started
+        }
+        else if (startIn < new Date() && endIn > new Date()){
+            deadline = endIn;
+            setStarted(1) // auction is in progress
+        } else {
+            deadline = endIn;
+            setStarted(2) // auction is already ended
+        }
+  
+        deadline.setSeconds(deadline.getSeconds() + 10);
+        return deadline;
+    }
+    
+    useEffect(() => {
+        clearTimer(getDeadTime());
+    }, []);
+
     useEffect(() => {
         if( props.nft.img !== null) {
             let temp = getImageData(props.nft.img.data.data)
             setNftImg(temp)
         }
         
-        // getFavNftIds()
         getOwnerData()
         getChainDetail()
         setPrice(props.nft.price)
     }, [])
+
     useEffect(() => {
         isFav()
     }, [favNftIds])
+
     return(
         <div style={styles.cover}>
             <img src={nftImg} style={styles.img}/>
             {
                 props.nft.saleMethod == 0 ?
-                ""
+                <div style={styles.bidTimeCoverHide}>
+                    <span>{timer} LEFT</span>
+                    <img src={bidFlame} style={styles.flameLogo} alt=""/>
+                </div>
                 :
                 <div style={styles.bidTimeCover}>
-                    <span>01 : 16 : 25 : 45 LEFT</span>
+                    <span>{timer} LEFT</span>
                     <img src={bidFlame} style={styles.flameLogo} alt=""/>
                 </div>
             }
