@@ -145,12 +145,18 @@ section.banner .left {
 section.topCollections .collection {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    gap: 50px;
+    width: 100%;
+    padding: 0 10%;
 }
 section.topCollections .collection img {
     background: white;
     border: 1px solid grey;
     border-radius: 30px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
 }
 section.topCollections .collection .verified:after {
     content: '\2713';
@@ -174,6 +180,7 @@ section.topCollections .collection .verified:after {
 section.topCollections .collection .info {
     display: flex;
     flex-direction: column;
+    row-gap: 20px;
 }
 
 section.topCollections .collection .info .name {

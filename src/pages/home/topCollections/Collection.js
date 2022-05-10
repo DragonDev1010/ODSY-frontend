@@ -1,27 +1,31 @@
-import img from "../../../assets/image/navbar/logo.png"
+import defaultImg from '../../../assets/image/noImgAlt.png'
+import getImageData from '../../../getImageData'
 function Collection(props) {
     return(
-        <div className="collectionGroup">
-            <div className="collection top">
+            <div className="collection">
                 <div className="img verified">
-                    <img src={img} className="avatar" alt=""/>
+                    {
+                        props.data.logoImg.data.data !== null ?
+                            <img src={getImageData(props.data.logoImg.data.data)} className="avatar" alt=""/>
+                        :
+                            <img src={defaultImg} className="avatar" alt=""/>
+                    }
                 </div>
                 <div className="info">
-                    <span className="name">{props.name}</span>
-                    <span className="balance">{props.balance} BSC</span>
+                    {
+                        props.data.name === undefined || props.data.name === null ?
+                        <span className="name">Undefined</span>
+                        :
+                        <span className="name">{props.data.name}</span>
+                    }
+                    {
+                        props.data.volume === undefined || props.data.volume === null ?
+                        <span className="balance">Undefined</span>
+                        :
+                        <span className="balance">{props.data.volume} BSC</span>
+                    }
                 </div>
             </div>
-
-            <div className="collection bottom">
-                <div className="img">
-                    <img src={img} className="avatar" alt=""/>
-                </div>
-                <div className="info">
-                    <span className="name">{props.name}</span>
-                    <span className="balance">{props.balance} ETH</span>
-                </div>
-            </div>
-        </div>
     )
 }
 
