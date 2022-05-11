@@ -5,7 +5,6 @@ import bitskiIcon from "../../assets/image/signPage/bitski.png"
 import { WalletContext } from "../../context/walletContext"
 import { MessageContext } from "../../context/messageContext"
 import MetamaskConnect from "../../actions/metamaskConnect"
-// const {ethereum} = window
 
 function WalletConn() {
     // get the entire `WalletContext` object
