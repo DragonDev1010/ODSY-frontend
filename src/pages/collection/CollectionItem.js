@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import getImageData from "../../getImageData"
+import getImageData from "../../actions/getImageData"
 
 function CollectionItem(props) {
     const [collectionLogo, setCollectionLogo] = useState(null)

@@ -7,7 +7,7 @@ import ethLogo from "../../assets/image/explorerPage/ethLogo.png"
 import polyLogo from "../../assets/image/explorerPage/polyLogo.png"
 import solLogo from "../../assets/image/explorerPage/solLogo.png"
 import bidFlame from "../../assets/image/landingPage/bidFlame.png"
-import getImageData from '../../getImageData'
+import getImageData from '../../actions/getImageData'
 
 
 import {WalletContext} from '../../context/walletContext'

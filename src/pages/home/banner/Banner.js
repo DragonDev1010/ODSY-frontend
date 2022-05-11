@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import getImageData from '../../../getImageData'
+import getImageData from '../../../actions/getImageData'
 
 function Banner() {
     const ids = [0,7,2,3,4,7]

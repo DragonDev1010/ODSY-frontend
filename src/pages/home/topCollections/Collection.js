@@ -1,5 +1,5 @@
 import defaultImg from '../../../assets/image/noImgAlt.png'
-import getImageData from '../../../getImageData'
+import getImageData from '../../../actions/getImageData'
 function Collection(props) {
     return(
             <div className="collection">

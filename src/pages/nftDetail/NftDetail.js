@@ -7,7 +7,7 @@ import Web3 from "web3"
 
 import MakeOfferForm from "./MakeOfferForm"
 import OfferList from './OfferList'
-import getImageData from "../../getImageData"
+import getImageData from "../../actions/getImageData"
 import { tradeAddr } from "../../contractABI/address"
 import { odsyAddr } from "../../contractABI/address"
 const tradeABI = require('../../contractABI/tradeABI.json')

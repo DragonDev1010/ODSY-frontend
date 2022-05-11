@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import getImageData from '../../getImageData'
+import getImageData from '../../actions/getImageData'
 import noImgAlt from '../../assets/image/noImgAlt.png'
 
 function OfferItem(props) {
