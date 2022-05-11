@@ -4,7 +4,8 @@ import metamaskIcon from "../../assets/image/signPage/metamask.png"
 import bitskiIcon from "../../assets/image/signPage/bitski.png"
 import { WalletContext } from "../../context/walletContext"
 import { MessageContext } from "../../context/messageContext"
-const {ethereum} = window
+import MetamaskConnect from "../../actions/metamaskConnect"
+// const {ethereum} = window
 
 function WalletConn() {
     // get the entire `WalletContext` object
@@ -29,18 +30,12 @@ function WalletConn() {
     }
 
     const metamaskConn = async () => {
-        if(!ethereum) {
-            msgContext.setMessage("Make sure you have Metamask installed")
-            return
-        }
-        try {
-            const accounts = await ethereum.request({method: 'eth_requestAccounts'})
-            if(accounts.length > 0) {
-                walContext.setWallet(accounts[0]) // set `WalletContext` state `wallet`
-                localStorage.setItem('connectedWallet', accounts[0])
-            }
-        } catch (e) {
-            msgContext.setMessage(e.message)
+        let connect = await MetamaskConnect()
+        if(connect.error === null) {
+            walContext.setWallet(connect.address) // set `WalletContext` state `wallet`
+        } else {
+            msgContext.setMessage(connect.error)
+            return 
         }
     }
 

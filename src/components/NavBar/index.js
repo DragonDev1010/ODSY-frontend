@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Logo from "./Logo"
 import SignIn from "./SignIn"
 import Router from "./Router"
-import WalletConnect from "../../pages/walletConnect";
 import User from "../../pages/user";
 import Home from "../../pages/home";
 import Create from "../../pages/create/Create"
@@ -17,9 +16,10 @@ import Collections from '../../pages/collection/Collections';
 import Auctions from '../../pages/explorer/Auction';
 import {MessageContext} from '../../context/messageContext'
 import { WalletContext } from '../../context/walletContext';
+import MetamaskConnect from '../../actions/metamaskConnect'
 
 function NavBar () {
-    const messageContext = useContext(MessageContext)
+    const msgContext = useContext(MessageContext)
     const walContext = useContext(WalletContext)
     
     useEffect(() => {
@@ -29,11 +29,11 @@ function NavBar () {
 				// window.location.reload();
 			})
 			window.ethereum.on('accountsChanged', async () => {
-                try {
-                    const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
-                    walContext.setWallet(accounts[0])
-                } catch (e) {
-                    messageContext.setMessage('Metamask is disconnected.')
+                let connect = await MetamaskConnect()
+                if(connect.error === null) {
+                    walContext.setWallet(connect.address) // set `WalletContext` state `wallet`
+                } else {
+                    msgContext.setMessage(connect.error)
                     walContext.setWallet(null)
                 }
 			})
@@ -42,11 +42,11 @@ function NavBar () {
 
     useEffect(async () => {
 		if(performance.navigation.type == 1) {
-            try {
-                const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
-                walContext.setWallet(accounts[0])
-            } catch (e) {
-                messageContext.setMessage('Metamask is disconnected.')
+            let connect = await MetamaskConnect()
+            if(connect.error === null) {
+                walContext.setWallet(connect.address) // set `WalletContext` state `wallet`
+            } else {
+                msgContext.setMessage(connect.error)
                 walContext.setWallet(null)
             }
 		}
@@ -58,11 +58,10 @@ function NavBar () {
                 <Router/>
                 <SignIn/>
             </header>
-            <p>{messageContext.message}</p>
+            <p>{msgContext.message}</p>
             <Routes>
                 <Route exact path="/home" element={<Home/>}></Route>
                 <Route exact path="/create" element={<Create/>}></Route>
-                <Route exact path="/wallet-connect" element={<WalletConnect/>}></Route>
                 <Route exact path="/sign-up" element={<User/>}></Route>
                 <Route exact path='/explorer' element={<Explorer/>}></Route>
                 <Route exact path='/signin' element={<WalletConn/>}></Route>
