@@ -71,9 +71,6 @@ function NftUpdate() {
     }
 
     useEffect(() => {
-        if(walContext.wallet === null) {
-            window.ethereum.request({method: 'eth_requestAccounts'})
-        }
         getNftInfo()
     },[])
     return(
