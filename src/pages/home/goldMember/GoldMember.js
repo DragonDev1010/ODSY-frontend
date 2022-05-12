@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import Carousel from 'react-elastic-carousel'
-import * as FaIcons from "react-icons/fa"
 import Item from "./Item"
 
 function GoldMember() {
