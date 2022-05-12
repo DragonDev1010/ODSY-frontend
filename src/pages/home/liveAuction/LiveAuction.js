@@ -1,7 +1,17 @@
-import * as FaIcons from "react-icons/fa"
+import { useEffect, useState } from "react"
+import Carousel from 'react-elastic-carousel'
 import Item from "./Item"
 
 function LiveAuction() {
+	const [data, setData] = useState(null)
+	useEffect(() => {
+		fetch(
+			process.env.REACT_APP_API_BASE_URL + 'nfts?saleMethod=1',
+			{method: 'GET'}
+		)
+			.then( res => res.json() )
+			.then( res => setData(res) )
+	}, [])
     return(
         <section>
             <div className = "title">
@@ -9,20 +19,12 @@ function LiveAuction() {
 				<button className='normal'>See All</button>
 			</div>
             <div className = "main__carousel-wrap">
-				<button className = "main__nav main__nav--prev" data-nav="#liveAuction" type="button">
-					<FaIcons.FaAngleLeft/>
-				</button>
-
-				<div className = "main__carousel main__carousel--liveAuction owl-carousel" id="liveAuction">
-					<Item/>
-                    <Item/>
-                    <Item/>
-                    <Item/>
-				</div>
-
-				<button className = "main__nav main__nav--next" data-nav="#liveAuction" type="button">
-					<FaIcons.FaAngleRight />
-				</button>
+				<Carousel itemsToShow={4}>
+					{
+						data &&
+						data.map((item) => (<Item data = {item}/>))
+					}
+				</Carousel>
 			</div>
         </section>
     )
