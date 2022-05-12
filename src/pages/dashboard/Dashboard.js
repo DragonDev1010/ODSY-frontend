@@ -6,6 +6,7 @@ import MetamaskConnect from '../../actions/metamaskConnect'
 
 import Filter from './Filter'
 import Nfts from './Nfts'
+import CollectList from './CollectList'
 
 function Dashboard() {
     const walContext = useContext(WalletContext)
@@ -21,6 +22,8 @@ function Dashboard() {
     const [maxPrice, setMaxPrice] = useState(null)
     const [collects, setCollects] = useState([])
     const [chains, setChains] = useState([])
+
+    const [panelSwitcher, setPanelSwitcher] = useState(true)
     const getNftData = () => {
         let query = {}
         if(status.length > 0) 
@@ -54,17 +57,33 @@ function Dashboard() {
         getNftData()
     }, [status, collects, chains, currency, minPrice, maxPrice, chains])
     return (
-        <div className='adminDashboard'>
-            <Filter 
-                setStatus={setStatus}
-                setCollects={setCollects}
-                setChains={setChains}
-                setCurrency={setCurrency}
-                setMinPrice={setMinPrice}
-                setMaxPrice={setMaxPrice}
-            />
-            <Nfts data={data} getNftData={getNftData}/>
-        </div>
+        <>
+            <div style={{paddingLeft: '50px'}}>
+                <button className='normal' onClick={() => setPanelSwitcher(!panelSwitcher)}>
+                    {panelSwitcher ? "Show Collect List" : "Show NFT List"}
+                </button>
+            </div>
+            <div className='adminDashboard'>
+                {
+                    panelSwitcher ?
+                    <>
+                        <Filter 
+                            setStatus={setStatus}
+                            setCollects={setCollects}
+                            setChains={setChains}
+                            setCurrency={setCurrency}
+                            setMinPrice={setMinPrice}
+                            setMaxPrice={setMaxPrice}
+                            />
+                        <Nfts data={data} getNftData={getNftData}/>
+                    </>
+                    :
+                    <>
+                        <CollectList/>
+                    </>
+                }
+            </div>
+        </>
     )
 }
 
