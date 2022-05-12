@@ -101,15 +101,12 @@ function Filter(props) {
                 {
                     showCurrency && 
                     <div className = 'curDropDown'>
-                        <div><button value={0} onClick={e=>setCurrency(+e.target.value)} className='curBtn'>ODSY</button></div>
-                        <div><button value={1} onClick={e=>setCurrency(+e.target.value)} className='curBtn'>BNB</button></div>
-                        <div><button value={2} onClick={e=>setCurrency(+e.target.value)} className='curBtn'>ETH</button></div>
-                        <div><button onClick={e => setCurrency(null)} className='curBtn'>Clear</button></div>
+                        <div><button value={0} onClick={e=>{setCurrency(+e.target.value); setShowCurrency(false)}} className='curBtn'>ODSY</button></div>
+                        <div><button value={1} onClick={e=>{setCurrency(+e.target.value); setShowCurrency(false)}} className='curBtn'>BNB</button></div>
+                        <div><button value={2} onClick={e=>{setCurrency(+e.target.value); setShowCurrency(false)}} className='curBtn'>ETH</button></div>
+                        <div><button onClick={e => {setCurrency(null); setShowCurrency(false)}} className='curBtn'>Clear</button></div>
                     </div>
                 }
-                {/* <div className="currencyCover">
-                    <div className="selectedCurrency">{curName}</div>
-                </div> */}
                 <div className="priceInputCover">
                     <input type='number' placeholder="Min" onChange={e => setMinPrice(+e.target.value)}/>
                     <span>To</span>
