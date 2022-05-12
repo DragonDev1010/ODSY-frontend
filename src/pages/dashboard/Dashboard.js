@@ -34,6 +34,9 @@ function Dashboard() {
             query['maxPrice'] = maxPrice
         }
 
+        if(currency != null)
+            query['curType'] = currency
+
         if(chains.length > 0)
             query['chainId'] = chains
         
@@ -51,13 +54,16 @@ function Dashboard() {
     }
     useEffect(() => {
         getNftData()
-    }, [status, collects, chains])
+    }, [status, collects, chains, currency, minPrice, maxPrice, chains])
     return (
         <div className='adminDashboard'>
             <Filter 
                 setStatus={setStatus}
                 setCollects={setCollects}
                 setChains={setChains}
+                setCurrency={setCurrency}
+                setMinPrice={setMinPrice}
+                setMaxPrice={setMaxPrice}
             />
             <Nfts data={data} getNftData={getNftData}/>
         </div>

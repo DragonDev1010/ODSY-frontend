@@ -29,6 +29,9 @@ function Filter(props) {
         setCurrency(currency)
         setMinPrice(minPrice)
         setMaxPrice(maxPrice)
+        props.setCurrency(currency)
+        props.setMinPrice(minPrice)
+        props.setMaxPrice(maxPrice)
     }
 
     const handleCollect = (e) => {
