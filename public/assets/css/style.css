@@ -2,6 +2,12 @@
 input {background: none;} /* This is for only testing. It is ok to delete for production */
 a, a:not([href]):not([class]), a:not([href]):not([class]):hover  { color: white; text-decoration: none;}
 ul { list-style: none; }
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+}
 section {margin-top: 20px;}
 button.normal {
     padding: 10px 30px;
@@ -313,3 +319,117 @@ input[type="text"]::placeholder {
     display: block;
 }
 /* Make Offer Form - Currency Selector - End */
+
+/* Admin Dashboard styling Start */
+.adminDashboard {
+    display: flex;
+}
+.adminDashboard .filterCover {
+    width: 20%;
+    border-right: 2px white solid;
+}
+.statusCover {
+}
+.statusRow button, .chainsBtnRow button{
+    padding: 10px 0;
+    border: 2px solid #FFBD0C;
+    border-radius: 30px;
+    width: 40%;
+    margin: 5px 5%;
+    color: white;
+}
+.statusRow button:hover, .chainsBtnRow button:hover {
+    background: #312E13;
+}
+.notSelectedStatusBtn, .nonSelectedChainsBtn {
+    background: none;
+}
+.selectedStatusBtn, .selectedChainBtn {
+    background: #312E13;
+}
+.priceCover .selectedCurrency {
+    padding: 10px 0;
+    border: 2px solid #FFBD0C;
+    border-radius: 10px;
+    width: 90%;
+    margin: 5px 5%;
+    color: white;
+    text-align: center;
+}
+.priceCover .curDropDown {
+    margin: 2px 5%;
+    /* display: none; */
+}
+/* .currencyCover:hover .curDropDown {
+    display: block;
+} */
+.priceCover .curDropDown .curBtn {
+    padding: 10px 0;
+    border: 0.5px solid #FFBD0C;
+    border-radius: 5px;
+    width: 100%;
+    color: white;
+    background: none;
+}
+.curSelect {
+    color: blue;
+    width: 80%;
+    margin: 5px 10%;
+}
+.priceCover .priceInputCover {
+    display: flex;
+    padding: 5px 5%;
+    justify-content: space-between;
+    align-items: center;
+}
+.priceCover .priceInputCover span{
+}
+.priceCover .priceInputCover input{
+    width: 40%;
+    border: 1px #FFBD0C solid;
+    padding: 10px 0 10px 10px;
+    color: white;
+}
+.priceCover .priceButton {
+    margin: 5px 5%;
+    text-align: right;
+}
+.priceCover .priceButton button{
+    padding: 10px 0;
+    border: 0.5px solid #FFBD0C;
+    border-radius: 5px;
+    width: 100%;
+    color: white;
+    background: none;
+}
+.statusCover, .priceCover, .collectCover, .chainsCover {
+    margin: 50px 5%;
+}
+.filterCover .heading button, .collectCover .collectHead button, .chainsCover .chainsHead button {
+    width: 100%;
+    border: 1px solid #FFBD0C;
+    background: none;
+    color: white;
+    padding: 10px 0;
+    border-radius: 10px;
+}
+.collectCover .collectItem {
+    padding: 3px 0;
+    border-bottom: 2px #655d5d2e solid;
+    text-align: right;
+}
+.adminDashboard .nftCover .selectedBtn, .adminDashboard .nftCover .nonSelectedBtn{
+    width: 100%;
+    border: 1px solid #FFBD0C;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+.adminDashboard .nftCover .selectedBtn {
+    background: #198754;
+    border: none;
+}
+.adminDashboard .nftCover .nonSelectedBtn {
+    background: none;
+}
+/* Admin Dashboard styling End */

@@ -5,6 +5,7 @@ import {MessageContext} from '../../context/messageContext'
 import MetamaskConnect from '../../actions/metamaskConnect'
 
 import Filter from './Filter'
+import Nfts from './Nfts'
 
 function Dashboard() {
     const walContext = useContext(WalletContext)
@@ -13,14 +14,14 @@ function Dashboard() {
             await MetamaskConnect()
         }
     }, [])
-
+    const [data, setData] = useState(null)
     const [status, setStatus] = useState([])
     const [currency, setCurrency] = useState(null)
     const [minPrice, setMinPrice] = useState(null)
     const [maxPrice, setMaxPrice] = useState(null)
     const [collects, setCollects] = useState([])
     const [chains, setChains] = useState([])
-    useEffect(() => {
+    const getNftData = () => {
         let query = {}
         if(status.length > 0) 
             query['saleMethod'] = status;
@@ -45,15 +46,21 @@ function Dashboard() {
                 data: query
             }
         )
+            .then(res => res.json())
+            .then(res => setData(res))
+    }
+    useEffect(() => {
+        getNftData()
     }, [status, collects, chains])
     return (
-        <>
+        <div className='adminDashboard'>
             <Filter 
                 setStatus={setStatus}
                 setCollects={setCollects}
                 setChains={setChains}
             />
-        </>
+            <Nfts data={data} getNftData={getNftData}/>
+        </div>
     )
 }
 
