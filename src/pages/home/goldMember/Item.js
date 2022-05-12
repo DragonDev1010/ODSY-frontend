@@ -1,14 +1,24 @@
 import * as FaIcons from "react-icons/fa"
-import img from "../../../assets/image/navbar/logo.png"
 import bscLogo from "../../../assets/image/landingPage/bscLogo.png"
+import getImageData from '../../../actions/getImageData'
+import { useEffect, useState } from "react"
 
-function Item() {
+function Item(props) {
+    const [onwerName, setOwnerName] = useState(null)
+    const [ownerAvatar, setOwnerAvatar] = useState(null)
+    const [curSymbol, setCurSymbol] = useState(null)
+
     const styles = {
         itemImg: {
             width: "100%",
             marginBottom: "10px",
             background: "grey",
             borderRadius: "18px"
+        },
+        img: {
+            width: '100%',
+            height: '300px',
+            objectFit: 'cover'
         },
         title: {
             display: "flex",
@@ -27,7 +37,9 @@ function Item() {
         avatar: {
             background: "grey",
             borderRadius: "18px",
-            width: "16%"
+            width: "16%",
+            height: '60px',
+            objectFit: 'cover'
         },
         buyNow: {
             display: "flex",
@@ -36,31 +48,51 @@ function Item() {
             marginBottom: "10px"
         }
     }
-
+    const getOwnerInfo = () => {
+        fetch(
+            process.env.REACT_APP_API_BASE_URL + 'user/' + props.data.ownerAddr,
+            { method: 'GET' }
+        )
+            .then(res => res.json())
+            .then(res => {
+                setOwnerName(res[0].name)
+                setOwnerAvatar(res[0].avatar.data.data)
+            })
+    }
+    const getCurrencySymbol = () => {
+        switch (props.data.curType) {
+            case 0: setCurSymbol('BNB'); break;
+            case 1: setCurSymbol('ODSY'); break;
+        }
+    }
+    useEffect(() => {
+        getOwnerInfo()
+        getCurrencySymbol()
+    }, [])
     return (
         <div style={styles.itemCover}>
             <div style={styles.itemImg}>
-                <img src={img} style={styles.img}/>
+                <img src={getImageData(props.data.img.data.data)} style={styles.img}/>
             </div>
             <div style={styles.title}>
-                <span>"The RenaiXance Rising...</span>
+                <span>{props.data.title}</span>
                 <img src={bscLogo} style={styles.logo} alt=""/>
             </div>
             <div style={styles.info}>
-                <img src="" style={styles.avatar} alt="s"/>
+                <img src={getImageData(ownerAvatar)} style={styles.avatar} alt="s"/>
                 <div style={styles.owned}>
-                    Owned By <br/>
-                    David
+                    <span style={{fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: '400',color: 'rgb(228, 223, 223)'}}>Owned By</span> <br/>
+                    <span style={{fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: '800'}}>{onwerName}</span>
                 </div>
                 <div style={styles.bid}>
-                    Current Bid <br/>
-                    4.89 BNB
+                    <span style={{fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: '400',color: 'rgb(228, 223, 223)'}}>Current Bid</span> <br/>
+                    <span style={{fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: '800'}}>{props.data.price} {curSymbol}</span>
                 </div>
             </div>
             <div style={styles.buyNow}>
                 <button className="normal">Buy Now</button>
                 <div style={styles.favCnt}>
-                    <FaIcons.FaRegHeart/> 100
+                    <FaIcons.FaRegHeart/> {props.data.followerCnt}
                 </div>
             </div>
         </div>

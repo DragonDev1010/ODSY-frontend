@@ -41,12 +41,10 @@ function Dashboard() {
             query['chainId'] = chains
         
         let params = new URLSearchParams(query)
-        console.log(params)
         fetch(
             process.env.REACT_APP_API_BASE_URL + 'nfts?' + params,
             {
-                method: 'GET',
-                data: query
+                method: 'GET'
             }
         )
             .then(res => res.json())
