@@ -441,3 +441,9 @@ input[type="text"]::placeholder {
     background: none;
 }
 /* Admin Dashboard styling End */
+/* react-elastic-carousel styling start */
+.rec-carousel-wrapper .rec-carousel .rec-arrow {
+    background: white;
+    color: #FFBD0C;
+}
+/* react-elastic-carousel styling end */
