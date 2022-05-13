@@ -4,11 +4,10 @@ import Item from "./Item"
 
 function GoldMember() {
     const [nfts, setNfts] = useState(null)
-    const styles = {
-        sectionCover : {
-            display: "flex"
-        }
-    }
+    let carousel
+    const goTo = (id) => {
+		carousel.goTo(Number(id))
+	}
     useEffect(() => {
         let query = {}
         query['goldMember'] = true
@@ -27,7 +26,16 @@ function GoldMember() {
 				<button className='normal'>See All</button>
 			</div>
             <div className = "main__carousel-wrap">
-                <Carousel itemsToShow={4}>
+                <Carousel
+                    ref = { ref => (carousel = ref)}
+                    itemsToShow={4}
+                    disableArrowsOnEnd = {false}
+                    onNextStart = { (curItem, nextItem) => {
+                        if(curItem.index == nextItem.index) {
+                            goTo(0)
+                        }
+                    }}
+                >
                     {
                         nfts && 
                         nfts.map((item, idx) => (
