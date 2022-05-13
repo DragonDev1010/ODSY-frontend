@@ -154,10 +154,13 @@ function Item(props) {
             padding: "20px",
             display: "flex",
             flexDirection: "column",
-            gap:"10px"
+            gap:"10px",
+            width: '100%'
         },
         img: {
             width: "100%",
+            height:'350px',
+            objectFit: 'cover',
             background: "#7A798A",
             borderRadius: "18px"
         },
