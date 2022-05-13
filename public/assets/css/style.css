@@ -148,7 +148,8 @@ section.banner .left {
     width: 80%;
 }
 
-section.topCollections .collection {
+section.topCollections .collection,
+section.topSellers .topSeller {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -156,7 +157,8 @@ section.topCollections .collection {
     width: 100%;
     padding: 0 10%;
 }
-section.topCollections .collection img {
+section.topCollections .collection img,
+section.topSellers .topSeller img {
     background: white;
     border: 1px solid grey;
     border-radius: 30px;
@@ -164,7 +166,8 @@ section.topCollections .collection img {
     height: 150px;
     object-fit: cover;
 }
-section.topCollections .collection .verified:after {
+section.topCollections .collection .verified:after,
+section.topSellers .topSeller .verified:after {
     content: '\2713';
     position: relative;
     display: block;
@@ -183,17 +186,20 @@ section.topCollections .collection .verified:after {
     pointer-events: none;
 }
 
-section.topCollections .collection .info {
+section.topCollections .collection .info, 
+section.topSellers .topSeller .info {
     display: flex;
     flex-direction: column;
     row-gap: 20px;
 }
 
-section.topCollections .collection .info .name {
+section.topCollections .collection .info .name,
+section.topSellers .topSeller .info .name {
     color: #FFBD0C;
 }
 
-section.topCollections .collection .info .balance {
+section.topCollections .collection .info .balance,
+section.topSellers .topSeller .info .balance {
     color: white;
 }
 /* Landing Page Top Collectors Section End */
