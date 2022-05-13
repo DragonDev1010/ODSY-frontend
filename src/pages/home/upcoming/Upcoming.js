@@ -26,7 +26,7 @@ function Upcoming() {
 			</div>
             <Carousel 
 				ref = { ref => (carousel = ref)}
-				itemsToShow={2}
+				itemsToShow={3}
 				disableArrowsOnEnd = {false}
 				onNextStart = { (curItem, nextItem) => {
 					if(curItem.index == nextItem.index) {

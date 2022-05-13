@@ -18,7 +18,7 @@ function Item(props) {
         },
         imageItem: {
             width: "100%",
-            height: '350px',
+            height: '150px',
             objectFit: 'cover',
             background: "grey",
             borderRadius: "20px",
