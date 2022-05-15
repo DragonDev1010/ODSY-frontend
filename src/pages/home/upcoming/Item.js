@@ -1,5 +1,5 @@
+import { Link } from 'react-router-dom'
 import getImageData from '../../../actions/getImageData'
-import img from "../../../assets/image/navbar/logo.png"
 import bscLogo from "../../../assets/image/landingPage/bscLogo.png"
 import { useEffect, useState } from "react"
 function Item(props) {
@@ -34,6 +34,13 @@ function Item(props) {
             borderRadius: "18px",
             float: "right",
             color:"white"
+        },
+        collectName: {
+            marginLeft: '30px',
+            fontSize: '30px',
+            fontFamily: 'Urbanist',
+            fontStyle: 'normal',
+            fontWeight: '800'
         }
     }
     useEffect(() => {
@@ -61,13 +68,13 @@ function Item(props) {
                     nfts &&
                     nfts.map((item) => (
                         <div style={styles.imgCover}>
-                            <img src={getImageData(item.img.data.data)} style={styles.imageItem} alt=""/>
+                            <Link to={'/assets/' + item.nft_id}><img src={getImageData(item.img.data.data)} style={styles.imageItem} alt=""/></Link>
                         </div>        
                     ))
                 }
             </div>
             <div style={styles.info}>
-                <span style={{marginLeft: '30px', fontSize: '30px', fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: '800'}}>{props.collects.name}</span>
+                <Link to={'/collection/' + props.collects.id}><span style={styles.collectName}>{props.collects.name}</span></Link>
                 <img src={bscLogo} style={styles.logo} alt=""/>
             </div>
         </div>

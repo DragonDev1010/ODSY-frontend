@@ -1,15 +1,18 @@
+import { Link } from 'react-router-dom'
 import defaultImg from '../../../assets/image/noImgAlt.png'
 import getImageData from '../../../actions/getImageData'
 function Collection(props) {
     return(
             <div className="collection">
                 <div className="img verified">
+                    <Link to={'/collection/' + props.data.id}>
                     {
                         props.data.logoImg.data.data !== null ?
                             <img src={getImageData(props.data.logoImg.data.data)} className="avatar" alt=""/>
                         :
                             <img src={defaultImg} className="avatar" alt=""/>
                     }
+                    </Link>
                 </div>
                 <div className="info">
                     {

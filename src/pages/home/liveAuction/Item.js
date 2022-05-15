@@ -1,21 +1,15 @@
 import { useEffect, useState, useContext, useRef } from 'react'
-import * as FaIcons from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import * as FaIcons from 'react-icons/fa'
+import getImageData from '../../../actions/getImageData'
 import defaultImg from '../../../assets/image/noImgAlt.png'
 import bscLogo from "../../../assets/image/explorerPage/bscLogo.svg"
 import ethLogo from "../../../assets/image/explorerPage/ethLogo.png"
 import polyLogo from "../../../assets/image/explorerPage/polyLogo.png"
 import solLogo from "../../../assets/image/explorerPage/solLogo.png"
 import bidFlame from "../../../assets/image/landingPage/bidFlame.png"
-import getImageData from '../../../actions/getImageData'
-
-
-import {WalletContext} from '../../../context/walletContext'
 
 function Item(props) {
-    const walContext = useContext(WalletContext)
-    
-
     const Ref = useRef(null);
 
     const [nftImg, setNftImg] = useState(defaultImg)
@@ -176,7 +170,10 @@ function Item(props) {
             justifyContent: "space-around"
         },
         ownerAvatar: {
-            width: "20%"
+            width: "80px",
+            height: '80px',
+            borderRadius: '50%',
+            objectFit: 'cover'
         },
         owner: {
 
@@ -225,7 +222,9 @@ function Item(props) {
     }
     return(
         <div style={styles.cover}>
-            <img src={nftImg} style={styles.img}/>
+            <Link to={'/assets/' + props.data.nft_id}>
+                <img src={nftImg} style={styles.img}/>
+            </Link>
             {
                 props.data.saleMethod == 0 ?
                 <div style={styles.bidTimeCoverHide}>
@@ -239,19 +238,25 @@ function Item(props) {
                 </div>
             }
             <div style={styles.colCover}>
-                <span>{props.data.title}</span>
+                <Link to={'/assets/' + props.data.nft_id}>
+                    <span>{props.data.title}</span>
+                </Link>
                 <img src={chainLogo} style={styles.chainLogo}></img>
             </div>
             <div style={styles.ownerCover}>
-                <img src={ownerAvatar} style={styles.ownerAvatar}></img>
+                <Link to={'/user/' + props.data.ownerAddr}>
+                    <img src={ownerAvatar} style={styles.ownerAvatar}></img>
+                </Link>
                 <div style={styles.owner}>
                     <p style={styles.heading}>Owned By</p>
-                    {
-                        ownerName !== null ?
-                        <p style={styles.normal}>{ownerName}</p>
-                        :
-                        <p style={styles.unknownName}>Unknown</p>
-                    }
+                    <Link to={'/user/' + props.data.ownerAddr}>
+                        {
+                            ownerName !== null ?
+                            <p style={styles.normal}>{ownerName}</p>
+                            :
+                            <p style={styles.unknownName}>Unknown</p>
+                        }
+                    </Link>
                 </div>
                 <div style={styles.bidPrice}>
                     {

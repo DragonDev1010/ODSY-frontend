@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import Carousel from 'react-elastic-carousel'
 import Collection from './Collection'
 
@@ -23,7 +24,7 @@ function TopCollections() {
         <section className = "topCollections">
 			<div className = "title">
 				<h2>Top Collections</h2>
-				<button className='normal'>See All</button>
+				<button className='normal'><Link to={'/collections'}>See All</Link></button>
 			</div>
 			<Carousel
 				ref = { ref => (carousel = ref)}

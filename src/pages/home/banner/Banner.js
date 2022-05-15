@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import getImageData from '../../../actions/getImageData'
 
 function Banner() {
@@ -33,18 +34,18 @@ function Banner() {
                 nfts !== null ?
                 <div style={styles.bannerCover}>
                     <div style={styles.bannerCol}>
-                        <img src={getImageData(nfts[ids[0]].img.data.data)} style={styles.bannerImg}/>
+                        <Link to={'/assets/' + nfts[ids[0]].nft_id}><img src={getImageData(nfts[ids[0]].img.data.data)} style={styles.bannerImg}/></Link>
                     </div>
                     <div style={styles.bannerCol}>
-                        <img src={getImageData(nfts[ids[1]].img.data.data)} style={styles.bannerImg}/>
+                        <Link to={'/assets/' + nfts[ids[1]].nft_id}><img src={getImageData(nfts[ids[1]].img.data.data)} style={styles.bannerImg}/></Link>
                     </div>
                     <div style={styles.bannerHalfCol}>
-                        <img src={getImageData(nfts[ids[2]].img.data.data)} style={styles.bannerTopSmImg}/>
-                        <img src={getImageData(nfts[ids[3]].img.data.data)} style={styles.bannerBottomSmImg}/>
+                        <Link to={'/assets/' + nfts[ids[2]].nft_id}><img src={getImageData(nfts[ids[2]].img.data.data)} style={styles.bannerTopSmImg}/></Link>
+                        <Link to={'/assets/' + nfts[ids[3]].nft_id}><img src={getImageData(nfts[ids[3]].img.data.data)} style={styles.bannerBottomSmImg}/></Link>
                     </div>
                     <div style={styles.bannerHalfCol}>
-                        <img src={getImageData(nfts[ids[4]].img.data.data)} style={styles.bannerTopSmImg}/>
-                        <img src={getImageData(nfts[ids[5]].img.data.data)} style={styles.bannerBottomSmImg}/>
+                        <Link to={'/assets/' + nfts[ids[4]].nft_id}><img src={getImageData(nfts[ids[4]].img.data.data)} style={styles.bannerTopSmImg}/></Link>
+                        <Link to={'/assets/' + nfts[ids[5]].nft_id}><img src={getImageData(nfts[ids[5]].img.data.data)} style={styles.bannerBottomSmImg}/></Link>
                     </div>
                 </div>
                 :

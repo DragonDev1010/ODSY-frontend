@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import Carousel from 'react-elastic-carousel'
 import Item from "./Item"
 
@@ -20,7 +21,7 @@ function LiveAuction() {
         <section>
             <div className = "title">
 				<h2>Live Auctions</h2>
-				<button className='normal'>See All</button>
+				<button className='normal'><Link to={'/auctions'}>See All</Link></button>
 			</div>
             <div className = "main__carousel-wrap">
 				<Carousel 

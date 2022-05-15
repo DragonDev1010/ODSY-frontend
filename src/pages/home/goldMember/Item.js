@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import * as FaIcons from "react-icons/fa"
 import bscLogo from "../../../assets/image/landingPage/bscLogo.png"
 import getImageData from '../../../actions/getImageData'
-import { useEffect, useState } from "react"
+import defaultImg from '../../../assets/image/noImgAlt.png'
 
 function Item(props) {
     const [onwerName, setOwnerName] = useState(null)
@@ -9,6 +11,10 @@ function Item(props) {
     const [curSymbol, setCurSymbol] = useState(null)
 
     const styles = {
+        itemCover: {
+            width: '100%',
+            margin: '0 10%'
+        },
         itemImg: {
             width: "100%",
             marginBottom: "10px",
@@ -35,9 +41,7 @@ function Item(props) {
             marginBottom: "10px"
         },
         avatar: {
-            background: "grey",
             borderRadius: "18px",
-            width: "16%",
             height: '60px',
             objectFit: 'cover'
         },
@@ -72,17 +76,24 @@ function Item(props) {
     return (
         <div style={styles.itemCover}>
             <div style={styles.itemImg}>
-                <img src={getImageData(props.data.img.data.data)} style={styles.img}/>
+                <Link to={'/assets/' + props.data.nft_id}><img src={getImageData(props.data.img.data.data)} style={styles.img}/></Link>
             </div>
             <div style={styles.title}>
                 <span>{props.data.title}</span>
                 <img src={bscLogo} style={styles.logo} alt=""/>
             </div>
             <div style={styles.info}>
-                <img src={getImageData(ownerAvatar)} style={styles.avatar} alt="s"/>
+                {
+                    ownerAvatar ?
+                    <Link to={'/user/' + props.data.ownerAddr}><img src={getImageData(ownerAvatar)} style={styles.avatar}/></Link>
+                    :
+                    <Link to={'/user/' + props.data.ownerAddr}><img src={defaultImg} style={styles.avatar}/></Link>
+                }
                 <div style={styles.owned}>
                     <span style={{fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: '400',color: 'rgb(228, 223, 223)'}}>Owned By</span> <br/>
-                    <span style={{fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: '800'}}>{onwerName}</span>
+                    <Link to={'/user/' + props.data.ownerAddr}>
+                        <span style={{fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: '800'}}>{onwerName}</span>
+                    </Link>
                 </div>
                 <div style={styles.bid}>
                     <span style={{fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: '400',color: 'rgb(228, 223, 223)'}}>Current Bid</span> <br/>
