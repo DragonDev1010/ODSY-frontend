@@ -219,9 +219,6 @@ function NftDetail(props) {
 
     return(
         <div style={styles.nftDetailCover}>
-            <button className="smNormal">
-                <Link to={'/update/' + tokenId}>Update</Link>
-            </button>
             <div style={styles.mainCover}>
                 <div style={styles.nftImg}>
                     <img src={nftImg} style={{width:'80%'}}/>
