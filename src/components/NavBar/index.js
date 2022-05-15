@@ -13,6 +13,7 @@ import NftUpdate from '../../pages/nftUpdate/NftUpdate';
 import CreateCollection from '../../pages/create/CreateCollection';
 import Signup from '../../pages/user/SignUp';
 import Collections from '../../pages/collection/Collections';
+import CollectionDetail from '../../pages/collection/CollectionDetail'
 import Auctions from '../../pages/explorer/Auction';
 import Dashboard from '../../pages/dashboard/Dashboard';
 import {MessageContext} from '../../context/messageContext'
@@ -71,6 +72,7 @@ function NavBar () {
                 <Route exact path='/collection/create' element={<CreateCollection/>}></Route>
                 <Route exact path='/signup' element={<Signup/>}></Route>
                 <Route exact path='/collections' element={<Collections/>}></Route>
+                <Route exact path='/collection/:collectId' element={<CollectionDetail/>}></Route>
                 <Route exact path='/auctions' element={<Auctions/>}></Route>
 
                 <Route exact path='/dashboard' element={<Dashboard/>}></Route>
