@@ -5,6 +5,9 @@ import feature4 from "../../../assets/image/landingPage/feature4.png"
 
 function Feature() {
     const styles = {
+        sectionCover: {
+            padding: '160px 10% 20px'
+        },
         featureCover: {
             display: "flex"
         },
@@ -19,7 +22,7 @@ function Feature() {
     }
 
     return(
-        <section>
+        <section style={styles.sectionCover}>
             <h1>Purchasing & Marketing Your NFTs with odyssey venture is simple!</h1>
             <div style={styles.featureCover}>
                 <div style={styles.itemCover}>
