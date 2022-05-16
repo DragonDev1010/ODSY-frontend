@@ -10,6 +10,8 @@ import OfferList from './OfferList'
 import getImageData from "../../actions/getImageData"
 import { tradeAddr } from "../../contractABI/address"
 import { odsyAddr } from "../../contractABI/address"
+import Properties from "./Properties"
+import About from "./About"
 const tradeABI = require('../../contractABI/tradeABI.json')
 const odsyABI = require('../../contractABI/odsyABI.json')
 
@@ -38,6 +40,9 @@ function NftDetail(props) {
     const [buyer, setBuyer] = useState(null)
     const [makeOffer, setMakeOffer] = useState(false)
 
+    const [selectedDetailPad, setSelectedDetailPad] = useState(0)
+    const [properties, setProperties] = useState(null)
+
     const getNftDetail = () => {
         fetch(process.env.REACT_APP_API_BASE_URL + 'nft/' + tokenId)
             .then(res => res.json())
@@ -55,6 +60,7 @@ function NftDetail(props) {
 
                     let nftImgTemp = getImageData(data[0].img.data.data)
                     setNftImg(nftImgTemp)
+                    setProperties(data[0].properties)
                 }
             )
     }
@@ -283,9 +289,27 @@ function NftDetail(props) {
                             makeOffer && <MakeOfferForm close={setMakeOffer} tokenId = {tokenId} currency={curType}/>
                         }
                     </div>
-                    <div style={{marginTop: '100px'}}>
+                    {/* <div style={{marginTop: '100px'}}>
                         <h3 style={{marginBottom: '20px'}}>Offer List</h3>
                         <OfferList tokenId={tokenId}/>
+                    </div> */}
+                    <div className="nftDetailInfoCover">
+                        <div className="nftDetailInfoHeader">
+                            <button style={selectedDetailPad == 0?{color:'#e1b70c'}:{}} onClick={e => setSelectedDetailPad(0)}>Offer List</button>
+                            <button style={selectedDetailPad == 1?{color:'#e1b70c'}:{}} onClick={e => setSelectedDetailPad(1)}>Traits/Properties</button>
+                            <button style={selectedDetailPad == 2?{color:'#e1b70c'}:{}} onClick={e => setSelectedDetailPad(2)}>About</button>
+                        </div>
+                        <div className="nftDetailInfoBody">
+                        {
+                            selectedDetailPad == 0 ? 
+                            <OfferList tokenId={tokenId}/>
+                            :
+                                selectedDetailPad == 1 ?
+                                <Properties data={properties}/>
+                                :
+                                <About mint={'250'} rarity={'5'}/>
+                        }
+                        </div>
                     </div>
                 </div>
             </div>
