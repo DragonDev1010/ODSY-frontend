@@ -1,6 +1,6 @@
 * { box-sizing: border-box; color: white;}
 input {background: none;} /* This is for only testing. It is ok to delete for production */
-a, a:not([href]):not([class]), a:not([href]):not([class]):hover  { color: white; text-decoration: none;}
+a, a:hover, a:not([href]):not([class]), a:not([href]):not([class]):hover  { color: white; text-decoration: none;}
 ul { list-style: none; }
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
@@ -14,21 +14,49 @@ button.normal {
     border: 2px solid #FFBD0C;
     border-radius: 30px;
     background: none;
-    color: white;
+
+    font-family: 'Urbanist';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    text-transform: capitalize;
+    color: #FFFFFE;
+}
+button.normal:hover {
+    text-shadow: 0px 0px 3.5px #FFFFFE;
 }
 button.inverseNormal {
     padding: 10px 30px;
     border: 2px solid #FFBD0C;
     border-radius: 30px;
     background: #FFBD0C;
+    font-family: 'Urbanist';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    text-transform: capitalize;
     color: black;
+}
+button.inverseNormal:hover {
+    text-shadow: 0px 0px 3.5px black;
 }
 button.smNormal {
     padding: 5px 10px;
     border: 1px solid #FFBD0C;
     border-radius: 10px;
     background: none;
+    font-family: 'Urbanist';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    text-transform: capitalize;
     color: white;
+}
+button.smNormal:hover {
+    text-shadow: 0px 0px 3.5px #ffffff;
 }
 button.favBtn {
     background-color: #14141F;
@@ -71,10 +99,20 @@ input:focus, select:focus {outline: none;}
 }
 
 .navBar .routerList .routerListItem .routerListItemLink {
+    font-family: 'Urbanist';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
     display: flex;
     align-items: center;
     gap: 4px;
     color: white;
+    text-transform: capitalize;
+}
+
+.navBar .routerList .routerListItem .routerListItemLink:hover {
+    text-shadow: 0px 0px 3.5px #FFFFFE;
 }
 
 .navBar .signIn {
@@ -231,13 +269,24 @@ section.topSellers .topSeller .info .balance {
 }
 
 .filterCover .dropContent button:not(.priceApplyBtn) {
-    color: white;
     background: none;
     border: none;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     width: 100%;
+
+    font-family: 'Urbanist';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    text-transform: capitalize;
+    color: #FFFFFE;
+}
+
+.filterCover .dropContent button:not(.priceApplyBtn):hover {
+    text-shadow: 0px 0px 3.5px #FFFFFE;
 }
 
 .filterCover .dropContent button.priceApplyBtn {
