@@ -33,7 +33,7 @@ function NavBar () {
 			})
 			window.ethereum.on('accountsChanged', async () => {
                 let connect = await MetamaskConnect()
-                if(connect.error === null) {
+                if(connect.address !== null) {
                     walContext.setWallet(connect.address) // set `WalletContext` state `wallet`
                 } else {
                     msgContext.setMessage(connect.error)
@@ -46,7 +46,7 @@ function NavBar () {
     useEffect(async () => {
 		if(performance.navigation.type == 1) {
             let connect = await MetamaskConnect()
-            if(connect.error === null) {
+            if(connect.address !== null) {
                 walContext.setWallet(connect.address) // set `WalletContext` state `wallet`
             } else {
                 msgContext.setMessage(connect.error)

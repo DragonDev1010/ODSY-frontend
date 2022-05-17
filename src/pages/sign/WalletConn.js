@@ -30,7 +30,7 @@ function WalletConn() {
 
     const metamaskConn = async () => {
         let connect = await MetamaskConnect()
-        if(connect.error === null) {
+        if(connect.address !== null) {
             walContext.setWallet(connect.address) // set `WalletContext` state `wallet`
         } else {
             msgContext.setMessage(connect.error)
