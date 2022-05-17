@@ -10,7 +10,7 @@ function Explorer() {
         }
     }
     return(
-        <section>
+        <section className='explorer'>
             <div className = "title">
 				<h2>Explorer</h2>
 				<button className='normal'>Blockchain</button>
@@ -20,7 +20,7 @@ function Explorer() {
                 <button className='normal'>Search All</button>
                 <button className='normal'>Filter & Sort</button>
 			</div>
-            <div className = "main__carousel-wrap">
+            <div className = "carouselCover">
 				<button className = "main__nav main__nav--prev" data-nav="#explorer" type="button">
 					<FaIcons.FaAngleLeft/>
 				</button>

@@ -9,7 +9,7 @@ input[type=number]::-webkit-outer-spin-button {
     -moz-appearance: none;
     appearance: none; 
 }
-section {margin-top: 20px;}
+
 button.normal {
     padding: 10px 30px;
     border: 2px solid #FFBD0C;
@@ -123,53 +123,21 @@ input:focus, select:focus {outline: none;}
 }
 
 /* Landing Page Banner Section Start */
+section.topCollections {margin-top: 50px;}
+section.upcoming {margin-top: 77px;}
+section.goldMember {margin-top: 25px;}
+section.liveAuction {margin-top: 58px;}
+section.explorer {margin-top: 145px;}
+section.topSellers {margin-top: 91px;}
 section.banner {
     display: flex;
+    margin-top: 50px;
 }
 section.banner .left {
     display: flex;
 }
 /* Landing Page Banner Section End */
 
-/* Landing Page Top Collectors Carousel Styling Start */
-.main__carousel-wrap {
-    position: relative;
-}
-.main__carousel .owl-dots {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-top: 25px;
-    position: relative;
-}
-.main__carousel .owl-dot {
-    margin-right: 10px;
-}
-.main__carousel .owl-dot:last-child {
-    margin-right: 0;
-}
-.main__carousel .owl-dot span {
-    display: block;
-    height: 4px;
-    width: 10px;
-    border-radius: 2px;
-    background-color: #9FA4DD;
-    transition: 0.5s ease;
-}
-.main__carousel .owl-dot.active span {
-    width: 20px;
-    background-color: #6164ff;
-}
-.main__carousel-wrap button.main__nav {
-    border: none;
-    border-radius: 50%;
-}
-.main__carousel-wrap button.main__nav svg {
-    color: #FFBD0C
-}
-/* Landing Page Top Collectors Carousel Styling End */
 /* Landing Page Top Collectors Section Start */
 .home section .title {
     display: flex;
@@ -177,6 +145,7 @@ section.banner .left {
     justify-content: flex-start;
     gap: 20px;
 }
+.home section .title h2 {color : #FFBD0C;}
 .home section .main__carousel-wrap {
     display: flex;
     align-items: center;

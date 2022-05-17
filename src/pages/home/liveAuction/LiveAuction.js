@@ -18,12 +18,12 @@ function LiveAuction() {
 			.then( res => setData(res) )
 	}, [])
     return(
-        <section>
+        <section className="liveAuction">
             <div className = "title">
 				<h2>Live Auctions</h2>
 				<button className='normal'><Link to={'/auctions'}>See All</Link></button>
 			</div>
-            <div className = "main__carousel-wrap">
+            <div className = "carouselCover">
 				<Carousel 
 					ref = { ref => (carousel = ref)}
 					itemsToShow={4}

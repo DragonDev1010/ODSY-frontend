@@ -20,12 +20,12 @@ function GoldMember() {
             .then(res => setNfts(res))
     }, [])
     return(
-        <section>
+        <section className="goldMember">
             <div className = "title">
 				<h2>Gold Member Exclusives</h2>
 				<button className='normal'>See All</button>
 			</div>
-            <div className = "main__carousel-wrap">
+            <div className = "carouselCover">
                 <Carousel
                     ref = { ref => (carousel = ref)}
                     itemsToShow={4}

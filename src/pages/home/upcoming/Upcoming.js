@@ -20,7 +20,7 @@ function Upcoming() {
 			.then( res => setCollects(res) )
 	}, [])
     return (
-        <section>
+        <section className='upcoming'>
             <div className = "title">
 				<h2>New & Upcoming</h2>
 			</div>
