@@ -8,7 +8,7 @@ function Router() {
                 <Link to="/home" className="routerListItemLink">Home</Link>
             </li>
             <li className="routerListItem">
-                <Link to="/vip" className="routerListItemLink">V.I.P.</Link>
+                <Link to="/exclusives" className="routerListItemLink">V.I.P.</Link>
             </li>
             <li className="routerListItem">
                 <Link to="/community" className="routerListItemLink">

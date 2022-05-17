@@ -19,6 +19,7 @@ import Dashboard from '../../pages/dashboard/Dashboard';
 import {MessageContext} from '../../context/messageContext'
 import { WalletContext } from '../../context/walletContext';
 import MetamaskConnect from '../../actions/metamaskConnect'
+import Exclusives from '../../pages/exclusives/Exclusives';
 
 function NavBar () {
     const msgContext = useContext(MessageContext)
@@ -66,6 +67,7 @@ function NavBar () {
                 <Route exact path="/create" element={<Create/>}></Route>
                 <Route exact path="/sign-up" element={<User/>}></Route>
                 <Route exact path='/explorer' element={<Explorer/>}></Route>
+                <Route exact path='/exclusives' element={<Exclusives/>}></Route>
                 <Route exact path='/signin' element={<WalletConn/>}></Route>
                 <Route exact path="/assets/:tokenId" element={<NftDetail/>} />
                 <Route exact path="/update/:tokenId" element={<NftUpdate/>} />
