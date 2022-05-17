@@ -12,8 +12,10 @@ function SignIn() {
         fetch( process.env.REACT_APP_API_BASE_URL + 'user/' +  walAddr)
             .then(res => res.json())
             .then( data => {
-                setName(data[0].name)
-                setAvatar(data[0].avatar)
+                if(data[0] !== undefined) {
+                    setName(data[0].name)
+                    setAvatar(data[0].avatar)
+                }
             })
     }
     useEffect(() => {
