@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import Logo from "./Logo"
 import SignIn from "./SignIn"
 import Router from "./Router"
@@ -62,7 +62,7 @@ function NavBar () {
             </header>
             <p>{msgContext.message}</p>
             <Routes>
-                <Route exact path="/home" element={<Home/>}></Route>
+                <Route exact path="/" element={<Home/>}></Route>
                 <Route exact path="/create" element={<Create/>}></Route>
                 <Route exact path="/sign-up" element={<User/>}></Route>
                 <Route exact path='/explorer' element={<Explorer/>}></Route>
@@ -76,6 +76,8 @@ function NavBar () {
                 <Route exact path='/auctions' element={<Auctions/>}></Route>
 
                 <Route exact path='/dashboard' element={<Dashboard/>}></Route>
+
+                <Route path="*" element={<Navigate to="/" replace />}></Route>
             </Routes>
         </BrowserRouter>
     )
