@@ -1,7 +1,7 @@
-import feature1 from "../../../assets/image/landingPage/feature1.png"
-import feature2 from "../../../assets/image/landingPage/feature2.png"
-import feature3 from "../../../assets/image/landingPage/feature3.png"
-import feature4 from "../../../assets/image/landingPage/feature4.png"
+import et_wallet from "../../../assets/image/landingPage/et_wallet.png"
+import et_picture from "../../../assets/image/landingPage/et_picture.png"
+import et_pricetags from "../../../assets/image/landingPage/et_pricetags.png"
+import et_vector from "../../../assets/image/landingPage/et_vector.png"
 
 function Feature() {
     const styles = {
@@ -18,7 +18,27 @@ function Feature() {
         featureTitle: {
             margin: "20px 0",
             fontSize: "28px"
-        }
+        },
+        imgWallet: {
+            padding: '14px 10px',
+            backgroundColor: '#655607',
+            borderRadius: '16px'
+        },
+        imgPicture: {
+            padding: '14px 10px',
+            backgroundColor: ' #00A725',
+            borderRadius: '16px'
+        },
+        imgPricetags: {
+            padding: '14px 10px',
+            backgroundColor: '#FF0000',
+            borderRadius: '16px'
+        },
+        imgVector: {
+            padding: '14px 10px',
+            background: 'linear-gradient(216.56deg, #E250E5 5.32%, #4B50E6 94.32%)',
+            borderRadius: '16px'
+        },
     }
 
     return(
@@ -26,7 +46,7 @@ function Feature() {
             <h1>Purchasing & Marketing Your NFTs with odyssey venture is simple!</h1>
             <div style={styles.featureCover}>
                 <div style={styles.itemCover}>
-                    <img src={feature1} style={styles.img}></img>
+                    <img src={et_wallet} style={styles.imgWallet}></img>
                     <br></br>
                     <p style={styles.featureTitle}>connect your wallet</p>
                     <p style={styles.info}>
@@ -34,7 +54,7 @@ function Feature() {
                     </p>
                 </div>
                 <div style={styles.itemCover}>
-                    <img src={feature1} style={styles.img}></img>
+                    <img src={et_picture} style={styles.imgPicture}></img>
                     <br></br>
                     <p style={styles.featureTitle}>Purchase Nfts</p>
                     <p style={styles.info}>
@@ -42,7 +62,7 @@ function Feature() {
                     </p>
                 </div>
                 <div style={styles.itemCover}>
-                    <img src={feature1} style={styles.img}></img>
+                    <img src={et_pricetags} style={styles.imgPricetags}></img>
                     <br></br>
                     <p style={styles.featureTitle}>Sell  your NFTs</p>
                     <p style={styles.info}>
@@ -51,7 +71,7 @@ function Feature() {
                     </p>
                 </div>
                 <div style={styles.itemCover}>
-                    <img src={feature1} style={styles.img}></img>
+                    <img src={et_vector} style={styles.imgVector}></img>
                     <br></br>
                     <p style={styles.featureTitle}> create a collection or 1/1</p>
                     <p style={styles.info}>
