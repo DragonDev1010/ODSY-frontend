@@ -21,7 +21,8 @@ function SignIn() {
     useEffect(() => {
         if(walletContext.wallet !== null) {
             getUserInfo()
-            setWalAddr(walletContext.wallet)
+            let abbre = walletContext.wallet.substr(0, 6) + ' . . . ' + walletContext.wallet.substr(-4)
+            setWalAddr(abbre)
         }
     }, [walletContext])
     return (
@@ -29,7 +30,7 @@ function SignIn() {
             <Link to="/create"><button className='normal'>Create</button></Link>
             {
                 walletContext.wallet !== null ?
-                <Link to="/signin"><button className='normal'>{walletContext.wallet}</button></Link>
+                <Link to="/signin"><button className='normal'>{walAddr}</button></Link>
                 :
                 <Link to="/signin"><button className='normal'>Sign In</button></Link>
             }
