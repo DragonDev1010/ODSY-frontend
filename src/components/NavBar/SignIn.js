@@ -28,12 +28,23 @@ function SignIn() {
     return (
         <div className="signIn">
             <Link to="/create"><button className='normal'>Create</button></Link>
-            {
-                walletContext.wallet !== null ?
-                <Link to="/signin"><button className='normal'>{walAddr}</button></Link>
-                :
-                <Link to="/signin"><button className='normal'>Sign In</button></Link>
-            }
+            <Link to="/signin" className="signInCover">
+                <div>
+                {
+                    walletContext.wallet !== null ?
+                    <button className='normal'>{walAddr}</button>
+                    :
+                    <button className='normal'>Sign In</button>
+                }
+                    <div className="userProfileCover">
+                        <p>profile</p>
+                        <p>favorites</p>
+                        <p>watchlist</p>
+                        <p>my collections</p>
+                        <p>setting</p>
+                    </div>
+                </div>
+            </Link>
         </div>
     )
 }

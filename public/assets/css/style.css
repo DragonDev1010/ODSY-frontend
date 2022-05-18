@@ -121,7 +121,29 @@ input:focus, select:focus {outline: none;}
     justify-content: space-between;
     gap: 30px;
 }
-
+.navBar .signIn .userProfileCover {
+    display: none;
+    text-align: left;
+    font-family: 'Urbanist';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    text-transform: capitalize;
+    color: #FFFFFE;
+    border: 2px solid #ffbd0c;
+    border-radius: 10px;
+    margin-top: 20px;
+    position: relative;
+    background: #000000a3;
+}
+.navBar .signIn .userProfileCover p {
+    padding: 10px;
+    border-bottom: 1px solid #ffbd0c;
+}
+.navBar .signIn .signInCover:hover .userProfileCover {
+    display: block;
+}
 /* Landing Page Banner Section Start */
 section.topCollections {margin-top: 50px;}
 section.upcoming {margin-top: 77px;}
