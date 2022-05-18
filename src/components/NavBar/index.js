@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import Logo from "./Logo"
 import SignIn from "./SignIn"
 import Router from "./Router"
-import User from "../../pages/user";
 import Home from "../../pages/home";
 import Create from "../../pages/create/Create"
 import Explorer from '../../pages/explorer/Explorer';
@@ -65,7 +64,6 @@ function NavBar () {
             <Routes>
                 <Route exact path="/" element={<Home/>}></Route>
                 <Route exact path="/create" element={<Create/>}></Route>
-                <Route exact path="/sign-up" element={<User/>}></Route>
                 <Route exact path='/explorer' element={<Explorer/>}></Route>
                 <Route exact path='/exclusives' element={<Exclusives/>}></Route>
                 <Route exact path='/signin' element={<WalletConn/>}></Route>
