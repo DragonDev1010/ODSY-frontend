@@ -19,7 +19,7 @@ function SignIn() {
             })
     }
     useEffect(() => {
-        if(walletContext.wallet !== null) {
+        if(walletContext.wallet !== null && walletContext.wallet !== undefined) {
             getUserInfo()
             let abbre = walletContext.wallet.substr(0, 6) + ' . . . ' + walletContext.wallet.substr(-4)
             setWalAddr(abbre)
@@ -37,7 +37,13 @@ function SignIn() {
                     <button className='normal'>Sign In</button>
                 }
                     <div className="userProfileCover">
-                        <p>profile</p>
+                        {
+                            walletContext.wallet !== null ?
+                            <Link to={'/user/' + walletContext.wallet}><p>profile</p></Link>
+                            :
+                            <Link to='/signin'><p>profile</p></Link>
+                        }
+                        
                         <p>favorites</p>
                         <p>watchlist</p>
                         <p>my collections</p>
