@@ -29,7 +29,7 @@ function Explorer() {
 
     return(
         <div>
-            <div style={{textAlign:'center', margin:'60px 0 110px'}}>
+            <div style={{textAlign:'center', margin:'80px 0 112px'}}>
                 <img src={pageTitle} style={{}}></img>
             </div>
             <Filter setFilter={setFilter}/>

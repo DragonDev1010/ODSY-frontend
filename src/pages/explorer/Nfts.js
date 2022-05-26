@@ -4,7 +4,8 @@ function Nfts(props) {
     const styles = {
         nftsCover: {
             display: "flex",
-            flexWrap: "wrap"
+            flexWrap: "wrap",
+            justifyContent: 'center'
         }
     }
     return(

@@ -16,33 +16,65 @@ function Item(props) {
     const walContext = useContext(WalletContext)
     const styles = {
         cover: {
-            flexBasis: "20%",
-            padding: "20px",
+            // flexBasis: "20%",
+            width: '346px',
+            padding: "20px 21px 30px 21px",
             display: "flex",
             flexDirection: "column",
-            gap:"10px"
         },
         img: {
             width: "100%",
             background: "#7A798A",
             borderRadius: "18px"
         },
+        auctionCover: {
+            position: 'relative',
+            top: '-49px'
+        },
+        auctionTime: {
+            fontFamily: 'Urbanist',
+            fontStyle: 'normal',
+            fontWeight: '700',
+            fontSize: '14px',
+            lineHeight: '24px',
+            textTransform: 'uppercase',
+
+            display: "inline-flex",
+            alignItems: "center",
+            background: "#14141F",
+            padding: "7px 14px 7px 10px",
+            borderRadius: "10px",
+        },
         colCover: {
             display: "flex",
-            justifyContent: "space-between"
+            justifyContent: "space-between",
+            alignItems: 'center',
+            marginBottom: '24px'
+        },
+        nftTitle: {
+            fontStyle: 'normal',
+            fontWeight: '700',
+            fontSize: '18px',
+            lineHeight: '26px',
+            textTransform: 'capitalize'
         },
         chainLogo: {
-            width: "10%"
+            width: "56px",
+            height: '54px',
+            objectFit: 'cover'
         },
         ownerCover: {
             display: "flex",
-            justifyContent: "space-around"
+            justifyContent: "space-between",
+            marginBottom: '20px'
         },
         ownerAvatar: {
-            width: "20%"
+            width: "47px",
+            height: '45px',
+            borderRadius: '12px'
         },
         owner: {
-
+            paddingRight: '37px'
         },
         buyCover: {
             display: "flex",
@@ -52,12 +84,17 @@ function Item(props) {
             fontFamily: 'Urbanist',
             fontStyle: 'normal',
             fontWeight: '400',
-            color: '#e4dfdf'
+            fontSize: '13px',
+            lineHeight: '20px',
+            color: '#8A8AA0',
         },
         normal: {
             fontFamily: 'Urbanist',
             fontStyle: 'normal',
             fontWeight: '700',
+            fontSize: '15px',
+            lineHeight: '22px',
+            color: '#EBEBEB'
         },
         unknownName: {
             fontFamily: 'Urbanist',
@@ -72,8 +109,6 @@ function Item(props) {
             background: "#14141F",
             padding: "5px",
             borderRadius: "10px",
-            position: "relative",
-            top: "-40px"
         },
         bidTimeCoverHide: {
             width: "70%",
@@ -194,8 +229,8 @@ function Item(props) {
         let { total, hours, minutes, seconds } = getTimeRemaining(e);
         if (total >= 0) {
             setTimer(
-                (hours > 9 ? hours : '0' + hours) + ':' +
-                (minutes > 9 ? minutes : '0' + minutes) + ':'
+                (hours > 9 ? hours : '0' + hours) + ' : ' +
+                (minutes > 9 ? minutes : '0' + minutes) + ' : '
                 + (seconds > 9 ? seconds : '0' + seconds)
             )
         }
@@ -254,7 +289,61 @@ function Item(props) {
     return(
         <div style={styles.cover}>
             <img src={nftImg} style={styles.img}/>
-            {
+            <div style={props.nft.saleMethod == 1 ? styles.auctionCover : {}}>
+                {
+                    props.nft.saleMethod == 1 ?
+                    <div style={styles.auctionTime}>
+                        <span>{timer}</span>
+                        <span style={{margin: '0 5px'}}>LEFT</span>
+                        <img src={bidFlame} style={styles.flameLogo} alt=""/>
+                    </div>
+                    :
+                    ""
+                }
+                <div style={styles.colCover}>
+                    <span style={styles.nftTitle}>{props.nft.title}</span>
+                    <img src={chainLogo} style={styles.chainLogo}></img>
+                </div>
+                <div style={styles.ownerCover}>
+                    <img src={ownerAvatar} style={styles.ownerAvatar}></img>
+                    <div style={styles.owner}>
+                        <p style={styles.heading}>Owned By</p>
+                        {
+                            ownerName !== null ?
+                            <p style={styles.normal}>{ownerName}</p>
+                            :
+                            <p style={styles.unknownName}>Unknown</p>
+                        }
+                    </div>
+                    <div style={styles.bidPrice}>
+                        {
+                            props.nft.saleMethod == 0 ?
+                            <p style={styles.heading}>Price:</p>
+                            :
+                            <p style={styles.heading}>Highest Bid:</p>
+                        }
+                        <p style={styles.normal}>{price} {chainName}</p>
+                    </div>
+                </div>
+                <div style={styles.buyCover}>
+                    {
+                        props.nft.saleMethod == 0 ?
+                        <button className="smNormal"><Link to={'/assets/' + props.nft.nft_id}>Buy Now</Link></button>
+                        :
+                        <button className="smNormal"><Link to={'/assets/' + props.nft.nft_id}>Place Bid</Link></button>
+                    }
+                    <button className="favBtn" onClick={toggleFav}>
+                        {
+                            fav ?
+                                <FaIcons.FaHeart/>
+                            :
+                                <FaIcons.FaRegHeart/> 
+                        }
+                        {followers}
+                    </button>
+                </div>
+            </div>
+            {/* {
                 props.nft.saleMethod == 0 ?
                 <div style={styles.bidTimeCoverHide}>
                     <span>{timer} LEFT</span>
@@ -307,7 +396,7 @@ function Item(props) {
                     }
                     {followers}
                 </button>
-            </div>
+            </div> */}
         </div>
     )
 }

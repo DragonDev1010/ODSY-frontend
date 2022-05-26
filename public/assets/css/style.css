@@ -18,9 +18,10 @@ button.normal {
     border-radius: 30px;
     background: none;
     
+    font-family: 'Urbanist';
     font-style: normal;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 22px;
     text-transform: capitalize;
     color: #FFFFFE;
@@ -34,6 +35,7 @@ button.inverseNormal {
     border-radius: 30px;
     background: #FFBD0C;
     
+    font-family: 'Urbanist';
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
@@ -45,14 +47,15 @@ button.inverseNormal:hover {
     text-shadow: 0px 0px 3.5px black;
 }
 button.smNormal {
-    padding: 5px 10px;
+    padding: 12px 14px 13px 23px;
     border: 1px solid #FFBD0C;
-    border-radius: 10px;
+    border-radius: 30px;
     background: none;
     
+    font-family: 'Urbanist';
     font-style: normal;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 22px;
     text-transform: capitalize;
     color: white;
@@ -64,10 +67,15 @@ button.favBtn {
     background-color: #14141F;
     border-radius: 10px;
     border: none;
-    padding: 5px 15px;
+    padding: 8px 12px;
     display: flex;
     gap: 10px;
     align-items: center;
+    font-family: 'Urbanist';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
 }
 input:focus, select:focus {outline: none;}
 .title { color: #FFBD0C; margin-bottom: 30px;}
@@ -236,8 +244,8 @@ section.topSellers .topSeller .info .balance {
 /* Landing Page Top Collectors Section End */
 
 /* Filter Start */
-.filterCover { width: 10%; }
-.filterCover button.normal {width: 100%;padding: 10px 0;}
+.filterCover { width: 13%; }
+.filterCover button.normal {width: 100%;padding: 13px 0;}
 .filterCover .dropbtn {
     background-color: #4CAF50;
     color: white;

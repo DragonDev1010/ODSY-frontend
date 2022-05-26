@@ -61,7 +61,7 @@ function NavBar () {
                 <Router/>
                 <SignIn/>
             </header>
-            <p>{msgContext.message}</p>
+            {/* <p>{msgContext.message}</p> */}
             <Routes>
                 <Route exact path="/" element={<Home/>}></Route>
                 <Route exact path="/create" element={<Create/>}></Route>
