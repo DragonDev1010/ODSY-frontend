@@ -109,23 +109,75 @@ function Filter(props) {
 	}
     return(
 		<div style={{display: "flex", justifyContent: "center", gap: '22px', marginBottom: '160px'}}>
-			<div className = "filterCover">
+			{/* <div className = "filterCover">
 				<button className = "normal">
 					{chain === null ? 'Blockchain' : parseChain(chain)}
 				</button>
 				<div className = "dropContent">
 					<button onClick={() => { setChain(null)}}>Reset</button>
-					<button onClick={() => { setChain(0)}}> <img src= {bscLogo} width="20" height="15"/> BSC</button>
-					<button onClick={() => { setChain(1)}}> <img src= {solLogo} width="20" height="15"/> Solana</button>
-					<button onClick={() => { setChain(2)}}> <img src= {ethLogo} width="20" height="15"/> ETH</button>
-					<button onClick={() => { setChain(3)}}> <img src= {polyLogo} width="20" height="15"/> Poly</button>
+					<button onClick={() => { setChain(0)}}>
+						<div>
+							<img src= {bscLogo} width="29" height="32"/> 
+							<span>BSC</span>
+						</div>
+					</button>
+					<button onClick={() => { setChain(1)}}>
+						<div>
+							<img src= {solLogo} width="29" height="32"/> 
+							<span>Solana</span>
+						</div>
+					</button>
+					<button onClick={() => { setChain(2)}}>
+						<div>
+							<img src= {ethLogo} width="29" height="32"/> 
+							<span>ETH</span>
+						</div>
+					</button>
+					<button onClick={() => { setChain(3)}}>
+						<div>
+							<img src= {polyLogo} width="29" height="32"/> 
+							<span>Poly</span>
+						</div>
+					</button>
+				</div>
+			</div> */}
+			<div className='filterCover'>
+				<button className = "normal">
+					{chain === null ? 'Blockchain' : parseChain(chain)}
+				</button>
+				<div className='dropContent chainFilter'>
+					<button onClick={() => { setChain(0)}}>
+						<div style={{marginLeft: '13px', textAlign: 'left'}}>
+							<img src= {bscLogo} width="29" height="32" style={{marginRight: '30px'}}/> 
+							<span>BSC</span>
+						</div>
+					</button>
+					<button onClick={() => { setChain(1)}}>
+						<div style={{marginLeft: '13px', textAlign: 'left'}}>
+							<img src= {solLogo} width="29" height="32" style={{marginRight: '30px'}}/> 
+							<span>SOL</span>
+						</div>
+					</button>
+					<button onClick={() => { setChain(2)}}>
+						<div style={{marginLeft: '13px', textAlign: 'left'}}>
+							<img src= {ethLogo} width="29" height="32" style={{marginRight: '30px'}}/> 
+							<span>ETH</span>
+						</div>
+					</button>
+					<button onClick={() => { setChain(3)}}>
+						<div style={{marginLeft: '13px', textAlign: 'left'}}>
+							<img src= {polyLogo} width="29" height="32" style={{marginRight: '30px'}}/> 
+							<span>POLY</span>
+						</div>
+					</button>
+
 				</div>
 			</div>
 			<div className = "filterCover">
 				<button className = "normal">
 					{cat === null ? 'Categories' : parseCat(cat)}
 				</button>
-				<div className = "dropContent">
+				<div className = "dropContent normal">
 					<button onClick={() => setCat(null)}>Reset</button>
 					<button onClick={() => setCat(0)}> Art</button>
 					<button onClick={() => setCat(1)}> Artifacts & Relics</button>
@@ -138,7 +190,7 @@ function Filter(props) {
 				<button className = "normal">
 					{rarity === null ? 'Rarity' : parseRarity(rarity)}
 				</button>
-				<div className = "dropContent">
+				<div className = "dropContent normal">
 					<button onClick={() => setRarity(null)}> Reset</button>
 					<button onClick={() => setRarity(0)}> Top 50</button>
 					<button onClick={() => setRarity(1)}> Top 100</button>
@@ -150,7 +202,7 @@ function Filter(props) {
 				<button className = "normal">
 					{priceRange === null ? "Price Range" : priceRange}
 				</button>
-				<div className = "dropContent" style={{padding:'10px'}}>
+				<div className = "dropContent normal" style={{padding:'10px'}}>
 					<span style={{display:"block", padding:'5px 0'}}>Currency:</span>
 					<select style={{width: '90%', color: 'black'}} value={currency} onChange={e=>setCur(+e.target.value)}>
 						<option value="0" style={{color: 'black'}}>ODSY</option>
@@ -178,7 +230,7 @@ function Filter(props) {
 				<button className = "normal">
 					{sort === null ? 'Filter & Sort' : parseSort(sort)}
 				</button>
-				<div className = "dropContent">
+				<div className = "dropContent normal">
 					<button onClick={() => setSort(null)}>Reset</button>
 					<button onClick={() => setSort(0)}>Price:Low to High</button>
 					<button onClick={() => setSort(1)}>Price:High to low</button>
