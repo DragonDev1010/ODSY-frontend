@@ -23,7 +23,10 @@ function CollectList () {
             {method: 'GET'}
         )
             .then( res => res.json() )
-            .then( res => setCollects(res) )
+            .then( res => {
+                if(res.length > 0)
+                    setCollects(res)
+            })
     }
     const handleClick = (e) => {
         fetch(

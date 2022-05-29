@@ -10,7 +10,10 @@ function CollectionList(props) {
             {method: 'GET'}
         )
             .then(res => res.json())
-            .then(data => setCollections(data))
+            .then(data => {
+                if(data.length > 0)
+                    setCollections(data)
+            })
     }, [])
     return (
         <select style={styles.inputField} onChange={e=>props.setCollection(+e.target.value)}>

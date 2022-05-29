@@ -17,7 +17,8 @@ function TopSellers() {
 		)
 			.then( res => res.json() )
 			.then( res => {
-				setData(res)
+				if(res.length > 0)
+					setData(res)
 			})
 	}, [])
 

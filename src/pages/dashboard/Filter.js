@@ -62,7 +62,10 @@ function Filter(props) {
             {method: 'GET'}
         )
             .then(res => res.json())
-            .then(res => setCollectList(res))
+            .then(res => {
+                if(res.length > 0)
+                    setCollectList(res)
+            })
     }, [])
 
     useEffect(() => {

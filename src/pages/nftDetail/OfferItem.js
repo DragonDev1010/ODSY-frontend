@@ -14,10 +14,11 @@ function OfferItem(props) {
             .then(res => res.json())
             .then(
                 data => {
-                    setMakerName(data[0].name)
-
-                    let makerAvatarTemp = getImageData(data[0].avatar.data.data)
-                    setMakerAvatar(makerAvatarTemp)
+                    if(data.length > 0) {
+                        setMakerName(data[0].name)
+                        let makerAvatarTemp = getImageData(data[0].avatar.data.data)
+                        setMakerAvatar(makerAvatarTemp)
+                    }
                 }
             )
     }

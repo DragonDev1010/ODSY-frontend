@@ -15,7 +15,10 @@ function LiveAuction() {
 			{method: 'GET'}
 		)
 			.then( res => res.json() )
-			.then( res => setData(res) )
+			.then( res => {
+				if(res.length > 0)
+					setData(res)
+			})
 	}, [])
     return(
         <section className="liveAuction">

@@ -8,7 +8,8 @@ function OfferList(props) {
         fetch( process.env.REACT_APP_API_BASE_URL + 'offers/' + tokenId )
             .then(res => res.json())
             .then( data => {
-                setOffers(data)
+                if(data.length > 0)
+                    setOffers(data)
             })
     }, [])
     return (

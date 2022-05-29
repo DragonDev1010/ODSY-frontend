@@ -6,7 +6,8 @@ function Activity(props) {
     fetch( process.env.REACT_APP_API_BASE_URL + 'activity/' + tokenId )
         .then(res => res.json())
         .then( data => {
-            setActivities(data)
+            if(data.length > 0)
+                setActivities(data)
         })
     return (
         <>

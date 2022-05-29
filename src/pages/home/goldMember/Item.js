@@ -59,8 +59,10 @@ function Item(props) {
         )
             .then(res => res.json())
             .then(res => {
-                setOwnerName(res[0].name)
-                setOwnerAvatar(res[0].avatar.data.data)
+                if(res.length > 0) {
+                    setOwnerName(res[0].name)
+                    setOwnerAvatar(res[0].avatar.data.data)
+                }
             })
     }
     const getCurrencySymbol = () => {

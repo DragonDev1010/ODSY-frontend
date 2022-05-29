@@ -48,19 +48,21 @@ function NftDetail(props) {
             .then(res => res.json())
             .then(
                 data => {
-                    setTitle(data[0].title)
-                    setSaleOption(data[0].saleMethod)
-                    setCurType(data[0].curType)
-                    setOwnerAddr(data[0].ownerAddr)
-                    setCreatorAddr(data[0].creatorAddr)
-                    setDesc(data[0].description)
-                    setPrice(data[0].price)
-                    setChainId(data[0].chainId)
-                    setFollowerCnt(data[0].followerCnt)
-
-                    let nftImgTemp = getImageData(data[0].img.data.data)
-                    setNftImg(nftImgTemp)
-                    setProperties(data[0].properties)
+                    if(data.length > 0) {
+                        setTitle(data[0].title)
+                        setSaleOption(data[0].saleMethod)
+                        setCurType(data[0].curType)
+                        setOwnerAddr(data[0].ownerAddr)
+                        setCreatorAddr(data[0].creatorAddr)
+                        setDesc(data[0].description)
+                        setPrice(data[0].price)
+                        setChainId(data[0].chainId)
+                        setFollowerCnt(data[0].followerCnt)
+    
+                        let nftImgTemp = getImageData(data[0].img.data.data)
+                        setNftImg(nftImgTemp)
+                        setProperties(data[0].properties)
+                    }
                 }
             )
     }
@@ -78,10 +80,11 @@ function NftDetail(props) {
             .then(res => res.json())
             .then(
                 data => {
-                    setOwnerName(data[0].name)
-
-                    let ownerImgTemp = getImageData(data[0].avatar.data.data)
-                    setOwnerAvatar(ownerImgTemp)
+                    if(data.length > 0) {
+                        setOwnerName(data[0].name)
+                        let ownerImgTemp = getImageData(data[0].avatar.data.data)
+                        setOwnerAvatar(ownerImgTemp)
+                    }
                 }
             )
     }
@@ -90,10 +93,11 @@ function NftDetail(props) {
             .then(res => res.json())
             .then(
                 data => {
-                    setCreatorName(data[0].name)
-
-                    let creatorImgTemp = getImageData(data[0].avatar.data.data)
-                    setCreatorAvatar(creatorImgTemp)
+                    if(data.length > 0) {
+                        setCreatorName(data[0].name)
+                        let creatorImgTemp = getImageData(data[0].avatar.data.data)
+                        setCreatorAvatar(creatorImgTemp)
+                    }
                 }
             )
     }
@@ -101,7 +105,8 @@ function NftDetail(props) {
         fetch(process.env.REACT_APP_API_BASE_URL + 'user/' + localStorage.getItem('connectedWalletAddress'))
             .then( res => res.json())
             .then( data => {
-                setFavNftIds(data[0].favIds)
+                if(data.length > 0)
+                    setFavNftIds(data[0].favIds)
             })
     }
     const isFav = () => {

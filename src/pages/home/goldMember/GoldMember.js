@@ -17,7 +17,10 @@ function GoldMember() {
             { method: 'GET' }
         )
             .then(res => res.json())
-            .then(res => setNfts(res))
+            .then(res => {
+                if(res.length > 0)
+                    setNfts(res)
+            })
     }, [])
     return(
         <section className="goldMember">

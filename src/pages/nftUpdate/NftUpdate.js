@@ -31,8 +31,10 @@ function NftUpdate() {
             fetch(fetchURL)
                 .then(res => res.json())
                 .then(data => {
-                    setSaleMethod(data[0].saleMethod)
-                    setOwner(data[0].ownerAddr)
+                    if(data.length > 0) {
+                        setSaleMethod(data[0].saleMethod)
+                        setOwner(data[0].ownerAddr)
+                    }
                 })
         } catch (e) { msgContext.setMessage(e) }
     }

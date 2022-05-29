@@ -17,7 +17,10 @@ function Upcoming() {
 			}
 		)
 			.then( res => res.json() )
-			.then( res => setCollects(res) )
+			.then( res => {
+				if(res.length > 0)
+					setCollects(res)
+			})
 	}, [])
     return (
         <section className='upcoming'>

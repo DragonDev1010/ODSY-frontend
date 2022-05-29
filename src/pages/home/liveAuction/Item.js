@@ -66,10 +66,12 @@ function Item(props) {
         fetch(process.env.REACT_APP_API_BASE_URL + 'user/' + props.data.ownerAddr)
             .then( res => res.json())
             .then( data => {
-                setFavNftIds(data[0].favIds)
-                setOwnerName(data[0].name)
-                let avatarTemp = getImageData(data[0].avatar.data.data)
-                setOwnerAvatar(avatarTemp)
+                if(data.length > 0) {
+                    setFavNftIds(data[0].favIds)
+                    setOwnerName(data[0].name)
+                    let avatarTemp = getImageData(data[0].avatar.data.data)
+                    setOwnerAvatar(avatarTemp)
+                }
             })
     }
 

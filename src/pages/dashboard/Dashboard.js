@@ -50,7 +50,10 @@ function Dashboard() {
             }
         )
             .then(res => res.json())
-            .then(res => setData(res))
+            .then(res => {
+                if(data.length > 0)
+                    setData(res)
+            })
     }
 
     useEffect( async () => {

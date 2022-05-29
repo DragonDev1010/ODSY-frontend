@@ -18,7 +18,10 @@ function Auctions() {
 
             fetch(fetchURL)
                 .then(res => res.json())
-                .then(res => setNfts([...res]))
+                .then(res => {
+                    if(res.length > 0)
+                        setNfts([...res])
+                })
         } catch (e) {
             console.error(e)
         }
