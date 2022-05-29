@@ -7,6 +7,7 @@ function App() {
 	return (
 		<WalletContext.Provider value={WalletContextProps()}>
 			<MessageContext.Provider value={MessageContextProps()}>
+				<p>Hosting Branch</p>
 				<NavBar/>
 				<Footer/>
 			</MessageContext.Provider>
