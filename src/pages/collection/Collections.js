@@ -39,7 +39,8 @@ function Collections() {
         fetch(process.env.REACT_APP_API_BASE_URL + 'collects')
             .then(res => res.json())
             .then(data => {
-                setCollectionList(data)
+                if(data.length > 0)
+                    setCollectionList(data)
             })
     }, [])
     return(
