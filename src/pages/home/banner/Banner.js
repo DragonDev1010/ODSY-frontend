@@ -25,7 +25,10 @@ function Banner() {
             }
         )
             .then( res => res.json() )
-            .then( data => setNfts(data) )
+            .then( data => {
+                if(data.length > 0)
+                    setNfts(data)
+            })
     }, [])
 
     return (
