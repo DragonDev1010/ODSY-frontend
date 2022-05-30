@@ -183,7 +183,7 @@ section.topSellers .topSeller {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 50px;
+    gap: 20px;
     width: 100%;
     padding: 0 10%;
 }
@@ -192,8 +192,8 @@ section.topSellers .topSeller img {
     background: white;
     border: 1px solid grey;
     border-radius: 30px;
-    width: 150px;
-    height: 150px;
+    width: 128px;
+    height: 156px;
     object-fit: cover;
 }
 section.topCollections .collection .verified:after,
@@ -226,6 +226,14 @@ section.topSellers .topSeller .info {
 section.topCollections .collection .info .name,
 section.topSellers .topSeller .info .name {
     color: #FFBD0C;
+    font-family: 'Urbanist';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 26px;
+    /* or 162% */
+
+    text-align: center;
 }
 
 section.topCollections .collection .info .balance,
@@ -504,8 +512,20 @@ input[type="text"]::placeholder {
 }
 /* Admin Dashboard styling End */
 /* react-elastic-carousel styling start */
+.rec.rec-carousel-wrapper {
+    padding: 0 6px;
+}
 .rec-carousel-wrapper .rec-carousel .rec-arrow {
     background: white;
     color: #FFBD0C;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    font-size: inherit;
+    min-width: 30px;
+    line-height: inherit;
+}
+.rec.rec-pagination {
+    display: none;
 }
 /* react-elastic-carousel styling end */
