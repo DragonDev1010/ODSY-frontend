@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import bscLogo from '../../../assets/image/explorerPage/bscLogo.svg'
+import bscLogo from '../../../assets/image/explorerPage/bscLogo.png'
 import solLogo from '../../../assets/image/explorerPage/solLogo.png'
 import ethLogo from '../../../assets/image/explorerPage/ethLogo.png'
 import polyLogo from '../../../assets/image/explorerPage/polyLogo.png'

@@ -1,6 +1,6 @@
 import {useState, useEffect, useContext} from 'react'
 import * as FaIcons from 'react-icons/fa'
-import bnbLogo from '../../assets/image/explorerPage/bscLogo.svg'
+import bnbLogo from '../../assets/image/explorerPage/bscLogo.png'
 import {WalletContext} from '../../context/walletContext'
 import { MessageContext } from '../../context/messageContext'
 import Web3 from "web3"
