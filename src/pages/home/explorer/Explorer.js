@@ -1,45 +1,61 @@
-import * as FaIcons from "react-icons/fa"
-import Item from "./Item"
+import { useState, useEffect } from "react"
+import viewMore from '../../../assets/image/landingPage/viewMore.png'
+import Filter from "./Filter"
+import Nfts from "./Nfts"
 
 function Explorer() {
     const styles = {
         viewMoreCover: {
             textAlign: "center",
-            color:"#FFBD0C",
-            marginTop: "30px"
+            marginTop: "30px",
+            fontFamily: 'Urbanist',
+            fontStyle: 'normal',
+            fontWeight: '700',
+            fontSize: '14px',
+            lineHeight: '20px',
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
         }
     }
+
+    const [nfts, setNfts] = useState([])
+    const [filter, setFilter] = useState({})
+    const getNfts = (filter) => {
+        try {
+            let params = new URLSearchParams(filter)
+            let fetchURL = process.env.REACT_APP_API_BASE_URL+'nfts?' + params
+
+            fetch(fetchURL)
+                .then(res => res.json())
+                .then(res => {
+                    let temp = []
+                    if(res.length > 0)
+                        while(temp.length < 8)
+                            temp.push(res[temp.length])
+                        setNfts([...temp])
+                })
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    useEffect(() => {
+        getNfts(filter)
+    }, [filter])
+
     return(
         <section className='explorer'>
             <div className = "title">
 				<h2>Explorer</h2>
-				<button className='normal'>Blockchain</button>
-                <button className='normal'>Categories</button>
-                <button className='normal'>Rarity</button>
-                <button className='normal'>Price Range</button>
-                <button className='normal'>Search All</button>
-                <button className='normal'>Filter & Sort</button>
+                <div style={{width: '100%'}}>
+    				<Filter setFilter={setFilter}/>
+                </div>
 			</div>
-            <div className = "carouselCover">
-				<button className = "main__nav main__nav--prev" data-nav="#explorer" type="button">
-					<FaIcons.FaAngleLeft/>
-				</button>
-
-				<div className = "main__carousel main__carousel--explorer owl-carousel" id="explorer">
-                    <Item/>
-                    <Item/>
-                    <Item/>
-                    <Item/>
-				</div>
-
-				<button className = "main__nav main__nav--next" data-nav="#explorer" type="button">
-					<FaIcons.FaAngleRight />
-				</button>
-			</div>
+            <Nfts nfts={nfts}/>
             <div style={styles.viewMoreCover}>
-                <span>View More</span>
+                <span style={{color: '#FFBD0C'}}>View More</span>
                 <br/>
-                <FaIcons.FaCaretDown/>
+                <img src={viewMore}/>
             </div>
         </section>
     )
