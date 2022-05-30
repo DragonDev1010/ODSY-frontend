@@ -11,16 +11,42 @@ function Router() {
                 <Link to="/exclusives" className="routerListItemLink">V.I.P.</Link>
             </li>
             <li className="routerListItem">
-                <Link to="/community" className="routerListItemLink">
-                    Community
-                    <FaIcons.FaCaretDown/> 
-                </Link>
+                <div className="routerCommunity">
+                    <Link to="/community" className="routerListItemLink">
+                        Community
+                        <FaIcons.FaCaretDown/> 
+                    </Link>
+                    <div className="routerDropdownCover routerDropdownCommunity">
+                        <Link to="">
+                            <p className="routerDropdownItem">Twitter</p>
+                        </Link>
+                        <Link to="">
+                            <p className="routerDropdownItem">Telegram</p>
+                        </Link>
+                        <Link to="">
+                            <p className="routerDropdownItem">Instagram</p>
+                        </Link>
+                    </div>
+                </div>
             </li>
             <li className="routerListItem">
-                <Link to="/activity" className="routerListItemLink">
-                    Activity
-                    <FaIcons.FaCaretDown/>   
-                </Link>
+                <div className="routerActivity">
+                    <Link to="/activity" className="routerListItemLink">
+                        Activity
+                        <FaIcons.FaCaretDown/>   
+                    </Link>
+                    <div className="routerDropdownCover routerDropdownActivity">
+                        <Link to="">
+                            <p className="routerDropdownItem">Transactions</p>
+                        </Link>
+                        <Link to="">
+                            <p className="routerDropdownItem">Recent Bids</p>
+                        </Link>
+                        <Link to="">
+                            <p className="routerDropdownItem">Latest Listings</p>
+                        </Link>
+                    </div>
+                </div>
             </li>
             <li className="routerListItem">
                 <Link to="/explorer" className="routerListItemLink">Explore</Link>

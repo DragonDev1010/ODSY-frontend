@@ -98,7 +98,10 @@ input:focus, select:focus {outline: none;}
     display: flex;
     justify-content: space-between;
 }
-
+.navBar .routerList .routerListItem {
+    width: calc(100%/6);
+    text-align: left;
+}
 .navBar .routerList .routerListItem .routerListItemLink {
     font-family: 'Urbanist';
     font-style: normal;
@@ -115,7 +118,42 @@ input:focus, select:focus {outline: none;}
 .navBar .routerList .routerListItem .routerListItemLink:hover {
     text-shadow: 0px 0px 3.5px #FFFFFE;
 }
+.routerList .routerListItem .routerDropdownCover {
+    display: none;
+    position: relative;
+    margin-top: 5px;
+    background-color: black;
+    border: 0.5px solid #C4B000;
+    border-radius: 10px;
 
+}
+.routerList .routerListItem .routerDropdownCover .routerDropdownItem {
+    padding: 25px 0;
+    text-align: center;
+}
+.routerList .routerListItem .routerDropdownCover a:not(:last-child) .routerDropdownItem {
+    border-bottom: 1px solid white;
+}
+
+.routerList .routerListItem .routerDropdownCover .routerDropdownItem p {
+    font-family: 'Urbanist';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    text-transform: capitalize;
+    color: #FFFFFE;
+}
+.routerList .routerListItem .routerDropdownCover .routerDropdownItem:hover {
+    text-shadow: 0px 0px 3.5px #fffffe;
+    background-image: linear-gradient(to right, red , yellow);
+}
+.routerList .routerCommunity:hover .routerDropdownCommunity {
+    display: block;
+}
+.routerList .routerActivity:hover .routerDropdownActivity {
+    display: block;
+}
 .navBar .signIn {
     display: flex;
     justify-content: space-between;
