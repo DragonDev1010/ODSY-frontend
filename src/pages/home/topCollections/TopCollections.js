@@ -9,15 +9,6 @@ function TopCollections() {
 	const goTo = (id) => {
 		carousel.goTo(Number(id))
 	}
-	const carouselArrow = ({ type, onClick, isEdge }) => {
-		// const pointer = type === consts.PREV ? '<' : '>'
-		const pointer = type == 'PREV' ? '<' : '>'
-		return (
-			<button className='rec-arrow' onClick={onClick} disabled={isEdge}>
-				{pointer}
-			</button>
-		)
-	}
 	useEffect(() => {
 		fetch(
 			process.env.REACT_APP_API_BASE_URL + 'collects/',
@@ -46,7 +37,6 @@ function TopCollections() {
 						goTo(0)
 					}
 				}}
-				// renderArrow={carouselArrow}
 			>
 				{
 					data && 
