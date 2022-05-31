@@ -355,6 +355,7 @@ section.topSellers .topSeller .info .balance {
 
 .filterCover:hover .dropContent {
     display: block;
+    background-color: #0d0d11;
 }
 /* Filter End */
 input[type="text"]::placeholder {  
