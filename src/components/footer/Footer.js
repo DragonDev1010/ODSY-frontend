@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa"
 import logo from "../../assets/image/navbar/logo.png"
 import styles from './footerStyles'
@@ -39,7 +40,7 @@ function Footer() {
             <div style={styles.columnCover}>
                 <div style={styles.title}>Company</div>
                 <div style={styles.links}>
-                    <a href="">About Us</a>
+                    <a href="/aboutus">About Us</a>
                     <a href="">Contact Us</a>
                 </div>
             </div>

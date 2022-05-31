@@ -19,6 +19,7 @@ import {MessageContext} from '../../context/messageContext'
 import { WalletContext } from '../../context/walletContext';
 import MetamaskConnect from '../../actions/metamaskConnect'
 import Exclusives from '../../pages/exclusives/Exclusives';
+import AboutUs from '../../pages/aboutUs/AboutUs';
 
 function NavBar () {
     const msgContext = useContext(MessageContext)
@@ -74,7 +75,7 @@ function NavBar () {
                 <Route exact path='/collections' element={<Collections/>}></Route>
                 <Route exact path='/collection/:collectId' element={<CollectionDetail/>}></Route>
                 <Route exact path='/auctions' element={<Auctions/>}></Route>
-
+                <Route exact path='/aboutus' element={<AboutUs/>}></Route>
                 <Route exact path='/dashboard' element={<Dashboard/>}></Route>
 
                 <Route path="*" element={<Navigate to="/" replace />}></Route>
