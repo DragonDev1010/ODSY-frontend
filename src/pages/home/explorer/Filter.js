@@ -115,10 +115,10 @@ function Filter(props) {
 				</button>
 				<div className = "dropContent">
 					<button onClick={() => { setChain(null)}}>Reset</button>
-					<button onClick={() => { setChain(0)}}> <img src= {bscLogo} width="20" height="15"/> BSC</button>
-					<button onClick={() => { setChain(1)}}> <img src= {solLogo} width="20" height="15"/> Solana</button>
-					<button onClick={() => { setChain(2)}}> <img src= {ethLogo} width="20" height="15"/> ETH</button>
-					<button onClick={() => { setChain(3)}}> <img src= {polyLogo} width="20" height="15"/> Poly</button>
+					<button style={{textAlign: 'left'}} onClick={() => { setChain(0)}}> <img style={{width: '30px', height: '30px', margin: '0 20px 0 4px'}} src= {bscLogo}/> BSC</button>
+					<button style={{textAlign: 'left'}} onClick={() => { setChain(1)}}> <img style={{width: '30px', height: '30px', margin: '0 20px 0 4px'}} src= {solLogo}/> Solana</button>
+					<button style={{textAlign: 'left'}} onClick={() => { setChain(2)}}> <img style={{width: '30px', height: '30px', margin: '0 20px 0 4px'}} src= {ethLogo}/> ETH</button>
+					<button style={{textAlign: 'left'}} onClick={() => { setChain(3)}}> <img style={{width: '30px', height: '30px', margin: '0 20px 0 4px'}} src= {polyLogo}/> Poly</button>
 				</div>
 			</div>
 			<div className = "filterCover">
