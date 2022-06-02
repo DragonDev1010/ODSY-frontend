@@ -85,7 +85,17 @@ const styles = {
     },
     formInput: {
         margin: "20px 0 20px 0"
-    }
+    },
+    mobileCreateCover: {
+        width: '100%',
+        padding: '0 6px'
+    },
+    mobilePreviewImg: {
+        background: 'grey',
+        width: '70%',
+        borderRadius: '20px',
+        margin: '10px 15%',
+    },
 }
 
 export default styles
