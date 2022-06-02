@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import Logo from "./Logo"
 import SignIn from "./SignIn"
 import Router from "./Router"
+import BarsMenu from './BarsMenu'
 import Home from "../../pages/home";
 import Create from "../../pages/create/Create"
 import Explorer from '../../pages/explorer/Explorer';
@@ -20,8 +21,8 @@ import { WalletContext } from '../../context/walletContext';
 import MetamaskConnect from '../../actions/metamaskConnect'
 import Exclusives from '../../pages/exclusives/Exclusives';
 import AboutUs from '../../pages/aboutUs/AboutUs';
-
-function NavBar () {
+import * as FaIcons from 'react-icons/fa'
+function NavBar (props) {
     const msgContext = useContext(MessageContext)
     const walContext = useContext(WalletContext)
     
@@ -56,30 +57,51 @@ function NavBar () {
 	})
     return (
         <BrowserRouter>
-            <header className="navBar">
-                <Logo/>
+            <header className="desktop navBar">
+                <Logo isMobile={false}/>
                 <Router/>
                 <SignIn/>
             </header>
-            <p>{msgContext.message}</p>
-            <Routes>
-                <Route exact path="/" element={<Home/>}></Route>
-                <Route exact path="/create" element={<Create/>}></Route>
-                <Route exact path='/explorer' element={<Explorer/>}></Route>
-                <Route exact path='/exclusives' element={<Exclusives/>}></Route>
-                <Route exact path='/signin' element={<WalletConn/>}></Route>
-                <Route exact path="/assets/:tokenId" element={<NftDetail/>} />
-                <Route exact path="/update/:tokenId" element={<NftUpdate/>} />
-                <Route exact path='/collection/create' element={<CreateCollection/>}></Route>
-                <Route exact path='/signup' element={<Signup/>}></Route>
-                <Route exact path='/collections' element={<Collections/>}></Route>
-                <Route exact path='/collection/:collectId' element={<CollectionDetail/>}></Route>
-                <Route exact path='/auctions' element={<Auctions/>}></Route>
-                <Route exact path='/aboutus' element={<AboutUs/>}></Route>
-                <Route exact path='/dashboard' element={<Dashboard/>}></Route>
+            <div className='mobile'>
+                <header className="navBar">
+                    <Logo isMobile={true}/>
+                    <button onClick={e => {props.setClicked(!props.clicked)}} className='normal'>
+                        <FaIcons.FaBars size={30} />
+                    </button>
+                </header>
+                {
+                    props.clicked ?
+                    <BarsMenu clicked={props.clicked} setClicked={props.setClicked}/>
+                    :
+                    <></>
+                }
+            </div>
+            {
+                props.clicked ?
+                <></>
+                :
+                <>
+                    <p>{msgContext.message}</p>
+                    <Routes>
+                        <Route exact path="/" element={<Home/>}></Route>
+                        <Route exact path="/create" element={<Create/>}></Route>
+                        <Route exact path='/explorer' element={<Explorer/>}></Route>
+                        <Route exact path='/exclusives' element={<Exclusives/>}></Route>
+                        <Route exact path='/signin' element={<WalletConn/>}></Route>
+                        <Route exact path="/assets/:tokenId" element={<NftDetail/>} />
+                        <Route exact path="/update/:tokenId" element={<NftUpdate/>} />
+                        <Route exact path='/collection/create' element={<CreateCollection/>}></Route>
+                        <Route exact path='/signup' element={<Signup/>}></Route>
+                        <Route exact path='/collections' element={<Collections/>}></Route>
+                        <Route exact path='/collection/:collectId' element={<CollectionDetail/>}></Route>
+                        <Route exact path='/auctions' element={<Auctions/>}></Route>
+                        <Route exact path='/aboutus' element={<AboutUs/>}></Route>
+                        <Route exact path='/dashboard' element={<Dashboard/>}></Route>
 
-                <Route path="*" element={<Navigate to="/" replace />}></Route>
-            </Routes>
+                        <Route path="*" element={<Navigate to="/" replace />}></Route>
+                    </Routes>
+                </>
+            }
         </BrowserRouter>
     )
 }
