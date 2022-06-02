@@ -29,7 +29,11 @@ function Upcoming() {
 			</div>
             <Carousel 
 				ref = { ref => (carousel = ref)}
-				itemsToShow={3}
+				breakPoints = {[
+					{ width: 1, itemsToShow: 1 },
+					{ width: 850, itemsToShow: 2 },
+					{ width: 1150, itemsToShow: 3, itemsToScroll: 2 },
+				]}
 				disableArrowsOnEnd = {false}
 				onNextStart = { (curItem, nextItem) => {
 					if(curItem.index == nextItem.index) {

@@ -34,7 +34,12 @@ function TopSellers() {
 				:
 				<Carousel 
 					ref = { ref => (carousel = ref)}
-					itemsToShow={4}
+					breakPoints = {[
+						{ width: 1, itemsToShow: 1 },
+						{ width: 550, itemsToShow: 2, itemsToScroll: 2, pagination: false },
+						{ width: 850, itemsToShow: 3 },
+						{ width: 1450, itemsToShow: 5 },
+					]}
 					disableArrowsOnEnd = {false}
 					onNextStart = { (curItem, nextItem) => {
 						if(curItem.index == nextItem.index) {

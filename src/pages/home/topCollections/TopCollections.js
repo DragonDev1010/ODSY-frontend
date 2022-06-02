@@ -30,13 +30,20 @@ function TopCollections() {
 			</div>
 			<Carousel
 				ref = { ref => (carousel = ref)}
-				itemsToShow={5}
 				disableArrowsOnEnd = {false}
 				onNextStart = { (curItem, nextItem) => {
 					if(curItem.index == nextItem.index) {
 						goTo(0)
 					}
 				}}
+				breakPoints = {[
+					{ width: 1, itemsToShow: 1 },
+					{ width: 550, itemsToShow: 2, itemsToScroll: 2, pagination: false },
+					{ width: 850, itemsToShow: 3 },
+					{ width: 1150, itemsToShow: 4, itemsToScroll: 2 },
+					{ width: 1450, itemsToShow: 5 },
+					{ width: 1750, itemsToShow: 6 },
+				]}
 			>
 				{
 					data && 

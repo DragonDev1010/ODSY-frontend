@@ -10,6 +10,7 @@ function Banner() {
     
     const styles = {
         bannerCover: {display: 'flex', width: '100%', height: width/3},
+        mobileBannerCover: {width: '100%', height: width/3},
         bannerCol: {width: 'calc(100%/3)', height: '100%', margin: '0 10px'},
         bannerHalfCol: {width: 'calc(100%/6)', height: '100%', margin: '0 10px'},
         bannerImg: {width: '100%', height: '100%', objectFit: 'cover'},
@@ -35,22 +36,31 @@ function Banner() {
         <section className="banner">
             {
                 nfts !== null ?
-                <div style={styles.bannerCover}>
-                    <div style={styles.bannerCol}>
-                        <Link to={'/assets/' + nfts[ids[0]].nft_id}><img src={getImageData(nfts[ids[0]].img.data.data)} style={styles.bannerImg}/></Link>
+                <>
+                    <div className="desktop" style={{width: '100%'}}>
+                        <div style={styles.bannerCover} >
+                            <div style={styles.bannerCol}>
+                                <Link to={'/assets/' + nfts[ids[0]].nft_id}><img src={getImageData(nfts[ids[0]].img.data.data)} style={styles.bannerImg}/></Link>
+                            </div>
+                            <div style={styles.bannerCol}>
+                                <Link to={'/assets/' + nfts[ids[1]].nft_id}><img src={getImageData(nfts[ids[1]].img.data.data)} style={styles.bannerImg}/></Link>
+                            </div>
+                            <div style={styles.bannerHalfCol}>
+                                <Link to={'/assets/' + nfts[ids[2]].nft_id}><img src={getImageData(nfts[ids[2]].img.data.data)} style={styles.bannerTopSmImg}/></Link>
+                                <Link to={'/assets/' + nfts[ids[3]].nft_id}><img src={getImageData(nfts[ids[3]].img.data.data)} style={styles.bannerBottomSmImg}/></Link>
+                            </div>
+                            <div style={styles.bannerHalfCol}>
+                                <Link to={'/assets/' + nfts[ids[4]].nft_id}><img src={getImageData(nfts[ids[4]].img.data.data)} style={styles.bannerTopSmImg}/></Link>
+                                <Link to={'/assets/' + nfts[ids[5]].nft_id}><img src={getImageData(nfts[ids[5]].img.data.data)} style={styles.bannerBottomSmImg}/></Link>
+                            </div>
+                        </div>
                     </div>
-                    <div style={styles.bannerCol}>
-                        <Link to={'/assets/' + nfts[ids[1]].nft_id}><img src={getImageData(nfts[ids[1]].img.data.data)} style={styles.bannerImg}/></Link>
+                    <div className="mobile" style={{width: '100%'}}>
+                        <div style = {styles.mobileBannerCover} className="mobile">
+                            <Link to={'/assets/' + nfts[ids[0]].nft_id}><img src={getImageData(nfts[ids[0]].img.data.data)} style={styles.bannerImg}/></Link>
+                        </div>
                     </div>
-                    <div style={styles.bannerHalfCol}>
-                        <Link to={'/assets/' + nfts[ids[2]].nft_id}><img src={getImageData(nfts[ids[2]].img.data.data)} style={styles.bannerTopSmImg}/></Link>
-                        <Link to={'/assets/' + nfts[ids[3]].nft_id}><img src={getImageData(nfts[ids[3]].img.data.data)} style={styles.bannerBottomSmImg}/></Link>
-                    </div>
-                    <div style={styles.bannerHalfCol}>
-                        <Link to={'/assets/' + nfts[ids[4]].nft_id}><img src={getImageData(nfts[ids[4]].img.data.data)} style={styles.bannerTopSmImg}/></Link>
-                        <Link to={'/assets/' + nfts[ids[5]].nft_id}><img src={getImageData(nfts[ids[5]].img.data.data)} style={styles.bannerBottomSmImg}/></Link>
-                    </div>
-                </div>
+                </>
                 :
                 ""
             }

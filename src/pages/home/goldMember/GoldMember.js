@@ -31,7 +31,11 @@ function GoldMember() {
             <div className = "carouselCover">
                 <Carousel
                     ref = { ref => (carousel = ref)}
-                    itemsToShow={4}
+                    breakPoints = {[
+                        {width: 1, itemsToShow: 1},
+                        {width: 768, itemsToShow: 2},
+                        {width: 1159, itemsToShow: 3}
+                    ]}
                     disableArrowsOnEnd = {false}
                     onNextStart = { (curItem, nextItem) => {
                         if(curItem.index == nextItem.index) {
