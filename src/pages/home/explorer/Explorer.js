@@ -47,7 +47,7 @@ function Explorer() {
         <section className='explorer'>
             <div className = "title">
 				<h2>Explorer</h2>
-                <div style={{width: '100%'}}>
+                <div style={{width: '100%'}} className='desktop'>
     				<Filter setFilter={setFilter}/>
                 </div>
 			</div>
