@@ -6,10 +6,7 @@ import styles from './footerStyles'
 function Footer(props) {
     return(
         <>
-        {
-            props.clicked ?
-            <></>
-            :
+        <div className="desktop">
             <footer style={styles.footerCover}>
                 <div style={styles.columnCover}>
                     <img src={logo} alt="sd" style={{height: "60px"}}/>
@@ -21,7 +18,6 @@ function Footer(props) {
                         <FaIcons.FaFacebookF/>
                         <FaIcons.FaTwitter/>
                         <FaIcons.FaGoogle/>
-
                     </div>
                 </div>
                 <div style={styles.columnCover}>
@@ -53,7 +49,28 @@ function Footer(props) {
                     <div style={styles.title}>Subscribe To Our Newsletter</div>
                 </div>
             </footer>
+        </div>
+        <div className="mobile">
+        {
+            props.clicked ?
+            <></>
+            :
+            <footer style={styles.footerCover}>
+                <div style={styles.mobileColumnCover}>
+                    <img src={logo} alt="sd" style={{height: "60px"}}/>
+                    <br/>
+                    <p style={{paddingRight: '30px'}}>
+                    Join us on a venture exploring the secrets of the universe, while preserving the sanctity of historical items from ancient antiquity to the furthest edge of the universe.  
+                    </p>
+                    <div style={styles.socialIcons}>
+                        <FaIcons.FaFacebookF/>
+                        <FaIcons.FaTwitter/>
+                        <FaIcons.FaGoogle/>
+                    </div>
+                </div>
+            </footer>
         }
+        </div>
         </>
     )
 }

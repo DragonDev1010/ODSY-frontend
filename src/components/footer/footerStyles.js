@@ -23,6 +23,9 @@ const styles = {
         flexDirection: 'column',
         gap: '30px',
         color: 'red'
+    },
+    mobileColumnCover: {
+        width: '100%'
     }
 }
 
