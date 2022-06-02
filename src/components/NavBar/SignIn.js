@@ -19,7 +19,7 @@ function SignIn() {
             })
     }
     useEffect(() => {
-        if(walletContext.wallet !== null) {
+        if(walletContext.wallet !== null && walletContext.wallet !== undefined) {
             getUserInfo()
             let abbre = walletContext.wallet.substr(0, 6) + ' . . . ' + walletContext.wallet.substr(-4)
             setWalAddr(abbre)

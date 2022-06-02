@@ -1,10 +1,20 @@
 import { Link } from "react-router-dom";
 import * as FaIcons from 'react-icons/fa'
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { WalletContext } from "../../context/walletContext";
 
 function BarsMenu (props) {
     const [showCommunity, setShowCommunity] = useState(false)
     const [showActivity, setShowActivity] = useState(false)
+    const [walAddr, setWalAddr] = useState(null)
+    const walletContext = useContext(WalletContext)
+    
+    useEffect(() => {
+        if(walletContext.wallet !== null && walletContext.wallet !== undefined) {
+            let abbre = walletContext.wallet.substr(0, 6) + ' . . . ' + walletContext.wallet.substr(-4)
+            setWalAddr(abbre)
+        }
+    }, [walletContext])
     return(
         <div className='barMenuCover'>
             <div className="barMenuClose">
@@ -13,6 +23,18 @@ function BarsMenu (props) {
                 </button>
             </div>
             <ul className="mobileRouterList">
+                <li>
+                    <Link to="/signin" className="signInCover">
+                        <div>
+                        {
+                            walletContext.wallet !== null && walletContext.wallet !== undefined?
+                            <button onClick={() => {props.setClicked(!props.clicked)}} className='mobileSideMenuBtn'>{walAddr}</button>
+                            :
+                            <button onClick={() => {props.setClicked(!props.clicked)}} className='mobileSideMenuBtn'>Sign In</button>
+                        }
+                        </div>
+                    </Link>
+                </li>
                 <li>
                     <button onClick={() => {props.setClicked(!props.clicked)}} className='mobileSideMenuBtn'>
                         <Link to="/home" className="">Home</Link>
