@@ -57,11 +57,13 @@ function NavBar (props) {
 	})
     return (
         <BrowserRouter>
-            <header className="desktop navBar">
-                <Logo isMobile={false}/>
-                <Router/>
-                <SignIn/>
-            </header>
+            <div className='desktop'>
+                <header className="navBar">
+                    <Logo isMobile={false}/>
+                    <Router/>
+                    <SignIn/>
+                </header>
+            </div>
             <div className='mobile'>
                 <header className="navBar">
                     <Logo isMobile={true}/>
