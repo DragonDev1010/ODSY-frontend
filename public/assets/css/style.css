@@ -395,6 +395,18 @@ section.topSellers .topSeller .info .balance {
 input[type="text"]::placeholder {  
     padding-left: 20px; 
 } 
+/* NFT Explorer Page Styling Start */
+@media screen and (max-width: 768px) {
+    .nftItemCover {
+        width: 100%;
+    }
+}
+@media screen and (min-width: 768px) {
+    .nftItemCover {
+        width: 25%;
+    }
+}
+/* NFT Explorer Page Styling End */
 /* Make Offer PopUp - NFT Detail Page */
 .makeOfferForm {
     position: fixed;

@@ -14,19 +14,6 @@ import {WalletContext} from '../../../context/walletContext'
 function Item(props) {
     const walContext = useContext(WalletContext)
     const styles = {
-        cover: {
-            width: "100%",
-            padding: "20px",
-            display: "flex",
-            flexDirection: "column",
-            gap:"10px"
-        },
-        mobileCover: {
-            width: '100%',
-            display: "flex",
-            flexDirection: "column",
-            gap:"10px"
-        },
         img: {
             width: "100%",
             background: "#7A798A",
@@ -257,127 +244,65 @@ function Item(props) {
     }, [favNftIds])
 
     return(
-        <>
-            <div className='desktop' style={{width: '25%'}}>
-                <div style={styles.cover}>
-                    <img src={nftImg} style={styles.img}/>
-                    {
-                        props.nft.saleMethod == 0 ?
-                        <div style={styles.bidTimeCoverHide}>
-                            <span>{timer} LEFT</span>
-                            <img src={bidFlame} style={styles.flameLogo} alt=""/>
-                        </div>
-                        :
-                        <div style={styles.bidTimeCover}>
-                            <span>{timer} LEFT</span>
-                            <img src={bidFlame} style={styles.flameLogo} alt=""/>
-                        </div>
-                    }
-                    <div style={styles.colCover}>
-                        <span>{props.nft.title}</span>
-                        <img src={chainLogo} style={styles.chainLogo}></img>
+        <div className='nftItemCover'>
+            <div style={styles.cover}>
+                <img src={nftImg} style={styles.img}/>
+                {
+                    props.nft.saleMethod == 0 ?
+                    <div style={styles.bidTimeCoverHide}>
+                        <span>{timer} LEFT</span>
+                        <img src={bidFlame} style={styles.flameLogo} alt=""/>
                     </div>
-                    <div style={styles.ownerCover}>
-                        <img src={ownerAvatar} style={styles.ownerAvatar}></img>
-                        <div style={styles.owner}>
-                            <p style={styles.heading}>Owned By</p>
-                            {
-                                ownerName !== null ?
-                                <p style={styles.normal}>{ownerName}</p>
-                                :
-                                <p style={styles.unknownName}>Unknown</p>
-                            }
-                        </div>
-                        <div style={styles.bidPrice}>
-                            {
-                                props.nft.saleMethod == 0 ?
-                                <p style={styles.heading}>Price:</p>
-                                :
-                                <p style={styles.heading}>Highest Bid:</p>
-                            }
-                            <p style={styles.normal}>{price} {chainName}</p>
-                        </div>
+                    :
+                    <div style={styles.bidTimeCover}>
+                        <span>{timer} LEFT</span>
+                        <img src={bidFlame} style={styles.flameLogo} alt=""/>
                     </div>
-                    <div style={styles.buyCover}>
+                }
+                <div style={styles.colCover}>
+                    <span>{props.nft.title}</span>
+                    <img src={chainLogo} style={styles.chainLogo}></img>
+                </div>
+                <div style={styles.ownerCover}>
+                    <img src={ownerAvatar} style={styles.ownerAvatar}></img>
+                    <div style={styles.owner}>
+                        <p style={styles.heading}>Owned By</p>
+                        {
+                            ownerName !== null ?
+                            <p style={styles.normal}>{ownerName}</p>
+                            :
+                            <p style={styles.unknownName}>Unknown</p>
+                        }
+                    </div>
+                    <div style={styles.bidPrice}>
                         {
                             props.nft.saleMethod == 0 ?
-                            <button className="smNormal"><Link to={'/assets/' + props.nft.nft_id}>Buy Now</Link></button>
+                            <p style={styles.heading}>Price:</p>
                             :
-                            <button className="smNormal"><Link to={'/assets/' + props.nft.nft_id}>Place Bid</Link></button>
+                            <p style={styles.heading}>Highest Bid:</p>
                         }
-                        <button className="favBtn" onClick={toggleFav}>
-                            {
-                                fav ?
-                                    <FaIcons.FaHeart/>
-                                :
-                                    <FaIcons.FaRegHeart/> 
-                            }
-                            {followers}
-                        </button>
+                        <p style={styles.normal}>{price} {chainName}</p>
                     </div>
                 </div>
-            </div>
-
-            <div className='mobile' style={{width: '100%'}}>
-                <div style={styles.mobileCover}>
-                    <img src={nftImg} style={styles.img}/>
+                <div style={styles.buyCover}>
                     {
                         props.nft.saleMethod == 0 ?
-                        <div style={styles.bidTimeCoverHide}>
-                            <span>{timer} LEFT</span>
-                            <img src={bidFlame} style={styles.flameLogo} alt=""/>
-                        </div>
+                        <button className="smNormal"><Link to={'/assets/' + props.nft.nft_id}>Buy Now</Link></button>
                         :
-                        <div style={styles.bidTimeCover}>
-                            <span>{timer} LEFT</span>
-                            <img src={bidFlame} style={styles.flameLogo} alt=""/>
-                        </div>
+                        <button className="smNormal"><Link to={'/assets/' + props.nft.nft_id}>Place Bid</Link></button>
                     }
-                    <div style={styles.colCover}>
-                        <span>{props.nft.title}</span>
-                        <img src={chainLogo} style={styles.chainLogo}></img>
-                    </div>
-                    <div style={styles.ownerCover}>
-                        <img src={ownerAvatar} style={styles.ownerAvatar}></img>
-                        <div style={styles.owner}>
-                            <p style={styles.heading}>Owned By</p>
-                            {
-                                ownerName !== null ?
-                                <p style={styles.normal}>{ownerName}</p>
-                                :
-                                <p style={styles.unknownName}>Unknown</p>
-                            }
-                        </div>
-                        <div style={styles.bidPrice}>
-                            {
-                                props.nft.saleMethod == 0 ?
-                                <p style={styles.heading}>Price:</p>
-                                :
-                                <p style={styles.heading}>Highest Bid:</p>
-                            }
-                            <p style={styles.normal}>{price} {chainName}</p>
-                        </div>
-                    </div>
-                    <div style={styles.buyCover}>
+                    <button className="favBtn" onClick={toggleFav}>
                         {
-                            props.nft.saleMethod == 0 ?
-                            <button className="smNormal"><Link to={'/assets/' + props.nft.nft_id}>Buy Now</Link></button>
+                            fav ?
+                                <FaIcons.FaHeart/>
                             :
-                            <button className="smNormal"><Link to={'/assets/' + props.nft.nft_id}>Place Bid</Link></button>
+                                <FaIcons.FaRegHeart/> 
                         }
-                        <button className="favBtn" onClick={toggleFav}>
-                            {
-                                fav ?
-                                    <FaIcons.FaHeart/>
-                                :
-                                    <FaIcons.FaRegHeart/> 
-                            }
-                            {followers}
-                        </button>
-                    </div>
+                        {followers}
+                    </button>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
