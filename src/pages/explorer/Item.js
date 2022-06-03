@@ -252,7 +252,7 @@ function Item(props) {
     }, [favNftIds])
 
     return(
-        <div style={styles.cover}>
+        <div className='nftItemCover'>
             <img src={nftImg} style={styles.img}/>
             {
                 props.nft.saleMethod == 0 ?

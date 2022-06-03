@@ -321,7 +321,18 @@ section.topSellers .topSeller .info .balance {
 /* Landing Page Top Collectors Section End */
 
 /* Filter Start */
-.filterCover { width: 10%; }
+@media screen and (max-width: 768px) {
+    .nftExplorerFilter {display: block;}
+    .filterCover { width: 100%; }
+}
+@media screen and (min-width: 768px) {
+    .nftExplorerFilter {
+        display: flex;
+        justify-content: space-evenly;
+        margin-Bottom: 100px;
+    }
+    .filterCover { width: 10%; }
+}
 .filterCover button.normal {width: 100%;padding: 10px 0;}
 .filterCover .dropbtn {
     background-color: #4CAF50;
@@ -397,14 +408,11 @@ input[type="text"]::placeholder {
 } 
 /* NFT Explorer Page Styling Start */
 @media screen and (max-width: 768px) {
-    .nftItemCover {
-        width: 100%;
-    }
+    .nftItemCover { width: 100%; }
 }
 @media screen and (min-width: 768px) {
-    .nftItemCover {
-        width: 25%;
-    }
+    section.explorer .nftItemCover { width: 25%; }
+    div.explorerPage .nftItemCover { width: 20%; }
 }
 .nftItemCover {padding: 10px;}
 /* NFT Explorer Page Styling End */

@@ -31,7 +31,7 @@ function Explorer() {
     }, [filter])
 
     return(
-        <div>
+        <div className="explorerPage">
             <div style={{textAlign:'center', margin:'60px 0 110px'}}>
                 <img src={pageTitle} style={{}}></img>
             </div>

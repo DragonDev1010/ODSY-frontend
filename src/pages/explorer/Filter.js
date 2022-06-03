@@ -108,7 +108,7 @@ function Filter(props) {
 		props.setFilter(query)
 	}
     return(
-		<div style={{display: "flex", justifyContent: "space-evenly", marginBottom: '100px'}}>
+		<div className='nftExplorerFilter'>
 			<div className = "filterCover">
 				<button className = "normal">
 					{chain === null ? 'Blockchain' : parseChain(chain)}
