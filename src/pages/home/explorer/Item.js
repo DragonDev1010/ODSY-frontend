@@ -15,7 +15,7 @@ function Item(props) {
     const walContext = useContext(WalletContext)
     const styles = {
         cover: {
-            width: "25%",
+            width: "100%",
             padding: "20px",
             display: "flex",
             flexDirection: "column",
@@ -258,7 +258,7 @@ function Item(props) {
 
     return(
         <>
-            <div className='desktop' style={{width: '100%'}}>
+            <div className='desktop' style={{width: '25%'}}>
                 <div style={styles.cover}>
                     <img src={nftImg} style={styles.img}/>
                     {
