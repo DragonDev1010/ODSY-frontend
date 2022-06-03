@@ -1,5 +1,5 @@
 import logoTxt from "../../assets/image/navbar/logo-txt.png"
-import logoImg from "../../assets/image/OV-Logo.png"
+import logoImg from "../../assets/image/OV-Logo.jpg"
 function Logo(props) {
     return(
         <div className="logo">
