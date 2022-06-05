@@ -200,15 +200,6 @@ function NftDetail(props) {
 
     useEffect( () => { getCreatorInfo(creatorAddr) }, [creatorAddr])
     const styles = {
-        nftDetailCover: {
-            padding: '20px 10% 0 10%'
-        },
-        mainCover: {
-            display: 'flex'
-        },
-        nftImg: {
-            width: '50%'
-        },
         nftInfo: {
             width: '50%'
         },
@@ -229,12 +220,12 @@ function NftDetail(props) {
     }
 
     return(
-        <div style={styles.nftDetailCover}>
-            <div style={styles.mainCover}>
-                <div style={styles.nftImg}>
-                    <img src={nftImg} style={{width:'80%'}}/>
+        <div className="nftDetailCover">
+            <div className='mainCover'>
+                <div className='nftDetailImage'>
+                    <img src={nftImg}/>
                 </div>
-                <div style={styles.nftInfo}>
+                <div className='nftDetailInfo'>
                     <h1>{title}</h1>
                     <div style={{display:'flex', justifyContent:'space-between', margin:'40px 0 0 0'}}>
                         <div style={{display:'flex', gap: '10px'}}>
@@ -248,14 +239,14 @@ function NftDetail(props) {
                     </div>
                     <div style={{display:'flex', margin:'40px 0 0 0'}}>
                         <div style={{display:'flex', width:'50%', justifyContent: 'space-evenly'}}>
-                            <img src={ownerAvatar} style={styles.avatarImg}/>
+                            <img src={ownerAvatar}className='avatarImg'/>
                             <div>
                                 <p>Owned By:</p>
                                 <p>{ownerName}</p>
                             </div>
                         </div>
                         <div style={{display:'flex', width:'50%', justifyContent: 'space-evenly'}}>
-                            <img src={creatorAvatar} style={styles.avatarImg}/>
+                            <img src={creatorAvatar}className='avatarImg'/>
                             <div>
                                 <p>Created By:</p>
                                 <p>{creatorName}</p>
@@ -265,20 +256,20 @@ function NftDetail(props) {
                     <div style={{margin: '40px 0 0 0'}}>
                         {desc}
                     </div>
-                    <div style={{display:'flex', justifyContent:'space-between', margin:'40px 0 0 0'}}>
-                        <div style={styles.priceCover}>
+                    <div className='priceCover'>
+                        <div className='price'>
                             <span style={{color:'#FFBD0C', fontWeight:'normal', marginRight:'20px'}}>{saleOption == 0 ? "Sell Price" : "Highest Bid"}</span>
                             <span style={{fontWeight:'bold'}}>{price}{currency}</span>
                         </div>
-                            {
-                                saleOption == 0?
-                                ""
-                                :
-                                <div style={styles.priceCover}>
-                                    <span style={{color:'#FFBD0C', fontWeight:'normal', marginRight:'20px'}}>Auction Ends In</span>
-                                        <span style={{fontWeight:'bold'}}>04 : 23 : 10 : 39</span>
-                                </div>
-                            }
+                        {
+                            saleOption == 0?
+                            ""
+                            :
+                            <div className='time'>
+                                <span style={{color:'#FFBD0C', fontWeight:'normal', marginRight:'20px'}}>Auction Ends In</span>
+                                    <span style={{fontWeight:'bold'}}>04 : 23 : 10 : 39</span>
+                            </div>
+                        }
                     </div>
                     <div style={{display:'flex', justifyContent:'space-around', margin:'40px 0 0 0'}}>
                         {
@@ -309,10 +300,10 @@ function NftDetail(props) {
                             selectedDetailPad == 0 ? 
                             <OfferList tokenId={tokenId}/>
                             :
-                                selectedDetailPad == 1 ?
-                                <Properties data={properties}/>
-                                :
-                                <About mint={'250'} rarity={'5'}/>
+                            selectedDetailPad == 1 ?
+                            <Properties data={properties}/>
+                            :
+                            <About mint={'250'} rarity={'5'}/>
                         }
                         </div>
                     </div>

@@ -611,6 +611,72 @@ input[type="text"]::placeholder {
     background: none;
 }
 /* Admin Dashboard styling End */
+/* NFT Detail Page Styling Start */
+@media screen and (max-width: 768px) {
+    .nftDetailCover {
+        padding: 3px 6px;
+    }
+    .nftDetailCover .mainCover {
+        display: block;
+    }
+    .nftDetailImage, .nftDetailInfo {
+        width: 100%;
+    }
+    .nftDetailImage img {
+        width: 100%;
+        padding: 5%;
+    }
+    .nftDetailCover .avatarImg {
+        width: 80px;
+        height: 80px;
+        border-radius: 10%;
+    }
+    .nftDetailCover .priceCover {
+        display: block;
+        margin: 10px 0 0 0;
+    }
+    .nftDetailCover .price, .nftDetailCover .time {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px;
+        background: rgb(20, 20, 31);
+        padding: 6px 10px;
+        border-radius: 8px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .nftDetailCover {
+        padding: 20px 10% 0 10%;
+    }
+    .nftDetailCover .mainCover {
+        display: flex;
+    }
+    .nftDetailImage, .nftDetailInfo {
+        width: 50%;
+    }
+    .nftDetailImage img {
+        width: 80%;
+    }
+    .nftDetailCover .avatarImg {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+    }
+    .nftDetailCover .priceCover {
+        display: flex;
+        justify-content: space-between;
+        margin: 40px 0 0 0;
+    }
+    .nftDetailCover .price, .nftDetailCover .time {
+        display: flex;
+        justify-content: space-between;
+        width: 40%;
+        background: rgb(20, 20, 31);
+        padding: 12px 20px;
+        border-radius: 8px;
+    }
+}
+/* NFT Detail Page Styling End */
 /* react-elastic-carousel styling start */
 .rec.rec-carousel-wrapper {
     padding: 0 6px;
