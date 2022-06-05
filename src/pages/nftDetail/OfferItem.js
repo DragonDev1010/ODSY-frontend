@@ -94,8 +94,10 @@ function OfferItem(props) {
     }, [props])
     return (
         <div style={styles.itemCover}>
-            <div style={styles.makerAvatarCover}><img src={makerAvatar} style={styles.makerAvatar}/></div>
-            <div style={styles.nameCover}>
+            <div className='makerAvatarCover'>
+                <img src={makerAvatar} style={styles.makerAvatar}/>
+            </div>
+            <div className='nameCover'>
                 <div style={styles.makerName}>
                     {
                         makerName === null ?
@@ -106,8 +108,8 @@ function OfferItem(props) {
                 </div>
                 <div style={styles.created}>{created}</div>
             </div>
-            <div style={styles.offerState}>{state}</div>
-            <div style={styles.offerPrice}>
+            <div className='offerState'>{state}</div>
+            <div className='offerPrice'>
                 <span>{props.offer.offerPrice} {curSymbol}</span>
             </div>
         </div>

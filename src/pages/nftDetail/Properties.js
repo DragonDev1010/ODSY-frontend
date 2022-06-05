@@ -6,10 +6,8 @@ function Properties(props) {
             display: 'flex',
             flexWrap: 'wrap',
             gap: '10px',
-            justifyContent: 'center'
         },
         propertyCover: {
-            width:'28%',
             border: '1px solid #ff9817',
             borderRadius: '10px',
             padding: '20px',
