@@ -82,12 +82,12 @@ input:focus, select:focus {outline: none;}
 /* Navigation Bar Styling Start */
 @media screen and (max-width: 768px) {
     .navBar .logo {width: 80px; padding: 3px;}
-    .navBar .logo .logoImg {display: block; width: 74px; height: 74px;}
+    .navBar .logo .logoImg {display: block; width: 60px; height: 60px;}
     .navBar .logo .logoTxt {display: none;}
 }
 @media screen and (min-width: 769px) {
     .navBar .logo {width: 80px; padding: 3px;}
-    .navBar .logo .logoImg {display: block; width: 74px; height: 74px;}
+    .navBar .logo .logoImg {display: block; width: 60px; height: 60px;}
     .navBar .logo .logoTxt {display: none;}
     .navBar .routerList {width: calc(100% - 400px)}
     .navBar .signIn {width: 320px; padding: 0px 6px;}
