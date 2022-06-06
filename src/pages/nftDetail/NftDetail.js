@@ -291,9 +291,9 @@ function NftDetail(props) {
                     </div> */}
                     <div className="nftDetailInfoCover">
                         <div className="nftDetailInfoHeader">
-                            <button style={selectedDetailPad == 0?{color:'#e1b70c'}:{}} onClick={e => setSelectedDetailPad(0)}>Offer List</button>
-                            <button style={selectedDetailPad == 1?{color:'#e1b70c'}:{}} onClick={e => setSelectedDetailPad(1)}>Traits/Properties</button>
-                            <button style={selectedDetailPad == 2?{color:'#e1b70c'}:{}} onClick={e => setSelectedDetailPad(2)}>About</button>
+                            <button style={selectedDetailPad == 0?{color:'#5142FC', textShadow: '0px 0px 3.5px #5142FC', borderBottom: '3px solid #5142FC'}:{}} onClick={e => setSelectedDetailPad(0)}>Offer List</button>
+                            <button style={selectedDetailPad == 1?{color:'#5142FC', textShadow: '0px 0px 3.5px #5142FC', borderBottom: '3px solid #5142FC'}:{}} onClick={e => setSelectedDetailPad(1)}>Traits/Properties</button>
+                            <button style={selectedDetailPad == 2?{color:'#5142FC', textShadow: '0px 0px 3.5px #5142FC', borderBottom: '3px solid #5142FC'}:{}} onClick={e => setSelectedDetailPad(2)}>About</button>
                         </div>
                         <div className="nftDetailInfoBody">
                         {

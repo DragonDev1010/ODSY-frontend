@@ -676,7 +676,6 @@ input[type="text"]::placeholder {
         border-radius: 8px;
     }
     .nftDetailInfoCover .nftDetailInfoHeader {
-        gap: 20px;
         margin: 30px 0;
     }
     .nftDetailInfoCover .nftDetailInfoHeader button {
@@ -693,12 +692,18 @@ input[type="text"]::placeholder {
     display: flex;
 }
 .nftDetailInfoCover .nftDetailInfoHeader button {
-    background: none;
-    border: none;
     font-family: 'Urbanist';
     font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    width: calc(100%/3);
+    background: none;
+    border: none;
     text-transform: capitalize;
     color: #FFFFFE;
+    padding-bottom: 10px;
+    border-bottom: 1px white solid;
 }
 .nftDetailInfoCover .nftDetailInfoHeader button:hover {
     color: #e1b60c6b;
