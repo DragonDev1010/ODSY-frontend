@@ -1,14 +1,10 @@
 import logoTxt from "../../assets/image/navbar/logo-txt.png"
 import logoImg from "../../assets/image/OV-Logo.jpg"
-function Logo(props) {
+function Logo() {
     return(
         <div className="logo">
-            {
-                props.isMobile ?
-                <img src={logoImg} className="" alt=""/>
-                :    
-                <img src={logoTxt} className="" alt=""/>
-            }
+            <img src={logoImg} className="logoImg" alt=""/>
+            <img src={logoTxt} className="logoTxt" alt=""/>
         </div>
     )
 }

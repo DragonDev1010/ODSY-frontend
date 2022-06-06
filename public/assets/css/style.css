@@ -79,37 +79,51 @@ button.favBtn {
 input:focus, select:focus {outline: none;}
 .title { color: #FFBD0C; margin-bottom: 30px;}
 
-
+/* Navigation Bar Styling Start */
+@media screen and (max-width: 768px) {
+    .navBar .logo {width: 80px; padding: 3px;}
+    .navBar .logo .logoImg {display: block; width: 74px; height: 74px;}
+    .navBar .logo .logoTxt {display: none;}
+}
+@media screen and (min-width: 769px) {
+    .navBar .logo {width: 80px; padding: 3px;}
+    .navBar .logo .logoImg {display: block; width: 74px; height: 74px;}
+    .navBar .logo .logoTxt {display: none;}
+    .navBar .routerList {width: calc(100% - 400px)}
+    .navBar .signIn {width: 320px; padding: 0px 6px;}
+}
+@media screen and (min-width: 1025px) {
+    .navBar .logo {width: 20%; padding: 3px;}
+    .navBar .logo .logoImg {display: none;}
+    .navBar .logo .logoTxt {display: block; width: 100%;}
+    .navBar .routerList {width: calc(80% - 320px)}
+    .navBar .signIn {width: 320px; padding: 0px 6px;}
+}
+@media screen and (min-width: 1201px) {
+    .navBar .logo {width: 25%; padding: 3px;}
+    .navBar .logo .logoImg {display: none;}
+    .navBar .logo .logoTxt {display: block; width: 100%;}
+    .navBar .routerList {width: calc(75% - 320px)}
+    .navBar .signIn {width: 320px; padding: 0px 6px;}
+}
 .navBar {
     display: flex;
     justify-content: space-between;
     width: 100%;
     height: 80px;
-    padding: 15px 30px;
     background-color: black;
     border-bottom: 2px solid #FFBD0C;
 }
 .navBar .logo {
-    width: 20%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
-@media screen and (min-width: 768px) {
-    .navBar .logo img {
-        width: 80%;
-    }
-}
-@media screen and (max-width: 768px) {
-    .navBar .logo img {
-        width: 50%;
-    }    
-}
+
 
 
 .navBar .routerList {
-    width: 60%;
-    padding: 11px 0 15px 0;
+    padding: 28px 0;
     display: flex;
     justify-content: space-between;
     margin: 0;
@@ -149,7 +163,6 @@ input:focus, select:focus {outline: none;}
     color: #FFBD0C;
 }
 .navBar .routerList .routerListItem {
-    width: calc(100%/6);
     text-align: left;
 }
 .navBar .routerList .routerListItem .routerListItemLink {
@@ -206,9 +219,9 @@ input:focus, select:focus {outline: none;}
     display: block;
 }
 .navBar .signIn {
+    padding: 16px 5px;
     display: flex;
     justify-content: space-between;
-    gap: 30px;
 }
 .navBar .signIn .userProfileCover {
     display: none;
@@ -233,6 +246,8 @@ input:focus, select:focus {outline: none;}
 .navBar .signIn .signInCover:hover .userProfileCover {
     display: block;
 }
+
+/* Navigation Bar Styling End */
 /* Landing Page Banner Section Start */
 section.topCollections {margin-top: 50px;}
 section.upcoming {margin-top: 77px;}
@@ -334,7 +349,7 @@ section.topSellers .topSeller .info .balance {
     .nftExplorerFilter {display: block;}
     .filterCover { width: 100%; }
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
     .nftExplorerFilter {
         display: flex;
         justify-content: space-evenly;
@@ -419,7 +434,7 @@ input[type="text"]::placeholder {
 @media screen and (max-width: 768px) {
     .nftItemCover { width: 100%; }
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
     section.explorer .nftItemCover { width: 25%; }
     div.explorerPage .nftItemCover { width: 20%; }
 }
@@ -644,7 +659,7 @@ input[type="text"]::placeholder {
     .nftDetailInfoBody .offerState {width: 15%}
     .nftDetailInfoBody .offerPrice {width: 20%}
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
     .nftDetailCover {
         padding: 20px 10% 0 10%;
     }
@@ -736,7 +751,7 @@ input[type="text"]::placeholder {
         display: block;
     }
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
     .desktop {
       display: block;
     }

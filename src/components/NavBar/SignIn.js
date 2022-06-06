@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { WalletContext } from "../../context/walletContext";
+import walletIcon from '../../assets/image/navbar/wallet-icon.png'
 
 function SignIn() {
     const [name, setName] = useState(null)
@@ -34,7 +35,7 @@ function SignIn() {
                     walletContext.wallet !== null && walletContext.wallet !== undefined ?
                     <button className='normal'>{walAddr}</button>
                     :
-                    <button className='normal'>Sign In</button>
+                    <button className='normal'>Sign In <img src={walletIcon}/></button>
                 }
                     <div className="userProfileCover">
                         <p>profile</p>

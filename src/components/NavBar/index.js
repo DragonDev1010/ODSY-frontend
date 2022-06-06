@@ -59,14 +59,14 @@ function NavBar (props) {
         <BrowserRouter>
             <div className='desktop'>
                 <header className="navBar">
-                    <Logo isMobile={false}/>
+                    <Logo/>
                     <Router/>
                     <SignIn/>
                 </header>
             </div>
             <div className='mobile'>
                 <header className="navBar">
-                    <Logo isMobile={true}/>
+                    <Logo/>
                     <button onClick={e => {props.setClicked(!props.clicked)}} className='normal'>
                         <FaIcons.FaBars size={30} />
                     </button>

@@ -12,10 +12,10 @@ function Router() {
             </li>
             <li className="routerListItem">
                 <div className="routerCommunity">
-                    <Link to="/community" className="routerListItemLink">
+                    <span className="routerListItemLink">
                         Community
                         <FaIcons.FaCaretDown/> 
-                    </Link>
+                    </span>
                     <div className="routerDropdownCover routerDropdownCommunity">
                         <Link to="">
                             <p className="routerDropdownItem">Twitter</p>
@@ -31,10 +31,10 @@ function Router() {
             </li>
             <li className="routerListItem">
                 <div className="routerActivity">
-                    <Link to="/activity" className="routerListItemLink">
+                    <span className="routerListItemLink">
                         Activity
                         <FaIcons.FaCaretDown/>   
-                    </Link>
+                    </span>
                     <div className="routerDropdownCover routerDropdownActivity">
                         <Link to="">
                             <p className="routerDropdownItem">Transactions</p>
