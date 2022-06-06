@@ -95,10 +95,17 @@ input:focus, select:focus {outline: none;}
     justify-content: flex-start;
     align-items: center;
 }
-
-.navBar .logo img {
-    width: 80%;
+@media screen and (min-width: 768px) {
+    .navBar .logo img {
+        width: 80%;
+    }
 }
+@media screen and (max-width: 768px) {
+    .navBar .logo img {
+        width: 50%;
+    }    
+}
+
 
 .navBar .routerList {
     width: 60%;
