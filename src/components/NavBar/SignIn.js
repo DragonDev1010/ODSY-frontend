@@ -31,7 +31,7 @@ function SignIn() {
             <Link to="/signin" className="signInCover">
                 <div>
                 {
-                    walletContext.wallet !== null ?
+                    walletContext.wallet !== null && walletContext.wallet !== undefined ?
                     <button className='normal'>{walAddr}</button>
                     :
                     <button className='normal'>Sign In</button>
