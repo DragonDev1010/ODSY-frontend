@@ -253,7 +253,9 @@ function Item(props) {
 
     return(
         <div className='nftItemCover'>
-            <img src={nftImg} style={styles.img}/>
+            <Link to={'/assets/' + props.nft.nft_id}>
+                <img src={nftImg} style={styles.img}/>
+            </Link>
             {
                 props.nft.saleMethod == 0 ?
                 <div style={styles.bidTimeCoverHide}>
