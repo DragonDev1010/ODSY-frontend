@@ -250,7 +250,7 @@ section.topCollections {margin-top: 50px;}
 section.upcoming {margin-top: 77px;}
 section.goldMember {margin-top: 25px;}
 section.liveAuction {margin-top: 58px;}
-section.explorer {margin-top: 145px;}
+
 section.topSellers {margin-top: 91px;}
 section.banner {
     display: flex;
@@ -340,7 +340,27 @@ section.topSellers .topSeller .info .balance {
     color: white;
 }
 /* Landing Page Top Collectors Section End */
-
+/* Landing Page Explorer Section Start */
+section.explorer .nftsCover {
+    display: flex;
+    flex-wrap: wrap;
+}
+@media screen and (max-width: 768px) {
+    section.explorer {margin-top: 30px;}
+}
+@media screen and (min-width: 769px) {
+    section.explorer {margin-top: 60px;}
+    section.explorer .nftsCover {margin: 70px 50px 0 60px;}
+}
+@media screen and (min-width: 1025px) {
+    section.explorer {margin-top: 100px;}
+    section.explorer .nftsCover {margin: 100px 80px 0 90px;}
+}
+@media screen and (min-width: 1201px) {
+    section.explorer {margin-top: 145px;}
+    section.explorer .nftsCover {margin: 140px 130px 0px 180px;;}
+}
+/* Landing Page Explorer Section End */
 /* Filter Start */
 @media screen and (max-width: 768px) {
     .nftExplorerFilter {display: block;}
@@ -352,11 +372,11 @@ section.topSellers .topSeller .info .balance {
         justify-content: space-evenly;
         margin-Bottom: 100px;
     }
-    .filterCover { width: 14%; }
+    .filterCover { width: 15%; }
     .filterCover .dropContent {min-width:180px}
 }
 @media screen and (min-width: 1025px) {
-    .filterCover { width: 10%; }
+    .filterCover { width: 12%; }
 }
 @media screen and (min-width: 1201px) {
 }
