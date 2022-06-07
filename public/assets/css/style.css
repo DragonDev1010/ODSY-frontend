@@ -610,9 +610,7 @@ input[type="text"]::placeholder {
     color: white;
     background: none;
 }
-.statusCover, .priceCover, .collectCover, .chainsCover {
-    margin: 50px 5%;
-}
+.statusCover, .priceCover, .collectCover, .chainsCover { margin: 50px 5%; }
 .filterCover .heading button, .collectCover .collectHead button, .chainsCover .chainsHead button {
     width: 100%;
     border: 1px solid #FFBD0C;
@@ -637,21 +635,13 @@ input[type="text"]::placeholder {
     background: #198754;
     border: none;
 }
-.adminDashboard .nftCover .nonSelectedBtn {
-    background: none;
-}
+.adminDashboard .nftCover .nonSelectedBtn { background: none; }
 /* Admin Dashboard styling End */
 /* NFT Detail Page Styling Start */
 @media screen and (max-width: 768px) {
-    .nftDetailCover {
-        padding: 3px 6px;
-    }
-    .nftDetailCover .mainCover {
-        display: block;
-    }
-    .nftDetailImage, .nftDetailInfo {
-        width: 100%;
-    }
+    .nftDetailCover { padding: 3px 6px; }
+    .nftDetailCover .mainCover { display: block; }
+    .nftDetailImage, .nftDetailInfo { width: 100%; }
     .nftDetailImage img {
         width: 100%;
         padding: 5%;
@@ -673,9 +663,7 @@ input[type="text"]::placeholder {
         padding: 6px 10px;
         border-radius: 8px;
     }
-    .nftDetailInfoCover .nftDetailInfoHeader {
-        margin: 10px 0;
-    }
+    .nftDetailInfoCover .nftDetailInfoHeader { margin: 10px 0; }
     .nftDetailInfoCover .nftDetailInfoHeader button {
         font-weight: 700;
         font-size: 22px;
@@ -687,27 +675,47 @@ input[type="text"]::placeholder {
     .nftDetailInfoBody .offerPrice {width: 20%}
 }
 @media screen and (min-width: 769px) {
-    .nftDetailCover {
-        padding: 20px 10% 0 10%;
-    }
-    .nftDetailCover .mainCover {
-        display: flex;
-    }
-    .nftDetailImage, .nftDetailInfo {
-        width: 50%;
-    }
-    .nftDetailImage img {
-        width: 80%;
-    }
+    .nftDetailCover { padding: 20px; }
+    .nftDetailCover .mainCover { display: flex; }
+    .nftDetailImage { width: 45%;}
+    .nftDetailInfo { width: 55%; }
+    .nftDetailImage img { width: 90%; }
     .nftDetailCover .avatarImg {
-        width: 120px;
-        height: 120px;
+        width: 60px;
+        height: 60px;
         border-radius: 50%;
     }
     .nftDetailCover .priceCover {
         display: flex;
         justify-content: space-between;
         margin: 40px 0 0 0;
+    }
+    .nftDetailCover .price, .nftDetailCover .time {
+        display: grid;
+        width: 45%;
+        background: rgb(20, 20, 31);
+        padding: 8px 10px;
+        border-radius: 8px;
+    }
+    .nftDetailInfoCover .nftDetailInfoHeader { margin: 30px 0; }
+    .nftDetailInfoCover .nftDetailInfoHeader button {
+        font-weight: 700;
+        font-size: 33px;
+        line-height: 22px;
+    }
+    .nftDetailInfoBody .makerAvatarCover {width: 55px}
+    .nftDetailInfoBody .nameCover {width: calc(58% - 55px)}
+    .nftDetailInfoBody .offerState {width: 19%}
+    .nftDetailInfoBody .offerPrice {width: 19%}
+}
+@media screen and (min-width: 1025px) {
+    .nftDetailCover { padding: 20px 10% 0 10%; }
+    .nftDetailImage, .nftDetailInfo { width: 50%; }
+    .nftDetailImage img { width: 80%; }
+    .nftDetailCover .avatarImg {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
     }
     .nftDetailCover .price, .nftDetailCover .time {
         display: flex;
@@ -717,18 +725,12 @@ input[type="text"]::placeholder {
         padding: 12px 20px;
         border-radius: 8px;
     }
-    .nftDetailInfoCover .nftDetailInfoHeader {
-        margin: 30px 0;
-    }
-    .nftDetailInfoCover .nftDetailInfoHeader button {
-        font-weight: 700;
-        font-size: 33px;
-        line-height: 22px;
-    }
     .nftDetailInfoBody .makerAvatarCover {width: 10%}
     .nftDetailInfoBody .nameCover {width: 30%}
     .nftDetailInfoBody .offerState {width: 30%}
     .nftDetailInfoBody .offerPrice {width: 30%}
+}
+@media screen and (min-width: 1201px) {
 }
 .nftDetailInfoCover .nftDetailInfoHeader {
     display: flex;

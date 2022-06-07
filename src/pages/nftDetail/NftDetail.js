@@ -285,10 +285,6 @@ function NftDetail(props) {
                             makeOffer && <MakeOfferForm close={setMakeOffer} tokenId = {tokenId} currency={curType}/>
                         }
                     </div>
-                    {/* <div style={{marginTop: '100px'}}>
-                        <h3 style={{marginBottom: '20px'}}>Offer List</h3>
-                        <OfferList tokenId={tokenId}/>
-                    </div> */}
                     <div className="nftDetailInfoCover">
                         <div className="nftDetailInfoHeader">
                             <button style={selectedDetailPad == 0?{color:'#5142FC', textShadow: '0px 0px 3.5px #5142FC', borderBottom: '3px solid #5142FC'}:{}} onClick={e => setSelectedDetailPad(0)}>Offer List</button>
