@@ -7,8 +7,8 @@ function Footer(props) {
     return(
         <>
         <div className="desktop">
-            <footer style={styles.footerCover}>
-                <div style={styles.columnCover}>
+            <footer className="footerCover">
+                <div className="columnCoverOne">
                     <img src={logo} alt="sd" style={{height: "60px"}}/>
                     <br/>
                     <p style={{paddingRight: '30px'}}>
@@ -20,7 +20,7 @@ function Footer(props) {
                         <FaIcons.FaGoogle/>
                     </div>
                 </div>
-                <div style={styles.columnCover}>
+                <div className="columnCoverTwo">
                     <div style={styles.title}>My Account</div>
                     <div style={styles.links}>
                         <a href="">Authors</a>
@@ -29,7 +29,7 @@ function Footer(props) {
                         <a href="">Author Profile</a>
                     </div>
                 </div>
-                <div style={styles.columnCover}>
+                <div className="columnCoverTwo">
                     <div style={styles.title}>Resources</div>
                     <div style={styles.links}>
                         <a href="">Help & Support</a>
@@ -38,14 +38,14 @@ function Footer(props) {
                         <a href="">Activity</a>
                     </div>
                 </div>
-                <div style={styles.columnCover}>
+                <div className="columnCoverTwo">
                     <div style={styles.title}>Company</div>
                     <div style={styles.links}>
                         <a href="/aboutus">About Us</a>
                         <a href="">Contact Us</a>
                     </div>
                 </div>
-                <div style={styles.columnCover}>
+                <div className="columnCoverThree">
                     <div style={styles.title}>Subscribe To Our Newsletter</div>
                 </div>
             </footer>

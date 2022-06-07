@@ -352,7 +352,13 @@ section.topSellers .topSeller .info .balance {
         justify-content: space-evenly;
         margin-Bottom: 100px;
     }
+    .filterCover { width: 14%; }
+    .filterCover .dropContent {min-width:180px}
+}
+@media screen and (min-width: 1025px) {
     .filterCover { width: 10%; }
+}
+@media screen and (min-width: 1201px) {
 }
 .filterCover button.normal {width: 100%;padding: 10px 0;}
 .filterCover .dropbtn {
@@ -432,6 +438,10 @@ input[type="text"]::placeholder {
     .nftItemCover { width: 100%; }
 }
 @media screen and (min-width: 769px) {
+    section.explorer .nftItemCover { width: calc(100%/3); }
+    div.explorerPage .nftItemCover { width: calc(100%/3); }
+}
+@media screen and (min-width: 1025px) {
     section.explorer .nftItemCover { width: 25%; }
     div.explorerPage .nftItemCover { width: 20%; }
 }
@@ -739,7 +749,36 @@ input[type="text"]::placeholder {
     display: none;
 }
 /* react-elastic-carousel styling end */
-
+/* Footer Styling Start */
+footer.footerCover {
+    display: flex;
+    color: white;
+}
+@media screen and (min-width: 769px) {
+    footer.footerCover {
+        padding: 25px
+    }
+    footer.footerCover .columnCoverOne {width: 49%}
+    footer.footerCover .columnCoverTwo {width: 17%}
+    footer.footerCover .columnCoverThree {display: none;}
+}
+@media screen and (min-width: 1025px) {
+    footer.footerCover {
+        padding: 40px
+    }
+    footer.footerCover .columnCoverOne {width: 40%}
+    footer.footerCover .columnCoverTwo {width: 15%}
+    footer.footerCover .columnCoverThree {display: block; width: 15%}
+}
+@media screen and (min-width: 1201px) {
+    footer.footerCover {
+        padding: 50px 20% 50px 10%
+    }
+    footer.footerCover .columnCoverOne, 
+    footer.footerCover .columnCoverTwo, 
+    footer.footerCover .columnCoverThree {display: block; width: 20%;}
+}
+/* Footer Styling End */
 @media screen and (max-width: 768px) {
     .desktop {
         display: none;
