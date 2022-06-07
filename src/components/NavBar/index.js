@@ -83,7 +83,6 @@ function NavBar (props) {
                 <></>
                 :
                 <>
-                    <p>{msgContext.message}</p>
                     <Routes>
                         <Route exact path="/" element={<Home/>}></Route>
                         <Route exact path="/create" element={<Create/>}></Route>

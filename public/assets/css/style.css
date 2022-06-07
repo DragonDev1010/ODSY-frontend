@@ -119,13 +119,10 @@ input:focus, select:focus {outline: none;}
     justify-content: flex-start;
     align-items: center;
 }
-
-
-
 .navBar .routerList {
     padding: 28px 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin: 0;
 }
 .mobile .barMenuCover {
@@ -246,7 +243,7 @@ input:focus, select:focus {outline: none;}
 .navBar .signIn .signInCover:hover .userProfileCover {
     display: block;
 }
-
+.navBar .signIn .signInCover button { min-width: 180px; }
 /* Navigation Bar Styling End */
 /* Landing Page Banner Section Start */
 section.topCollections {margin-top: 50px;}
