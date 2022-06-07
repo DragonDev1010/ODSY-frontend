@@ -26,7 +26,7 @@ function TopCollections() {
         <section className = "topCollections">
 			<div className = "title">
 				<h2>Top Collections</h2>
-				<button className='normal'><Link to={'/collections'}>See All</Link></button>
+				<button className='sectionNormalBtn'><Link to={'/collections'}>See All</Link></button>
 			</div>
 			<Carousel
 				ref = { ref => (carousel = ref)}

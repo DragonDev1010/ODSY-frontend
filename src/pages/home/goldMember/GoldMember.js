@@ -26,7 +26,7 @@ function GoldMember() {
         <section className="goldMember">
             <div className = "title">
 				<h2>Gold Member Exclusives</h2>
-				<button className='normal'>See All</button>
+				<button className='sectionNormalBtn'>See All</button>
 			</div>
             <div className = "carouselCover">
                 <Carousel

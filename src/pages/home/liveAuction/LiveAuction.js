@@ -24,7 +24,7 @@ function LiveAuction() {
         <section className="liveAuction">
             <div className = "title">
 				<h2>Live Auctions</h2>
-				<button className='normal'><Link to={'/auctions'}>See All</Link></button>
+				<button className='sectionNormalBtn'><Link to={'/auctions'}>See All</Link></button>
 			</div>
             <div className = "carouselCover">
 				<Carousel 

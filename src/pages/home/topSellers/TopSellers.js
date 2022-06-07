@@ -26,7 +26,7 @@ function TopSellers() {
         <section className="topSellers">
             <div className = "title">
 				<h2>Top Sellers</h2>
-				<button className='normal'>See All</button>
+				<button className='sectionNormalBtn'>See All</button>
 			</div>
 			{
 				data && data.length > 0 && data.length < 5 ?
