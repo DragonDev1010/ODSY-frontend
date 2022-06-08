@@ -363,6 +363,18 @@ section.topSellers .topSeller .info .balance {
     color: white;
 }
 /* Landing Page Top Collectors Section End */
+/* Landing Page Gold Member Exclusive Section Start */
+section.goldMember .ownerAvatarCover {
+    width: 130px;
+    text-align: center;
+}
+/* Landing Page Gold Member Exclusive Section End */
+/* Landing Page Live Auction Section Start */
+section.liveAuction .ownerAvatarCover {
+    width: 91px;
+    text-align: center;
+}
+/* Landing Page Live Auction Section End */
 /* Landing Page Explorer Section Start */
 section.explorer .nftsCover {
     display: flex;
@@ -382,6 +394,10 @@ section.explorer .nftsCover {
 @media screen and (min-width: 1201px) {
     section.explorer {margin-top: 145px;}
     section.explorer .nftsCover {margin: 140px 130px 0px 180px;;}
+}
+section.explorer .ownerAvatarCover {
+    width: 91px;
+    text-align: center;
 }
 /* Landing Page Explorer Section End */
 /* Filter Start */

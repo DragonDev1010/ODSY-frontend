@@ -41,7 +41,8 @@ function Item(props) {
             marginBottom: "10px"
         },
         avatar: {
-            borderRadius: "18px",
+            borderRadius: "50%",
+            width: '60px',
             height: '60px',
             objectFit: 'cover'
         },
@@ -85,12 +86,14 @@ function Item(props) {
                 <img src={bscLogo} style={styles.logo} alt=""/>
             </div>
             <div style={styles.info}>
+                <div className='ownerAvatarCover'>
                 {
                     ownerAvatar ?
                     <Link to={'/user/' + props.data.ownerAddr}><img src={getImageData(ownerAvatar)} style={styles.avatar}/></Link>
                     :
                     <Link to={'/user/' + props.data.ownerAddr}><img src={defaultImg} style={styles.avatar}/></Link>
                 }
+                </div>
                 <div style={styles.owned}>
                     <span style={{fontFamily: 'Urbanist', fontStyle: 'normal', fontWeight: '400',color: 'rgb(228, 223, 223)'}}>Owned By</span> <br/>
                     <Link to={'/user/' + props.data.ownerAddr}>

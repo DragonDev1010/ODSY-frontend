@@ -169,11 +169,11 @@ function Item(props) {
         },
         ownerCover: {
             display: "flex",
-            justifyContent: "space-around"
+            justifyContent: "space-between"
         },
         ownerAvatar: {
-            width: "80px",
-            height: '80px',
+            width: "60px",
+            height: '60px',
             borderRadius: '50%',
             objectFit: 'cover'
         },
@@ -246,9 +246,11 @@ function Item(props) {
                 <img src={chainLogo} style={styles.chainLogo}></img>
             </div>
             <div style={styles.ownerCover}>
-                <Link to={'/user/' + props.data.ownerAddr}>
-                    <img src={ownerAvatar} style={styles.ownerAvatar}></img>
-                </Link>
+                <div className='ownerAvatarCover'>
+                    <Link to={'/user/' + props.data.ownerAddr}>
+                        <img src={ownerAvatar} style={styles.ownerAvatar}></img>
+                    </Link>
+                </div>
                 <div style={styles.owner}>
                     <p style={styles.heading}>Owned By</p>
                     <Link to={'/user/' + props.data.ownerAddr}>
