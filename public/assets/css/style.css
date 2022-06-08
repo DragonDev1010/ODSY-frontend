@@ -194,12 +194,13 @@ input:focus, select:focus {outline: none;}
 }
 .routerList .routerListItem .routerDropdownCover {
     display: none;
-    position: relative;
+    position: absolute;
     margin-top: 5px;
     background-color: black;
     border: 0.5px solid #C4B000;
     border-radius: 10px;
-
+    width: 110px;
+    left: calc(50% - 55px);
 }
 .routerList .routerListItem .routerDropdownCover .routerDropdownItem {
     padding: 25px 0;
@@ -223,6 +224,7 @@ input:focus, select:focus {outline: none;}
     background-image: linear-gradient(127deg, #e250e5 0%, #4b50e6 100%);
     border-radius: 10px;
 }
+.routerList .routerActivity, .routerList .routerCommunity { position: relative; }
 .routerList .routerCommunity:hover .routerDropdownCommunity {
     display: block;
 }
@@ -422,7 +424,10 @@ section.explorer .nftsCover {
     border: 1px solid #C4B000;
     border-radius: 10px;
     z-index: 1;
-    width: 100%;
+    width: 180px;
+    left: -webkit-calc(50% - 90px);
+    left: -moz-calc(50% - 90px);
+    left: calc(50% - 90px);
 }
 
 .filterCover .dropContent button:not(.priceApplyBtn) {
