@@ -128,7 +128,7 @@ function Filter(props) {
 				<div className = "dropContent">
 					<button onClick={() => setCat(null)}>Reset</button>
 					<button onClick={() => setCat(0)}> Art</button>
-					<button onClick={() => setCat(1)}> Artifacts & Relics</button>
+					<button onClick={() => setCat(1)}> Artifacts</button>
 					<button onClick={() => setCat(2)}> Gaming</button>
 					<button onClick={() => setCat(3)}> Metaverse</button>
 					<button onClick={() => setCat(4)}> Photography</button>
