@@ -185,7 +185,7 @@ input:focus, select:focus {outline: none;}
     display: flex;
     align-items: center;
     gap: 4px;
-    color: white;
+    color: #FFBD0C;
     text-transform: capitalize;
 }
 

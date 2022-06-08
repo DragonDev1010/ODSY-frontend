@@ -14,7 +14,7 @@ function Router() {
                 <div className="routerCommunity">
                     <span className="routerListItemLink">
                         Community
-                        <FaIcons.FaCaretDown/> 
+                        <FaIcons.FaCaretDown fill={'#FFBD0C'}/> 
                     </span>
                     <div className="routerDropdownCover routerDropdownCommunity">
                         <Link to="">
@@ -33,7 +33,7 @@ function Router() {
                 <div className="routerActivity">
                     <span className="routerListItemLink">
                         Activity
-                        <FaIcons.FaCaretDown/>   
+                        <FaIcons.FaCaretDown fill={'#FFBD0C'}/>   
                     </span>
                     <div className="routerDropdownCover routerDropdownActivity">
                         <Link to="">
