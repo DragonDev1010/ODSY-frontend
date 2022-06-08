@@ -22,6 +22,7 @@ import MetamaskConnect from '../../actions/metamaskConnect'
 import Exclusives from '../../pages/exclusives/Exclusives';
 import AboutUs from '../../pages/aboutUs/AboutUs';
 import * as FaIcons from 'react-icons/fa'
+import ApproveUsers from '../../pages/dashboard/ApproveUsers';
 function NavBar (props) {
     const msgContext = useContext(MessageContext)
     const walContext = useContext(WalletContext)
@@ -98,6 +99,7 @@ function NavBar (props) {
                         <Route exact path='/auctions' element={<Auctions/>}></Route>
                         <Route exact path='/aboutus' element={<AboutUs/>}></Route>
                         <Route exact path='/dashboard' element={<Dashboard/>}></Route>
+                        <Route exact path='/dashboard/approveUser' element={<ApproveUsers/>}></Route>
 
                         <Route path="*" element={<Navigate to="/" replace />}></Route>
                     </Routes>

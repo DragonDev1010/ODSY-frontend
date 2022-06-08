@@ -560,8 +560,6 @@ input[type="text"]::placeholder {
     width: 20%;
     border-right: 2px white solid;
 }
-.statusCover {
-}
 .statusRow button, .chainsBtnRow button{
     padding: 10px 0;
     border: 2px solid #FFBD0C;
@@ -588,13 +586,7 @@ input[type="text"]::placeholder {
     color: white;
     text-align: center;
 }
-.priceCover .curDropDown {
-    margin: 2px 5%;
-    /* display: none; */
-}
-/* .currencyCover:hover .curDropDown {
-    display: block;
-} */
+.priceCover .curDropDown {margin: 2px 5%;}
 .priceCover .curDropDown .curBtn {
     padding: 10px 0;
     border: 0.5px solid #FFBD0C;
@@ -615,8 +607,6 @@ input[type="text"]::placeholder {
     align-items: center;
     margin-top: 30px;
     margin-bottom: 40px;
-}
-.priceCover .priceInputCover span{
 }
 .priceCover .priceInputCover input{
     width: 40%;
@@ -663,6 +653,43 @@ input[type="text"]::placeholder {
 }
 .adminDashboard .nftCover .nonSelectedBtn { background: none; }
 /* Admin Dashboard styling End */
+/* Admin User Approve Styling Start */
+.approveUserCover .header{
+    display: flex;
+}
+.approveUserCover ul {padding-left: 0;}
+.approveUserCover .userRow {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+.approveUserCover .selectedBtn, .approveUserCover .nonSelectedBtn{
+    width: 100px;
+    border: 1px solid #FFBD0C;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+.selectedBtn {
+    background: #198754;
+    border: none;
+}
+.nonSelectedBtn { background: none; }
+@media screen and (max-width: 768px) {
+}
+@media screen and (min-width: 769px) {
+    .approveUserCover .userRow>div, .approveUserCover .header>div{margin: 5px;}
+    .approveUserCover .header .avatarHead, .approveUserCover .userRow .avatar {width: 40px;}
+    .approveUserCover .userRow .avatar img {width: 40px; height: 40px; border-radius: 10px; object-fit: cover;}
+    .approveUserCover .header .nameHead, .approveUserCover .userRow .name {width: 100px;}
+    .approveUserCover .header .walletHead, .approveUserCover .userRow .wallet {width: 200px;}
+    .approveUserCover .header .approvedHead, .approveUserCover .userRow .approved {width: 100px;}
+}
+@media screen and (min-width: 1025px) {
+}
+@media screen and (min-width: 1201px) {
+}
+/* Admin User Approve Styling End */
 /* NFT Detail Page Styling Start */
 @media screen and (max-width: 768px) {
     .nftDetailCover { padding: 3px 6px; }
