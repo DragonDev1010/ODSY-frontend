@@ -36,17 +36,20 @@ function Item(props) {
         },
         ownerCover: {
             display: "flex",
-            justifyContent: "space-around"
+            justifyContent: "space-between"
         },
         ownerAvatar: {
-            width: "20%"
+            width: "50px",
+            height: '50px',
+            borderRadius: '50%'
         },
         owner: {
 
         },
         buyCover: {
             display: "flex",
-            justifyContent: "space-between"
+            justifyContent: "space-between",
+            marginTop: '5px'
         },
         heading: {
             fontFamily: 'Urbanist',
@@ -273,7 +276,9 @@ function Item(props) {
                 <img src={chainLogo} style={styles.chainLogo}></img>
             </div>
             <div style={styles.ownerCover}>
-                <img src={ownerAvatar} style={styles.ownerAvatar}></img>
+                <div className='ownerAvatarCover'>
+                    <img src={ownerAvatar} style={styles.ownerAvatar}></img>
+                </div>
                 <div style={styles.owner}>
                     <p style={styles.heading}>Owned By</p>
                     {
