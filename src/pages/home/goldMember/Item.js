@@ -18,13 +18,15 @@ function Item(props) {
         itemImg: {
             width: "100%",
             marginBottom: "10px",
-            background: "grey",
-            borderRadius: "18px"
+            border: '1px #80808047 solid',
+            borderRadius: '10px'
         },
         img: {
             width: '100%',
             height: '300px',
-            objectFit: 'cover'
+            objectFit: 'cover',
+            padding: '10px',
+            borderRadius: '10%'
         },
         title: {
             display: "flex",
