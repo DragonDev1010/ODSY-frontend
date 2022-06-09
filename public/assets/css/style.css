@@ -195,7 +195,6 @@ input:focus, select:focus {outline: none;}
 .routerList .routerListItem .routerDropdownCover {
     display: none;
     position: absolute;
-    margin-top: 5px;
     background-color: black;
     border: 0.5px solid #C4B000;
     border-radius: 10px;
