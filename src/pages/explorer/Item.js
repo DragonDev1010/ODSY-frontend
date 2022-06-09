@@ -254,7 +254,7 @@ function Item(props) {
     return(
         <div className='nftItemCover'>
             <Link to={'/assets/' + props.nft.nft_id}>
-                <img src={nftImg} style={styles.img}/>
+                <img src={nftImg} style={styles.img} className='nftImage'/>
             </Link>
             {
                 props.nft.saleMethod == 0 ?

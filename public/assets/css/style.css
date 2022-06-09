@@ -502,10 +502,18 @@ input[type="text"]::placeholder {
 @media screen and (min-width: 769px) {
     section.explorer .nftItemCover { width: calc(100%/3); }
     div.explorerPage .nftItemCover { width: calc(100%/3); }
+    section.explorer .nftItemCover img.nftImage {height: 199px; object-fit: cover;}
+    div.explorerPage .nftItemCover img.nftImage {height: 236px; object-fit: cover;}
 }
 @media screen and (min-width: 1025px) {
     section.explorer .nftItemCover { width: 25%; }
+    section.explorer .nftItemCover img.nftImage {height: 195px; object-fit: cover;}
     div.explorerPage .nftItemCover { width: 20%; }
+    div.explorerPage .nftItemCover img.nftImage {height: 185px; object-fit: cover;}
+}
+@media screen and (min-width: 1201px) {
+    section.explorer .nftItemCover img.nftImage{ height: 203px;  object-fit: cover;}
+    div.explorerPage .nftItemCover img.nftImage{ height: 220px;  object-fit: cover;}
 }
 .nftItemCover {padding: 10px;}
 /* NFT Explorer Page Styling End */
