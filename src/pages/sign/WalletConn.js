@@ -1,10 +1,16 @@
 import { useContext } from "react"
 
-import metamaskIcon from "../../assets/image/signPage/metamask.png"
-import bitskiIcon from "../../assets/image/signPage/bitski.png"
 import { WalletContext } from "../../context/walletContext"
 import { MessageContext } from "../../context/messageContext"
 import MetamaskConnect from "../../actions/metamaskConnect"
+import metamaskIcon from "../../assets/image/signPage/metamask.png"
+import bitskiIcon from "../../assets/image/signPage/bitski.png"
+import fortmatic from "../../assets/image/signPage/Fortmatic.png"
+import walletConnect from '../../assets/image/signPage/WalletConnect.png'
+import coinbaseWallet from '../../assets/image/signPage/CoinbaseWallet.png'
+import authereum from '../../assets/image/signPage/Authereum.png'
+import kaikas from '../../assets/image/signPage/Kaikas.png'
+import torus from '../../assets/image/signPage/Torus.png'
 
 function WalletConn() {
     // get the entire `WalletContext` object
@@ -54,33 +60,33 @@ function WalletConn() {
                     <p style={styles.walDetail}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
                 </button>
                 <button style={styles.walletCover}>
-                    <img src={metamaskIcon} />
-                    <p style={styles.walName}>Metamask</p>
+                    <img src={fortmatic} />
+                    <p style={styles.walName}>Fortmatic</p>
                     <p style={styles.walDetail}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
                 </button>
                 <button style={styles.walletCover}>
-                    <img src={metamaskIcon} />
-                    <p style={styles.walName}>Metamask</p>
+                    <img src={walletConnect} />
+                    <p style={styles.walName}>Wallet Connect</p>
                     <p style={styles.walDetail}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
                 </button>
                 <button style={styles.walletCover}>
-                    <img src={metamaskIcon} />
-                    <p style={styles.walName}>Metamask</p>
+                    <img src={coinbaseWallet} />
+                    <p style={styles.walName}>Coinbase Wallet</p>
                     <p style={styles.walDetail}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
                 </button>
                 <button style={styles.walletCover}>
-                    <img src={metamaskIcon} />
-                    <p style={styles.walName}>Metamask</p>
+                    <img src={authereum} />
+                    <p style={styles.walName}>Authereum</p>
                     <p style={styles.walDetail}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
                 </button>
                 <button style={styles.walletCover}>
-                    <img src={metamaskIcon} />
-                    <p style={styles.walName}>Metamask</p>
+                    <img src={kaikas} />
+                    <p style={styles.walName}>Kaikas</p>
                     <p style={styles.walDetail}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
                 </button>
                 <button style={styles.walletCover}>
-                    <img src={metamaskIcon} />
-                    <p style={styles.walName}>Metamask</p>
+                    <img src={torus} />
+                    <p style={styles.walName}>Torus</p>
                     <p style={styles.walDetail}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
                 </button>
             </div>
