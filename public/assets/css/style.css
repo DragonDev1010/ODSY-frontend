@@ -196,7 +196,7 @@ input:focus, select:focus {outline: none;}
     display: none;
     position: absolute;
     background-color: black;
-    border: 0.5px solid #C4B000;
+    border: 0.5px solid #FFBD0C;
     border-radius: 10px;
     width: 110px;
     left: calc(50% - 55px);
