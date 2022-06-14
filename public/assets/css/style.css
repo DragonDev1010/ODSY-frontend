@@ -54,7 +54,7 @@ button.inverseNormal:hover {
 button.smNormal {
     padding: 5px 10px;
     border: 1px solid #FFBD0C;
-    border-radius: 10px;
+    border-radius: 30px;
     background: none;
     font-family: 'Urbanist';
     font-style: normal;
@@ -206,7 +206,7 @@ input:focus, select:focus {outline: none;}
     text-align: center;
 }
 .routerList .routerListItem .routerDropdownCover a:not(:last-child) .routerDropdownItem {
-    border-bottom: 1px solid white;
+    border-bottom: 0.5px solid #C4B000;
 }
 
 .routerList .routerListItem .routerDropdownCover .routerDropdownItem p {
