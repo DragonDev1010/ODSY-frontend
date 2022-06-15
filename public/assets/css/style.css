@@ -385,14 +385,19 @@ section.explorer .nftsCover {
 @media screen and (min-width: 769px) {
     section.explorer {margin-top: 60px;}
     section.explorer .nftsCover {margin: 70px 50px 0 60px;}
+    section.explorer .nftItemCover { width: calc(100%/3); }
+    section.explorer .nftItemCover img.nftImage {width:100%; height: 199px; object-fit: cover;}
 }
 @media screen and (min-width: 1025px) {
     section.explorer {margin-top: 100px;}
     section.explorer .nftsCover {margin: 100px 80px 0 90px;}
+    section.explorer .nftItemCover { width: 25%; }
+    section.explorer .nftItemCover img.nftImage {width:100%; height: 195px; object-fit: cover;}
 }
 @media screen and (min-width: 1201px) {
     section.explorer {margin-top: 145px;}
-    section.explorer .nftsCover {margin: 140px 130px 0px 180px;;}
+    section.explorer .nftsCover {margin: 140px 130px 0px 180px;}
+    section.explorer .nftItemCover img.nftImage {width:100%; height: 203px;  object-fit: cover;}
 }
 section.explorer .ownerAvatarCover {
     width: 91px;
@@ -499,19 +504,19 @@ input[type="text"]::placeholder {
     .nftItemCover { width: 100%; }
 }
 @media screen and (min-width: 769px) {
-    section.explorer .nftItemCover { width: calc(100%/3); }
+    
     .nftItemCover { width: calc(100%/3); }
-    section.explorer .nftItemCover img.nftImage {height: 199px; object-fit: cover;}
+    
     .nftItemCover img.nftImage {height: 236px; object-fit: cover;}
 }
 @media screen and (min-width: 1025px) {
-    section.explorer .nftItemCover { width: 25%; }
-    section.explorer .nftItemCover img.nftImage {height: 195px; object-fit: cover;}
+    
+    
     .nftItemCover { width: 20%; }
     .nftItemCover img.nftImage {height: 185px; object-fit: cover;}
 }
 @media screen and (min-width: 1201px) {
-    section.explorer .nftItemCover img.nftImage{ height: 203px;  object-fit: cover;}
+    
     .nftItemCover img.nftImage{ height: 220px;  object-fit: cover;}
 }
 .nftItemCover {padding: 10px;}
