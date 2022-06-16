@@ -209,7 +209,6 @@ input:focus, select:focus {outline: none;}
     line-height: 22px;
 }
 .routerList .routerListItem .routerDropdownCover a:not(:last-child) .routerDropdownItem {
-    border-bottom: 0.5px solid #C4B000;
 }
 
 .routerList .routerListItem .routerDropdownCover .routerDropdownItem p {
