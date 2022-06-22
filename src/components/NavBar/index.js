@@ -23,6 +23,9 @@ import Exclusives from '../../pages/exclusives/Exclusives';
 import AboutUs from '../../pages/aboutUs/AboutUs';
 import * as FaIcons from 'react-icons/fa'
 import ApproveUsers from '../../pages/dashboard/ApproveUsers';
+import Transactions from '../../pages/transactions/Transactions';
+import RecentBids from '../../pages/recentBids/RecentBids';
+import LatestListings from '../../pages/latestListings/LatestListings';
 function NavBar (props) {
     const msgContext = useContext(MessageContext)
     const walContext = useContext(WalletContext)
@@ -100,7 +103,9 @@ function NavBar (props) {
                         <Route exact path='/aboutus' element={<AboutUs/>}></Route>
                         <Route exact path='/dashboard' element={<Dashboard/>}></Route>
                         <Route exact path='/dashboard/approveUser' element={<ApproveUsers/>}></Route>
-
+                        <Route exact path='transactions' element={<Transactions/>}></Route>
+                        <Route exact path='recent-bids' element={<RecentBids/>}></Route>
+                        <Route exact path='latest-listings' element={<LatestListings/>}></Route>
                         <Route path="*" element={<Navigate to="/" replace />}></Route>
                     </Routes>
                 </>

@@ -17,15 +17,15 @@ function Router() {
                         <FaIcons.FaCaretDown/> 
                     </span>
                     <div className="routerDropdownCover routerDropdownCommunity">
-                        <Link to="">
-                            <p className="routerDropdownItem">Twitter</p>
-                        </Link>
-                        <Link to="">
-                            <p className="routerDropdownItem">Telegram</p>
-                        </Link>
-                        <Link to="">
-                            <p className="routerDropdownItem">Instagram</p>
-                        </Link>
+                        <p className="routerDropdownItem" >
+                            <a href="https://twitter.com/odyssey_venture" target='_blank'>Twitter</a>
+                        </p>
+                        <p className="routerDropdownItem">
+                            <a href="https://t.me/odyssey_venture" target={'_blank'}>Telegram</a>
+                        </p>
+                        <p className="routerDropdownItem">
+                            <a href="https://www.instagram.com/odysseyventure/" target={'_blank'}>Instagram</a>
+                        </p>
                     </div>
                 </div>
             </li>
@@ -36,20 +36,20 @@ function Router() {
                         <FaIcons.FaCaretDown/>   
                     </span>
                     <div className="routerDropdownCover routerDropdownActivity">
-                        <Link to="">
+                        <Link to="/transactions">
                             <p className="routerDropdownItem">Transactions</p>
                         </Link>
-                        <Link to="">
+                        <Link to="/recent-bids">
                             <p className="routerDropdownItem">Recent Bids</p>
                         </Link>
-                        <Link to="">
+                        <Link to="/latest-listings">
                             <p className="routerDropdownItem">Latest Listings</p>
                         </Link>
                     </div>
                 </div>
             </li>
             <li className="routerListItem">
-                <Link to="/explorer" className="routerListItemLink">Explore</Link>
+                <Link to="/explorer" className="routerListItemLink">Explorer</Link>
             </li>
         </ul>
     )
