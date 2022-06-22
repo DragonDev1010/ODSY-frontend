@@ -31,6 +31,12 @@ function WalletConn() {
             margin: "10px 0",
             textAlign: "center",
             border: "none"
+        },
+        walName: {
+            fontSize: '32px',
+            fontWeight: '700',
+            fontStyle: 'normal',
+            marginTop:'20px'
         }
     }
 
@@ -52,42 +58,42 @@ function WalletConn() {
                 <button style={styles.walletCover} onClick={metamaskConn}>
                     <img src={metamaskIcon} />
                     <p style={styles.walName}>Metamask</p>
-                    <p style={styles.walDetail}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+                    
                 </button>
                 <button style={styles.walletCover}>
                     <img src={bitskiIcon} />
                     <p style={styles.walName}>Bitski</p>
-                    <p style={styles.walDetail}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+                    
                 </button>
                 <button style={styles.walletCover}>
                     <img src={fortmatic} />
                     <p style={styles.walName}>Fortmatic</p>
-                    <p style={styles.walDetail}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+                    
                 </button>
                 <button style={styles.walletCover}>
                     <img src={walletConnect} />
                     <p style={styles.walName}>Wallet Connect</p>
-                    <p style={styles.walDetail}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+                    
                 </button>
                 <button style={styles.walletCover}>
                     <img src={coinbaseWallet} />
                     <p style={styles.walName}>Coinbase Wallet</p>
-                    <p style={styles.walDetail}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+                    
                 </button>
                 <button style={styles.walletCover}>
                     <img src={authereum} />
                     <p style={styles.walName}>Authereum</p>
-                    <p style={styles.walDetail}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+                    
                 </button>
                 <button style={styles.walletCover}>
                     <img src={kaikas} />
                     <p style={styles.walName}>Kaikas</p>
-                    <p style={styles.walDetail}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+                    
                 </button>
                 <button style={styles.walletCover}>
                     <img src={torus} />
                     <p style={styles.walName}>Torus</p>
-                    <p style={styles.walDetail}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+                    
                 </button>
             </div>
         </div>

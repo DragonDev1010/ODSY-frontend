@@ -122,6 +122,10 @@ function Create() {
                 }
             })
     }
+    const handleCurrency = (e) => {
+        setCurrency(+e.target.value)
+    }
+
     const initializeForm = () => {
         setTitle("")
         setDesc("")
@@ -171,12 +175,14 @@ function Create() {
                                 </div>
                             </div>
                             <div style={styles.formInput}>
-                                <p style={styles.title}>Price</p>
-                                <input type="number" placeholder="Enter price for one item (ETH)" style={styles.inputField} onChange={e => setPrice(+(e.target.value))} ></input>
-                            </div>
-                            <div style={styles.formInput}>
-                                <p style={styles.title}>Currency</p>
-                                <input type="number" placeholder="Currency" style={styles.inputField} onChange={e => setCurrency(+(e.target.value))} ></input>
+                                <div className="priceInputCover">
+                                    <p style={styles.title}>Price</p>
+                                    <input type={'checkbox'} value='0' name='bnb' id='bnb' onClick={handleCurrency} checked={currency==0?true:false}/>
+                                    <label for='bnb'>BNB</label>
+                                    <input type={'checkbox'} value='1' name='odsy' id='odsy' onClick={handleCurrency} checked={currency==1?true:false}/>
+                                    <label for='odsy'>ODSY</label>
+                                </div>
+                                <input type="number" placeholder="Enter price for one item (BNB/ODSY)" style={styles.inputField} onChange={e => setPrice(+(e.target.value))} ></input>
                             </div>
                             <div style={styles.formInput}>
                                 <p style={styles.title}>Title</p>

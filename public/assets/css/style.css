@@ -840,6 +840,16 @@ input[type="text"]::placeholder {
     color: #e1b60c6b;
 } 
 /* NFT Detail Page Styling End */
+/* NFT Create Page Styling Start */
+.createNftCover .priceInputCover {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.createNftCover .priceInputCover label {
+    font-weight: 700;
+}
+/* NFT Create Page Styling End */
 /* react-elastic-carousel styling start */
 .rec.rec-carousel-wrapper {
     padding: 0 6px;
