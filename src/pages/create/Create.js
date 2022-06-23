@@ -78,7 +78,7 @@ function Create() {
                     }
                 }
             })
-            .then( tokenId => {
+            .then( (tokenId) => {
                 var data = new FormData()
 
                 data.append('nft_id', tokenId)
@@ -109,9 +109,10 @@ function Create() {
                                 return res.json()
                         })
                         .then(res => {
-                                initializeForm()
-                                setLoading(false)
-                                messageContext.setMessage("Created successfully!")
+                            initializeForm()
+                            createActivity(res)
+                            setLoading(false)
+                            messageContext.setMessage("Created successfully!")
                         })
                         .catch( err => {
                             setLoading(false)
@@ -120,6 +121,23 @@ function Create() {
                 } catch (error) {
                     setLoading(false)
                 }
+            })
+    }
+    const createActivity = (res) => {
+        var activityData = new FormData()
+        activityData.append('nft_id', res.nft_id)
+        activityData.append('activity_type', 0) // 0: nft mint
+        activityData.append('price', res.price)
+        activityData.append('creator', res.creatorAddr)
+        fetch(
+            process.env.REACT_APP_API_BASE_URL + 'activities',
+            {
+                method: 'POST',
+                body: activityData
+            }
+        )
+            .then( res => {
+                if(res.status == 200) return res.json()
             })
     }
     const handleCurrency = (e) => {
