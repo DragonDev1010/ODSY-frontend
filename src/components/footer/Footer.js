@@ -26,7 +26,7 @@ function Footer(props) {
                         <a href="">Authors</a>
                         <a href="">Collections</a>
                         <a href="">Author Profile</a>
-                        <a href="">Author Profile</a>
+                        <a href="">Create A NFT</a>
                     </div>
                 </div>
                 <div className="columnCoverTwo">
