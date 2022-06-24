@@ -850,6 +850,98 @@ input[type="text"]::placeholder {
     font-weight: 700;
 }
 /* NFT Create Page Styling End */
+/* Activities Transactions Page Styling Start */
+section.transactions .filtercover button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+section.transactions button.clearBtn {
+    background: none;
+    outline: none;
+    border: none;
+    color: #5142FC;
+    font-family: 'Urbanist';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 26px;
+}
+section.transactions .listCover {
+    padding: 10px 50px;
+    text-align: center;
+}
+section.transactions .rowCover {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+}
+section.transactions .rowCover .nftImgCover {
+    width: 100px;
+    height: 100px;
+}
+section.transactions .rowCover .nftImgCover img {
+    padding: 5%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+section.transactions .rowCover .infoCover {text-align: left;}
+section.transactions .rowCover .infoCover .nftTitle {
+    font-family: 'Urbanist';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+}
+section.transactions .rowCover .infoCover .desc, section.transactions .rowCover .infoCover .created {
+    font-family: 'Urbanist';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+}
+section.transactions .rowCover .infoCover .desc a {
+    color: #5142FC;
+    font-weight: 700;
+}
+@media screen and (min-width: 769px) {
+    section.transactions {
+        margin: 50px 30px
+    }
+    section.transactions .filtercover p {display: none;}
+    section.transactions .filtercover button {
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 22px;
+    }
+}
+@media screen and (min-width: 1025px) {
+    section.transactions {
+        margin: 100px 70px
+    }
+    section.transactions .filtercover button {
+        padding: 5px 20px;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 22px;
+    }
+}
+@media screen and (min-width: 1201px ) {
+    section.transactions {
+        margin: 200px 140px
+    }
+}
+
+section.transactions .filtercover {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* Activities Transactions Page Styling End */
 /* react-elastic-carousel styling start */
 .rec.rec-carousel-wrapper {
     padding: 0 6px;

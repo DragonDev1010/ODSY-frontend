@@ -39,10 +39,10 @@ function Router() {
                         <Link to="/transactions">
                             <p className="routerDropdownItem">Transactions</p>
                         </Link>
-                        <Link to="/recent-bids">
+                        <Link to="/transactions">
                             <p className="routerDropdownItem">Recent Bids</p>
                         </Link>
-                        <Link to="/latest-listings">
+                        <Link to="/transactions">
                             <p className="routerDropdownItem">Latest Listings</p>
                         </Link>
                     </div>
