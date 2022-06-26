@@ -49,7 +49,7 @@ function Router() {
                 </div>
             </li>
             <li className="routerListItem">
-                <Link to="/explorer" className="routerListItemLink">Explorer</Link>
+                <Link to="/explorer" className="routerListItemLink">Explore</Link>
             </li>
         </ul>
     )
